@@ -1,0 +1,223 @@
+(footprint "CPH3225A"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "CPH3225A-1")
+	(tags "Capacitor Polarised")
+	(property "Reference" "C**"
+		(at 0.05 -2.54 0)
+		(layer "F.SilkS")
+		(uuid "c574eb99-8023-43ad-a1cc-096be128d30a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "CPH3225A"
+		(at 0.05 -0.3 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "40465004-8dc4-4b88-874f-5b1d55d58678")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "992776dc-4245-41c5-86ea-59a86e31fb24")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "132ed95e-a970-497f-948f-fa26d156fddf")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -1.9 -0.4)
+		(end -1.9 -0.4)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "c97230a2-db42-43d3-b868-db68073e3fef")
+	)
+	(fp_line
+		(start -1.9 -0.2)
+		(end -1.9 -0.2)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "873068c6-0a23-456e-9b49-9f8f2a53a8da")
+	)
+	(fp_line
+		(start -1.3 -1.55)
+		(end 1.9 -1.55)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "7084af31-9b8e-4887-a4e6-b165c5056678")
+	)
+	(fp_line
+		(start -1.3 0.95)
+		(end 1.9 0.95)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "c834b544-c6f3-4a1a-afb3-f49430641ca9")
+	)
+	(fp_arc
+		(start -1.9 -0.4)
+		(mid -1.8 -0.3)
+		(end -1.9 -0.2)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "15d713aa-8c31-4549-b24c-c212f3821f65")
+	)
+	(fp_arc
+		(start -1.9 -0.2)
+		(mid -2 -0.3)
+		(end -1.9 -0.4)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "bb9a7709-a79f-43d1-acb0-29e50dfcf12d")
+	)
+	(fp_line
+		(start -2.5 -2.05)
+		(end 2.6 -2.05)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "4847e2ee-e5ae-4273-9294-1f10b957dfbe")
+	)
+	(fp_line
+		(start -2.5 1.45)
+		(end -2.5 -2.05)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "6a75c740-9354-47dc-af9f-4ddd26117909")
+	)
+	(fp_line
+		(start -1.3 -1.55)
+		(end 1.9 -1.55)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "a8878319-6774-48b3-a3fe-7e9ce44e8c04")
+	)
+	(fp_line
+		(start -1.3 0.95)
+		(end -1.3 -1.55)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "44cf4aca-9585-42c8-8e9b-f778cd1c3c42")
+	)
+	(fp_line
+		(start 1.9 -1.55)
+		(end 1.9 0.95)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "3eba09a9-7093-4d88-8c59-5d11b90b00fb")
+	)
+	(fp_line
+		(start 1.9 0.95)
+		(end -1.3 0.95)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "77393a65-f930-439e-92b0-b735c91ccde2")
+	)
+	(fp_line
+		(start 2.6 -2.05)
+		(end 2.6 1.45)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "3e98c40b-d3e2-445b-bc8d-1ff06c66506c")
+	)
+	(fp_line
+		(start 2.6 1.45)
+		(end -2.5 1.45)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "88139b1a-8509-4600-9ba7-92bb6021fc93")
+	)
+	(pad "1" smd rect
+		(at -0.8 -0.3)
+		(size 1.4 1.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(thermal_bridge_angle 45)
+		(uuid "5b123d3e-dfcc-4522-bdbd-88b72d5d66c0")
+	)
+	(pad "2" smd rect
+		(at 1.4 -0.3)
+		(size 1.4 1.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(thermal_bridge_angle 45)
+		(uuid "b28dc379-b2db-443d-8d7f-e3b4399a2910")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/3D_Models/CPH3225A.stp"
+		(offset
+			(xyz 0.3 0.3 0.5)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -0 -0)
+		)
+	)
+)

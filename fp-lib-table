@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "lib_station_analyse_qualite_eau") (type "KiCad") (uri "${KIPRJMOD}/lib_station_analyse_qualite_eau.pretty") (options "") (descr ""))
+)
