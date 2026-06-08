@@ -42,3 +42,28 @@ bom/
 out/
 
 # End of https://www.toptal.com/developers/gitignore/api/kicad
+
+# ==========================
+# FIRMWARE (STM32 / Eclipse)
+# ==========================
+
+# Dossiers générés lors de la compilation
+Debug/
+Release/
+build/
+
+# Fichiers objets et exécutables
+*.o
+*.d
+*.elf
+*.hex
+*.bin
+*.map
+*.lst
+*.su
+
+# Fichiers de configuration locaux de l'IDE (à ne pas partager)
+.metadata/
+.settings/
+*.launch
+.log
