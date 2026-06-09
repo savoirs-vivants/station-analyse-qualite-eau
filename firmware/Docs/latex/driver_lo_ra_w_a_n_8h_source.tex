@@ -1,0 +1,113 @@
+\doxysection{driver\+Lo\+Ra\+WAN.\+h}
+\hypertarget{driver_lo_ra_w_a_n_8h_source}{}\label{driver_lo_ra_w_a_n_8h_source}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverLoRaWAN.h@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverLoRaWAN.h}}
+\doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifndef\ INC\_DRIVER\_LORAWAN\_H\_}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ INC\_DRIVER\_LORAWAN\_H\_}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{main_8h}{main.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{usart_8h}{usart.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{/*\ ==========================================================================}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ *\ ÉNUMÉRATIONS\ APPLICATIVES}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ *\ ==========================================================================\ */}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5a4b55d0da89bdc2f9bd3dfb86854f055a}{LORA\_OK}}\ =\ 0,\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5ab4e783422ed21719cce93e9f70d51b0c}{LORA\_ERR\_PARAM}},\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5a0bb91a5cdb21ee18562bf3ec4d5bb1e3}{LORA\_ERR\_BUSY}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5af4fbf821ff031f603dd8b1b05c5b2185}{LORA\_ERR\_NOT\_JOINED}}\ \ \ \ \ }
+\DoxyCodeLine{00035\ \}\ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5}{LoRa\_Result\_t}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_acfad30042d19683eb79faab6800dde82a45dbd81de4f835b21e9fe2b94c48bd2d}{LORA\_STATUS\_UNINIT}}\ =\ 0,\ }
+\DoxyCodeLine{00043\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_acfad30042d19683eb79faab6800dde82a3da8a1a5b5f5913c517a1fdc22bcacc0}{LORA\_STATUS\_READY}},\ \ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_acfad30042d19683eb79faab6800dde82a656366b862c5b267a31b847bdc4cbb35}{LORA\_STATUS\_BUSY}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_acfad30042d19683eb79faab6800dde82a057fe0af9f8c991afe05ce3ac94bf53b}{LORA\_STATUS\_SLEEP}},\ \ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_acfad30042d19683eb79faab6800dde82ad6ddb3472e09f0e0c326c4879222ff06}{LORA\_STATUS\_ERROR}}\ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \}\ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_acfad30042d19683eb79faab6800dde82}{LoRa\_Status\_t}};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a748d6f3893526134d6e8da9ae7dffccfab1df5a9584ee2c2ff9262eb5b7997755}{S\_LORA\_IDLE}}\ =\ 0,}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/\ Séquence\ de\ Configuration\ -\/-\/-\/\ */}}
+\DoxyCodeLine{00057\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a748d6f3893526134d6e8da9ae7dffccfa94e8bb6b8a213cb70d3123f4e091bb60}{S\_LORA\_CONFIG\_SEND}},}
+\DoxyCodeLine{00058\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a748d6f3893526134d6e8da9ae7dffccfa31449466195b47c3b229a7e82f1dac28}{S\_LORA\_CONFIG\_WAIT}},}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/\ Séquence\ de\ Jonction\ (OTAA)\ -\/-\/-\/\ */}}
+\DoxyCodeLine{00061\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a748d6f3893526134d6e8da9ae7dffccfabd4b4e93478af8f0210f30abec353510}{S\_LORA\_JOIN\_SEND}},}
+\DoxyCodeLine{00062\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a748d6f3893526134d6e8da9ae7dffccfacb5cf4c024920000367520735156c1fc}{S\_LORA\_JOIN\_WAIT}},}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/\ Séquence\ d'Envoi\ (TX)\ -\/-\/-\/\ */}}
+\DoxyCodeLine{00065\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a748d6f3893526134d6e8da9ae7dffccfaf57c59fbd6c4ddad769d7b7852e95629}{S\_LORA\_TX\_SEND}},}
+\DoxyCodeLine{00066\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a748d6f3893526134d6e8da9ae7dffccfaa521b8d6e2829f88992da0be06fec1c0}{S\_LORA\_TX\_WAIT}},}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/\ Gestion\ d'Énergie\ -\/-\/-\/\ */}}
+\DoxyCodeLine{00069\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a748d6f3893526134d6e8da9ae7dffccfa081f793d41bf205c64702c8279c980be}{S\_LORA\_GOTO\_SLEEP}},}
+\DoxyCodeLine{00070\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a748d6f3893526134d6e8da9ae7dffccfa4f979ffe69c72b40e97ae0c3eaa51bcc}{S\_LORA\_WAIT\_SLEEP}},}
+\DoxyCodeLine{00071\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a748d6f3893526134d6e8da9ae7dffccfae3c7f3ee1a6280b9cd0944de96924a47}{S\_LORA\_SLEEP}},}
+\DoxyCodeLine{00072\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a748d6f3893526134d6e8da9ae7dffccfa3271089c6cdaf7ae038e66a524b78d0d}{S\_LORA\_WAKING\_UP}},}
+\DoxyCodeLine{00073\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a748d6f3893526134d6e8da9ae7dffccfac09178c3c1c450469cd0710028b352df}{S\_LORA\_WAKING\_UP\_WAIT}},}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/\ Gestion\ des\ Erreurs\ -\/-\/-\/\ */}}
+\DoxyCodeLine{00076\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a748d6f3893526134d6e8da9ae7dffccfabbe29494f2b36a7534b6ef78f2cc066b}{S\_LORA\_ERROR}}}
+\DoxyCodeLine{00077\ \}\ \doxymbox{\hyperlink{driver_lo_ra_8h_a748d6f3893526134d6e8da9ae7dffccf}{LoRa\_State\_t}};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{comment}{/*\ ==========================================================================}}
+\DoxyCodeLine{00081\ \textcolor{comment}{\ *\ STRUCTURES\ DE\ DONNÉES}}
+\DoxyCodeLine{00082\ \textcolor{comment}{\ *\ ==========================================================================\ */}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00087\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/\ Couche\ Matérielle\ -\/-\/-\/\ */}}
+\DoxyCodeLine{00089\ \ \ \ \ UART\_HandleTypeDef\ *\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t_a1ed7dab212fde0a3a4600d33399c67b6}{huart}};\ \ \ \ \ \ }
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/\ Machine\ d'État\ -\/-\/-\/\ */}}
+\DoxyCodeLine{00092\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a748d6f3893526134d6e8da9ae7dffccf}{LoRa\_State\_t}}\ \doxymbox{\hyperlink{struct_lo_ra_w_a_n__t_ac64ae6822627b36d3c6f29e3a05df1fd}{state}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00093\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_acfad30042d19683eb79faab6800dde82}{LoRa\_Status\_t}}\ \doxymbox{\hyperlink{struct_lo_ra_w_a_n__t_ade3564103871015b0cd86e74a6b0845e}{status}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/\ Buffers\ de\ Communication\ -\/-\/-\/\ */}}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{struct_lo_ra_w_a_n__t_ac71568e7238007e8666f6ba60d8bfe35}{rx\_buffer}}[128];\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{struct_lo_ra_w_a_n__t_a2cb807e833b8c0f5dc4607927d04a3fd}{tx\_buffer}}[128];\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{volatile}\ uint16\_t\ \doxymbox{\hyperlink{struct_lo_ra_w_a_n__t_adfa891b79655d14dcf60b46fbff45318}{rx\_length}};\ \ \ \ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_lo_ra_w_a_n__t_ad6b28832359d25e57fa076f22ddfe4c4}{rx\_complete}};\ \ \ \ \ \ }
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/\ Gestion\ Temporelle\ et\ Logique\ -\/-\/-\/\ */}}
+\DoxyCodeLine{00102\ \ \ \ \ uint32\_t\ \doxymbox{\hyperlink{struct_lo_ra_w_a_n__t_aaffa55a39c7af7fbb0e4b95bee856e8f}{cmd\_start\_time}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00103\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{struct_lo_ra_w_a_n__t_a498cfddc77b1406232558e428189431f}{config\_step}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00104\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{struct_lo_ra_w_a_n__t_ad7f3b7d0c00bba5352cf56e5ecd54519}{retry\_count}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_lo_ra_w_a_n__t_ade47997bec944322f6503f86c2270c89}{is\_joined}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00106\ \}\ \doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{LoRaWAN\_t}};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{comment}{/*\ ==========================================================================}}
+\DoxyCodeLine{00110\ \textcolor{comment}{\ *\ PROTOTYPES\ DES\ FONCTIONS\ (API\ PUBLIQUE)}}
+\DoxyCodeLine{00111\ \textcolor{comment}{\ *\ ==========================================================================\ */}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00119\ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5}{LoRa\_Result\_t}}\ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a2e50bcbf6c8e4b386de091e3d90a2ce4}{LoRaWAN\_Init}}(\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{LoRaWAN\_t}}\ *lora,\ UART\_HandleTypeDef\ *huart);}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00126\ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5}{LoRa\_Result\_t}}\ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a7c8be45c272b8dc443f20f32d2bccb41}{LoRaWAN\_Configure}}(\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{LoRaWAN\_t}}\ *lora);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00133\ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5}{LoRa\_Result\_t}}\ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a4871b8fc734feffe2d901152628d5e29}{LoRaWAN\_Join}}(\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{LoRaWAN\_t}}\ *lora);}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00141\ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5}{LoRa\_Result\_t}}\ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a359edb6c6a4c26c55105728e6ef1a830}{LoRaWAN\_SendHex}}(\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{LoRaWAN\_t}}\ *lora,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *hex\_payload);}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00148\ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5}{LoRa\_Result\_t}}\ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_abed320808ce34857afa72de383e71026}{LoRaWAN\_Sleep}}(\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{LoRaWAN\_t}}\ *lora);}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00155\ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5}{LoRa\_Result\_t}}\ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_aa61ea0f38998fb17b9751c14ffdd0396}{LoRaWAN\_WakeUp}}(\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{LoRaWAN\_t}}\ *lora);}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00162\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_ad95f8c0f5b95230fbd469d746f0ea414}{LoRaWAN\_Process}}(\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{LoRaWAN\_t}}\ *lora);}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00169\ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_acfad30042d19683eb79faab6800dde82}{LoRa\_Status\_t}}\ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a5439b824a5a05b98885afd3027ce5219}{LoRaWAN\_GetStatus}}(\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{LoRaWAN\_t}}\ *lora);}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00175\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_abe31eec2974d2b82a676d6bca867f926}{LoRaWAN\_ResetError}}(\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{LoRaWAN\_t}}\ *lora);}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00183\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a488d84e151fb64da7f5b5572d439310a}{LoRaWAN\_RxEventCallback}}(\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{LoRaWAN\_t}}\ *lora,\ uint16\_t\ Size);}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ INC\_DRIVER\_LORAWAN\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

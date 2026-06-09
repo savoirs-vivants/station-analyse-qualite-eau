@@ -1,0 +1,296 @@
+\doxysection{C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Src/\+usart.c File Reference}
+\hypertarget{usart_8c}{}\label{usart_8c}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/usart.c@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/usart.c}}
+
+
+This file provides code for the configuration of the USART instances.  
+
+
+{\ttfamily \+\#include "{}usart.\+h"{}}\newline
+Include dependency graph for usart.\+c:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{usart_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{usart_8c_a2d6e29406e35a65323b382515e095cd4}{MX\+\_\+\+LPUART1\+\_\+\+UART\+\_\+\+Init}} (void)
+\item 
+void \doxymbox{\hyperlink{usart_8c_a60d62e75cab729a5233f6b92d4b047e2}{MX\+\_\+\+LPUART2\+\_\+\+UART\+\_\+\+Init}} (void)
+\item 
+void \doxymbox{\hyperlink{usart_8c_a9b4f7f3e6b2df1d45c3963292dbf6a29}{MX\+\_\+\+LPUART3\+\_\+\+UART\+\_\+\+Init}} (void)
+\item 
+void \doxymbox{\hyperlink{usart_8c_a3d04b903a77089f6ce08dd0bf1c81a81}{MX\+\_\+\+USART3\+\_\+\+UART\+\_\+\+Init}} (void)
+\item 
+void \doxymbox{\hyperlink{usart_8c_a2c3c71c0b3761d905840430448bcb71e}{MX\+\_\+\+USART4\+\_\+\+UART\+\_\+\+Init}} (void)
+\item 
+void \doxymbox{\hyperlink{usart_8c_a62a25476866998c7aadfb5c0864fa349}{HAL\+\_\+\+UART\+\_\+\+Msp\+Init}} (UART\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}uart\+Handle)
+\item 
+void \doxymbox{\hyperlink{usart_8c_a94cd2c58add4f2549895a03bf267622e}{HAL\+\_\+\+UART\+\_\+\+Msp\+De\+Init}} (UART\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}uart\+Handle)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+UART\+\_\+\+Handle\+Type\+Def \doxymbox{\hyperlink{usart_8c_a5c3f9dccaa7cebcc70e1657af9e5e5dc}{hlpuart1}}
+\item 
+UART\+\_\+\+Handle\+Type\+Def \doxymbox{\hyperlink{usart_8c_a8f5533574af7276054d6cc0da2eb7abe}{hlpuart2}}
+\item 
+UART\+\_\+\+Handle\+Type\+Def \doxymbox{\hyperlink{usart_8c_a74b5a87ad82c2200f5bc8f03d4c1f7e7}{hlpuart3}}
+\item 
+UART\+\_\+\+Handle\+Type\+Def \doxymbox{\hyperlink{usart_8c_ab7c63c1b0f65db92b6a4ea19edf957e1}{huart3}}
+\item 
+UART\+\_\+\+Handle\+Type\+Def \doxymbox{\hyperlink{usart_8c_ae273feb3e0dc44e38892650faa58fced}{huart4}}
+\item 
+DMA\+\_\+\+Handle\+Type\+Def \doxymbox{\hyperlink{usart_8c_aa9b86e4c707a7423dbe0c49ba8fa7e0a}{hdma\+\_\+lpuart1\+\_\+rx}}
+\item 
+DMA\+\_\+\+Handle\+Type\+Def \doxymbox{\hyperlink{usart_8c_a493c9b92a85ce1f22687da1c6db11c4b}{hdma\+\_\+lpuart2\+\_\+tx}}
+\item 
+DMA\+\_\+\+Handle\+Type\+Def \doxymbox{\hyperlink{usart_8c_a2ec4e186daf43f5d9bfcfb2b8dc983f9}{hdma\+\_\+lpuart2\+\_\+rx}}
+\item 
+DMA\+\_\+\+Handle\+Type\+Def \doxymbox{\hyperlink{usart_8c_a418ff7f6b595dcf41b10de1083e62340}{hdma\+\_\+usart3\+\_\+rx}}
+\item 
+DMA\+\_\+\+Handle\+Type\+Def \doxymbox{\hyperlink{usart_8c_a8556819c2aafb13de4f13869b2c315ed}{hdma\+\_\+usart3\+\_\+tx}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file provides code for the configuration of the USART instances. 
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+Copyright (c) 2026 STMicroelectronics. All rights reserved.
+
+This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-\/\+IS. 
+
+\label{usart_8c_doc-func-members}
+\Hypertarget{usart_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{usart_8c_a94cd2c58add4f2549895a03bf267622e}\index{usart.c@{usart.c}!HAL\_UART\_MspDeInit@{HAL\_UART\_MspDeInit}}
+\index{HAL\_UART\_MspDeInit@{HAL\_UART\_MspDeInit}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_UART\_MspDeInit()}{HAL\_UART\_MspDeInit()}}
+{\footnotesize\ttfamily \label{usart_8c_a94cd2c58add4f2549895a03bf267622e} 
+void HAL\+\_\+\+UART\+\_\+\+Msp\+De\+Init (\begin{DoxyParamCaption}\item[{UART\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{uart\+Handle}{}\end{DoxyParamCaption})}
+
+LPUART1 GPIO Configuration PC0 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} LPUART1\+\_\+\+RX PC1 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} LPUART1\+\_\+\+TX
+
+Uncomment the line below to disable the "{}\+USART3\+\_\+\+LPUART1\+\_\+\+IRQn"{} interrupt Be aware, disabling shared interrupt may affect other IPs
+
+LPUART2 GPIO Configuration PC6 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} LPUART2\+\_\+\+TX
+
+LPUART3 GPIO Configuration PC4 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} LPUART3\+\_\+\+TX PC5 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} LPUART3\+\_\+\+RX
+
+USART3 GPIO Configuration PB8 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} USART3\+\_\+\+TX PB9 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} USART3\+\_\+\+RX
+
+Uncomment the line below to disable the "{}\+USART3\+\_\+\+LPUART1\+\_\+\+IRQn"{} interrupt Be aware, disabling shared interrupt may affect other IPs
+
+USART4 GPIO Configuration PA0 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} USART4\+\_\+\+TX PA1 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} USART4\+\_\+\+RX\Hypertarget{usart_8c_a62a25476866998c7aadfb5c0864fa349}\index{usart.c@{usart.c}!HAL\_UART\_MspInit@{HAL\_UART\_MspInit}}
+\index{HAL\_UART\_MspInit@{HAL\_UART\_MspInit}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_UART\_MspInit()}{HAL\_UART\_MspInit()}}
+{\footnotesize\ttfamily \label{usart_8c_a62a25476866998c7aadfb5c0864fa349} 
+void HAL\+\_\+\+UART\+\_\+\+Msp\+Init (\begin{DoxyParamCaption}\item[{UART\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{uart\+Handle}{}\end{DoxyParamCaption})}
+
+Initializes the peripherals clocks
+
+LPUART1 GPIO Configuration PC0 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} LPUART1\+\_\+\+RX PC1 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} LPUART1\+\_\+\+TX
+
+Initializes the peripherals clocks
+
+LPUART2 GPIO Configuration PC6 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} LPUART2\+\_\+\+TX
+
+Initializes the peripherals clocks
+
+LPUART3 GPIO Configuration PC4 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} LPUART3\+\_\+\+TX PC5 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} LPUART3\+\_\+\+RX
+
+Initializes the peripherals clocks
+
+USART3 GPIO Configuration PB8 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} USART3\+\_\+\+TX PB9 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} USART3\+\_\+\+RX
+
+Initializes the peripherals clocks
+
+USART4 GPIO Configuration PA0 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} USART4\+\_\+\+TX PA1 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} USART4\+\_\+\+RXHere is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{usart_8c_a62a25476866998c7aadfb5c0864fa349_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{usart_8c_a2d6e29406e35a65323b382515e095cd4}\index{usart.c@{usart.c}!MX\_LPUART1\_UART\_Init@{MX\_LPUART1\_UART\_Init}}
+\index{MX\_LPUART1\_UART\_Init@{MX\_LPUART1\_UART\_Init}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{MX\_LPUART1\_UART\_Init()}{MX\_LPUART1\_UART\_Init()}}
+{\footnotesize\ttfamily \label{usart_8c_a2d6e29406e35a65323b382515e095cd4} 
+void MX\+\_\+\+LPUART1\+\_\+\+UART\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{usart_8c_a2d6e29406e35a65323b382515e095cd4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{usart_8c_a2d6e29406e35a65323b382515e095cd4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{usart_8c_a60d62e75cab729a5233f6b92d4b047e2}\index{usart.c@{usart.c}!MX\_LPUART2\_UART\_Init@{MX\_LPUART2\_UART\_Init}}
+\index{MX\_LPUART2\_UART\_Init@{MX\_LPUART2\_UART\_Init}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{MX\_LPUART2\_UART\_Init()}{MX\_LPUART2\_UART\_Init()}}
+{\footnotesize\ttfamily \label{usart_8c_a60d62e75cab729a5233f6b92d4b047e2} 
+void MX\+\_\+\+LPUART2\+\_\+\+UART\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{usart_8c_a60d62e75cab729a5233f6b92d4b047e2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{usart_8c_a60d62e75cab729a5233f6b92d4b047e2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{usart_8c_a9b4f7f3e6b2df1d45c3963292dbf6a29}\index{usart.c@{usart.c}!MX\_LPUART3\_UART\_Init@{MX\_LPUART3\_UART\_Init}}
+\index{MX\_LPUART3\_UART\_Init@{MX\_LPUART3\_UART\_Init}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{MX\_LPUART3\_UART\_Init()}{MX\_LPUART3\_UART\_Init()}}
+{\footnotesize\ttfamily \label{usart_8c_a9b4f7f3e6b2df1d45c3963292dbf6a29} 
+void MX\+\_\+\+LPUART3\+\_\+\+UART\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{usart_8c_a9b4f7f3e6b2df1d45c3963292dbf6a29_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{usart_8c_a9b4f7f3e6b2df1d45c3963292dbf6a29_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{usart_8c_a3d04b903a77089f6ce08dd0bf1c81a81}\index{usart.c@{usart.c}!MX\_USART3\_UART\_Init@{MX\_USART3\_UART\_Init}}
+\index{MX\_USART3\_UART\_Init@{MX\_USART3\_UART\_Init}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{MX\_USART3\_UART\_Init()}{MX\_USART3\_UART\_Init()}}
+{\footnotesize\ttfamily \label{usart_8c_a3d04b903a77089f6ce08dd0bf1c81a81} 
+void MX\+\_\+\+USART3\+\_\+\+UART\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{usart_8c_a3d04b903a77089f6ce08dd0bf1c81a81_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{usart_8c_a3d04b903a77089f6ce08dd0bf1c81a81_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{usart_8c_a2c3c71c0b3761d905840430448bcb71e}\index{usart.c@{usart.c}!MX\_USART4\_UART\_Init@{MX\_USART4\_UART\_Init}}
+\index{MX\_USART4\_UART\_Init@{MX\_USART4\_UART\_Init}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{MX\_USART4\_UART\_Init()}{MX\_USART4\_UART\_Init()}}
+{\footnotesize\ttfamily \label{usart_8c_a2c3c71c0b3761d905840430448bcb71e} 
+void MX\+\_\+\+USART4\+\_\+\+UART\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{usart_8c_a2c3c71c0b3761d905840430448bcb71e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{usart_8c_a2c3c71c0b3761d905840430448bcb71e_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{usart_8c_doc-var-members}
+\Hypertarget{usart_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{usart_8c_aa9b86e4c707a7423dbe0c49ba8fa7e0a}\index{usart.c@{usart.c}!hdma\_lpuart1\_rx@{hdma\_lpuart1\_rx}}
+\index{hdma\_lpuart1\_rx@{hdma\_lpuart1\_rx}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{hdma\_lpuart1\_rx}{hdma\_lpuart1\_rx}}
+{\footnotesize\ttfamily \label{usart_8c_aa9b86e4c707a7423dbe0c49ba8fa7e0a} 
+DMA\+\_\+\+Handle\+Type\+Def hdma\+\_\+lpuart1\+\_\+rx}
+
+\Hypertarget{usart_8c_a2ec4e186daf43f5d9bfcfb2b8dc983f9}\index{usart.c@{usart.c}!hdma\_lpuart2\_rx@{hdma\_lpuart2\_rx}}
+\index{hdma\_lpuart2\_rx@{hdma\_lpuart2\_rx}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{hdma\_lpuart2\_rx}{hdma\_lpuart2\_rx}}
+{\footnotesize\ttfamily \label{usart_8c_a2ec4e186daf43f5d9bfcfb2b8dc983f9} 
+DMA\+\_\+\+Handle\+Type\+Def hdma\+\_\+lpuart2\+\_\+rx}
+
+\Hypertarget{usart_8c_a493c9b92a85ce1f22687da1c6db11c4b}\index{usart.c@{usart.c}!hdma\_lpuart2\_tx@{hdma\_lpuart2\_tx}}
+\index{hdma\_lpuart2\_tx@{hdma\_lpuart2\_tx}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{hdma\_lpuart2\_tx}{hdma\_lpuart2\_tx}}
+{\footnotesize\ttfamily \label{usart_8c_a493c9b92a85ce1f22687da1c6db11c4b} 
+DMA\+\_\+\+Handle\+Type\+Def hdma\+\_\+lpuart2\+\_\+tx}
+
+\Hypertarget{usart_8c_a418ff7f6b595dcf41b10de1083e62340}\index{usart.c@{usart.c}!hdma\_usart3\_rx@{hdma\_usart3\_rx}}
+\index{hdma\_usart3\_rx@{hdma\_usart3\_rx}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{hdma\_usart3\_rx}{hdma\_usart3\_rx}}
+{\footnotesize\ttfamily \label{usart_8c_a418ff7f6b595dcf41b10de1083e62340} 
+DMA\+\_\+\+Handle\+Type\+Def hdma\+\_\+usart3\+\_\+rx}
+
+\Hypertarget{usart_8c_a8556819c2aafb13de4f13869b2c315ed}\index{usart.c@{usart.c}!hdma\_usart3\_tx@{hdma\_usart3\_tx}}
+\index{hdma\_usart3\_tx@{hdma\_usart3\_tx}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{hdma\_usart3\_tx}{hdma\_usart3\_tx}}
+{\footnotesize\ttfamily \label{usart_8c_a8556819c2aafb13de4f13869b2c315ed} 
+DMA\+\_\+\+Handle\+Type\+Def hdma\+\_\+usart3\+\_\+tx}
+
+\Hypertarget{usart_8c_a5c3f9dccaa7cebcc70e1657af9e5e5dc}\index{usart.c@{usart.c}!hlpuart1@{hlpuart1}}
+\index{hlpuart1@{hlpuart1}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{hlpuart1}{hlpuart1}}
+{\footnotesize\ttfamily \label{usart_8c_a5c3f9dccaa7cebcc70e1657af9e5e5dc} 
+UART\+\_\+\+Handle\+Type\+Def hlpuart1}
+
+\Hypertarget{usart_8c_a8f5533574af7276054d6cc0da2eb7abe}\index{usart.c@{usart.c}!hlpuart2@{hlpuart2}}
+\index{hlpuart2@{hlpuart2}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{hlpuart2}{hlpuart2}}
+{\footnotesize\ttfamily \label{usart_8c_a8f5533574af7276054d6cc0da2eb7abe} 
+UART\+\_\+\+Handle\+Type\+Def hlpuart2}
+
+\Hypertarget{usart_8c_a74b5a87ad82c2200f5bc8f03d4c1f7e7}\index{usart.c@{usart.c}!hlpuart3@{hlpuart3}}
+\index{hlpuart3@{hlpuart3}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{hlpuart3}{hlpuart3}}
+{\footnotesize\ttfamily \label{usart_8c_a74b5a87ad82c2200f5bc8f03d4c1f7e7} 
+UART\+\_\+\+Handle\+Type\+Def hlpuart3}
+
+\Hypertarget{usart_8c_ab7c63c1b0f65db92b6a4ea19edf957e1}\index{usart.c@{usart.c}!huart3@{huart3}}
+\index{huart3@{huart3}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{huart3}{huart3}}
+{\footnotesize\ttfamily \label{usart_8c_ab7c63c1b0f65db92b6a4ea19edf957e1} 
+UART\+\_\+\+Handle\+Type\+Def huart3}
+
+\Hypertarget{usart_8c_ae273feb3e0dc44e38892650faa58fced}\index{usart.c@{usart.c}!huart4@{huart4}}
+\index{huart4@{huart4}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{huart4}{huart4}}
+{\footnotesize\ttfamily \label{usart_8c_ae273feb3e0dc44e38892650faa58fced} 
+UART\+\_\+\+Handle\+Type\+Def huart4}
+

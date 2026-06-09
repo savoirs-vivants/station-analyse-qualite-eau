@@ -1,0 +1,103 @@
+\doxysection{C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Src/\+test\+\_\+lpp.c File Reference}
+\hypertarget{test__lpp_8c}{}\label{test__lpp_8c}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/test\_lpp.c@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/test\_lpp.c}}
+
+
+Implémentation des tests de robustesse et d\textquotesingle{}encodage LPP.  
+
+
+{\ttfamily \+\#include "{}test\+\_\+lpp.\+h"{}}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$string.\+h$>$}\newline
+Include dependency graph for test\+\_\+lpp.\+c:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{test__lpp_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{test__lpp_8c_a2ddacbe405fe687f6fb48cdcbebf2f3b}{EXPECT}}(cond,  msg)
+\item 
+\+\#define \doxymbox{\hyperlink{test__lpp_8c_a6ffea8cdf1ef4b07935b62dc59d009db}{EXPECT\+\_\+\+EQ}}(actual,  expected,  msg)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{test__lpp_8c_af41040cc90f3c2fdd5d5103f193751ba}{Test\+LPP\+\_\+\+Run\+All}} (void)
+\begin{DoxyCompactList}\small\item\em Lance tous les tests de la couche Cayenne LPP. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implémentation des tests de robustesse et d\textquotesingle{}encodage LPP. 
+
+
+
+\label{test__lpp_8c_doc-define-members}
+\Hypertarget{test__lpp_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{test__lpp_8c_a2ddacbe405fe687f6fb48cdcbebf2f3b}\index{test\_lpp.c@{test\_lpp.c}!EXPECT@{EXPECT}}
+\index{EXPECT@{EXPECT}!test\_lpp.c@{test\_lpp.c}}
+\doxysubsubsection{\texorpdfstring{EXPECT}{EXPECT}}
+{\footnotesize\ttfamily \label{test__lpp_8c_a2ddacbe405fe687f6fb48cdcbebf2f3b} 
+\+\#define EXPECT(\begin{DoxyParamCaption}\item[{}]{cond}{, }\item[{}]{msg}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ if\ (!(cond))\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ [FAIL]\ \%s\ (ligne\ \%d)\(\backslash\)r\(\backslash\)n"{}},\ msg,\ \_\_LINE\_\_);\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ [\ OK\ ]\ \%s\(\backslash\)r\(\backslash\)n"{}},\ msg);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+\Hypertarget{test__lpp_8c_a6ffea8cdf1ef4b07935b62dc59d009db}\index{test\_lpp.c@{test\_lpp.c}!EXPECT\_EQ@{EXPECT\_EQ}}
+\index{EXPECT\_EQ@{EXPECT\_EQ}!test\_lpp.c@{test\_lpp.c}}
+\doxysubsubsection{\texorpdfstring{EXPECT\_EQ}{EXPECT\_EQ}}
+{\footnotesize\ttfamily \label{test__lpp_8c_a6ffea8cdf1ef4b07935b62dc59d009db} 
+\+\#define EXPECT\+\_\+\+EQ(\begin{DoxyParamCaption}\item[{}]{actual}{, }\item[{}]{expected}{, }\item[{}]{msg}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ if\ ((actual)\ !=\ (expected))\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ [FAIL]\ \%s\ -\/\ Recu:\ \%d,\ Attendu:\ \%d\ (ligne\ \%d)\(\backslash\)r\(\backslash\)n"{}},\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ msg,\ (\textcolor{keywordtype}{int})(actual),\ (\textcolor{keywordtype}{int})(expected),\ \_\_LINE\_\_);\ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ [\ OK\ ]\ \%s\(\backslash\)r\(\backslash\)n"{}},\ msg);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+
+
+\label{test__lpp_8c_doc-func-members}
+\Hypertarget{test__lpp_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{test__lpp_8c_af41040cc90f3c2fdd5d5103f193751ba}\index{test\_lpp.c@{test\_lpp.c}!TestLPP\_RunAll@{TestLPP\_RunAll}}
+\index{TestLPP\_RunAll@{TestLPP\_RunAll}!test\_lpp.c@{test\_lpp.c}}
+\doxysubsubsection{\texorpdfstring{TestLPP\_RunAll()}{TestLPP\_RunAll()}}
+{\footnotesize\ttfamily \label{test__lpp_8c_af41040cc90f3c2fdd5d5103f193751ba} 
+bool Test\+LPP\+\_\+\+Run\+All (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Lance tous les tests de la couche Cayenne LPP. 
+
+\begin{DoxyReturn}{Returns}
+true si tous les tests passent, false si une erreur est détectée. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{test__lpp_8c_af41040cc90f3c2fdd5d5103f193751ba_icgraph}
+\end{center}
+\end{figure}

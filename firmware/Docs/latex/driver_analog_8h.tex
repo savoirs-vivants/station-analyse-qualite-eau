@@ -1,0 +1,389 @@
+\doxysection{C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Inc/\+driver\+Analog.h File Reference}
+\hypertarget{driver_analog_8h}{}\label{driver_analog_8h}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverAnalog.h@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverAnalog.h}}
+
+
+Pilote d\textquotesingle{}acquisition analogique (ADC) asynchrone avec monitoring.  
+
+
+{\ttfamily \+\#include "{}main.\+h"{}}\newline
+{\ttfamily \+\#include "{}stm32u0xx\+\_\+hal.\+h"{}}\newline
+{\ttfamily \+\#include $<$stdbool.\+h$>$}\newline
+Include dependency graph for driver\+Analog.\+h:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_analog_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_analog_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_analog__t}{Analog\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Contexte d\textquotesingle{}exécution global du driver analogique. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{driver_analog_8h_a2b253ff8dc858bafc4bb77978b98b521}{NBR\+\_\+\+ANALOG\+\_\+\+SENSOR}}~4U
+\begin{DoxyCompactList}\small\item\em Nombre total de canaux convertis par la séquence ADC (Ranks). \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{driver_analog_8h_ab740447b0224929bac4b8378412d02af}{ATTENUATOR\+\_\+\+MULTIPLICATOR}}~2.\+0f
+\begin{DoxyCompactList}\small\item\em Coefficient multiplicateur pour compenser un pont diviseur externe. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{driver_analog_8h_ae098a09e49608e9ff36d34690288a6b7}{ADC\+\_\+\+MAX\+\_\+\+RESOLUTION\+\_\+12B}}~4095.\+0f
+\begin{DoxyCompactList}\small\item\em Valeur maximale d\textquotesingle{}un ADC 12 bits (Utilisé pour éviter le conflit avec la macro HAL). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{driver_analog_8h_af51dcdaed089c23aa51f7be006dc69c4}{Analog\+\_\+\+Result\+\_\+t}} \{ \doxymbox{\hyperlink{driver_analog_8h_af51dcdaed089c23aa51f7be006dc69c4ac393781bf1cc6966378f70ad49d2d401}{ANALOG\+\_\+\+OK}} = 0
+, \doxymbox{\hyperlink{driver_analog_8h_af51dcdaed089c23aa51f7be006dc69c4ad2b216ef435441a04c9c311c2d78b2e5}{ANALOG\+\_\+\+ERR\+\_\+\+PARAM}}
+, \doxymbox{\hyperlink{driver_analog_8h_af51dcdaed089c23aa51f7be006dc69c4ac38d730ab0d0d0589b85858413cc7be5}{ANALOG\+\_\+\+ERR\+\_\+\+BUSY}}
+, \doxymbox{\hyperlink{driver_analog_8h_af51dcdaed089c23aa51f7be006dc69c4a4a876a3a82aa5dfc59a3a34a53afbeb5}{ANALOG\+\_\+\+ERR\+\_\+\+HAL}}
+ \}
+\begin{DoxyCompactList}\small\item\em Code de retour immédiat pour les appels de l\textquotesingle{}API. \end{DoxyCompactList}\item 
+enum \doxymbox{\hyperlink{driver_analog_8h_a67e4ace606a4946983ae18c7f7970cbf}{Analog\+\_\+\+Status\+\_\+t}} \{ \doxymbox{\hyperlink{driver_analog_8h_a67e4ace606a4946983ae18c7f7970cbfad13798b1a3a04a689d20668d92f74206}{ANALOG\+\_\+\+STATUS\+\_\+\+READY}} = 0
+, \doxymbox{\hyperlink{driver_analog_8h_a67e4ace606a4946983ae18c7f7970cbfad77efc015db0617891c3e4ca2f3e27c8}{ANALOG\+\_\+\+STATUS\+\_\+\+BUSY}}
+, \doxymbox{\hyperlink{driver_analog_8h_a67e4ace606a4946983ae18c7f7970cbfa20b1ce2712ac17b9da25f7960054e5f0}{ANALOG\+\_\+\+STATUS\+\_\+\+ERROR}}
+ \}
+\begin{DoxyCompactList}\small\item\em Statut opérationnel global du driver analogique. \end{DoxyCompactList}\item 
+enum \doxymbox{\hyperlink{driver_analog_8h_a265ba346976a3893bb384d3e9f56bb78}{Analog\+\_\+\+State\+\_\+t}} \{ \doxymbox{\hyperlink{driver_analog_8h_a265ba346976a3893bb384d3e9f56bb78afdd294605d2bf321eca2690912324dc1}{ANALOG\+\_\+\+IDLE}} = 0
+, \doxymbox{\hyperlink{driver_analog_8h_a265ba346976a3893bb384d3e9f56bb78a5b03926559a2e874c06cb683f09d651d}{ANALOG\+\_\+\+START\+\_\+\+CONVERSION}}
+, \doxymbox{\hyperlink{driver_analog_8h_a265ba346976a3893bb384d3e9f56bb78ac3bc92d03e3d0da3b6ca6c5fb7d1f50f}{ANALOG\+\_\+\+WAIT\+\_\+\+CONVERSION}}
+, \doxymbox{\hyperlink{driver_analog_8h_a265ba346976a3893bb384d3e9f56bb78a01963c6df14ab6d04f7d154bf9aa6476}{ANALOG\+\_\+\+PROCESS\+\_\+\+DATA}}
+ \}
+\begin{DoxyCompactList}\small\item\em États internes de la machine d\textquotesingle{}état (FSM). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{driver_analog_8h_af51dcdaed089c23aa51f7be006dc69c4}{Analog\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_analog_8h_a866228196e63804439b8618f3549c297}{Analog\+\_\+\+Init}} (\doxymbox{\hyperlink{struct_analog__t}{Analog\+\_\+t}} \texorpdfstring{$\ast$}{*}hanalog, ADC\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hadc)
+\begin{DoxyCompactList}\small\item\em Initialise le driver analogique et lance la calibration matérielle. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_analog_8h_af51dcdaed089c23aa51f7be006dc69c4}{Analog\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_analog_8h_afee6bed3ae606eeebb59feda2dc2208b}{Analog\+\_\+\+Start}} (\doxymbox{\hyperlink{struct_analog__t}{Analog\+\_\+t}} \texorpdfstring{$\ast$}{*}hanalog)
+\begin{DoxyCompactList}\small\item\em Demande le démarrage d\textquotesingle{}une nouvelle séquence de conversions. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{driver_analog_8h_a9954dbb1a49b2e43a09dedc54a48d79c}{Analog\+\_\+\+Process}} (\doxymbox{\hyperlink{struct_analog__t}{Analog\+\_\+t}} \texorpdfstring{$\ast$}{*}hanalog)
+\begin{DoxyCompactList}\small\item\em Machine d\textquotesingle{}état (FSM) gérant la séquence DMA, les timeouts et les calculs physiques. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_analog_8h_a67e4ace606a4946983ae18c7f7970cbf}{Analog\+\_\+\+Status\+\_\+t}} \doxymbox{\hyperlink{driver_analog_8h_a53c52728e5f98bce7ffb92ea1ac6c21e}{Analog\+\_\+\+Get\+Status}} (\doxymbox{\hyperlink{struct_analog__t}{Analog\+\_\+t}} \texorpdfstring{$\ast$}{*}hanalog)
+\begin{DoxyCompactList}\small\item\em Retourne le statut opérationnel actuel du driver. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{driver_analog_8h_ad22fd8d893a43f1ba2c0ba4aa171efe8}{Analog\+\_\+\+Conv\+Cplt\+Callback}} (\doxymbox{\hyperlink{struct_analog__t}{Analog\+\_\+t}} \texorpdfstring{$\ast$}{*}hanalog)
+\begin{DoxyCompactList}\small\item\em Fonction de rappel (Callback) à insérer dans l\textquotesingle{}interruption HAL\+\_\+\+ADC\+\_\+\+Conv\+Cplt\+Callback. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Pilote d\textquotesingle{}acquisition analogique (ADC) asynchrone avec monitoring. 
+
+\begin{DoxyAuthor}{Author}
+\+[Ton Nom/\+\+Projet]\+ 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+\+[Date actuelle]\+
+\end{DoxyDate}
+Ce module gère l\textquotesingle{}acquisition de capteurs analogiques externes et internes (Température MCU, VREFINT, VBAT) via le DMA du STM32 pour un fonctionnement 100\% non-\/bloquant.
+\begin{DoxyItemize}
+\item Il intègre une compensation dynamique de la tension d\textquotesingle{}alimentation (VDDA) basée sur la lecture de la référence interne (VREFINT), garantissant des mesures précises même lors de la décharge d\textquotesingle{}une batterie.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+L\textquotesingle{}ordre des conversions dans Cube\+MX doit correspondre aux index :\+
+\begin{DoxyItemize}
+\item Index 0, 1 :\+ Capteurs externes (ex:\+ C1, C2)
+\item Index 2 :\+ VREFINT Channel
+\item Index 3 :\+ Temperature Sensor Channel
+\item Index 4 :\+ Vbat Channel 
+\end{DoxyItemize}
+\end{DoxyNote}
+
+
+\label{driver_analog_8h_doc-define-members}
+\Hypertarget{driver_analog_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{driver_analog_8h_ae098a09e49608e9ff36d34690288a6b7}\index{driverAnalog.h@{driverAnalog.h}!ADC\_MAX\_RESOLUTION\_12B@{ADC\_MAX\_RESOLUTION\_12B}}
+\index{ADC\_MAX\_RESOLUTION\_12B@{ADC\_MAX\_RESOLUTION\_12B}!driverAnalog.h@{driverAnalog.h}}
+\doxysubsubsection{\texorpdfstring{ADC\_MAX\_RESOLUTION\_12B}{ADC\_MAX\_RESOLUTION\_12B}}
+{\footnotesize\ttfamily \label{driver_analog_8h_ae098a09e49608e9ff36d34690288a6b7} 
+\+\#define ADC\+\_\+\+MAX\+\_\+\+RESOLUTION\+\_\+12B~4095.\+0f}
+
+
+
+Valeur maximale d\textquotesingle{}un ADC 12 bits (Utilisé pour éviter le conflit avec la macro HAL). 
+
+\Hypertarget{driver_analog_8h_ab740447b0224929bac4b8378412d02af}\index{driverAnalog.h@{driverAnalog.h}!ATTENUATOR\_MULTIPLICATOR@{ATTENUATOR\_MULTIPLICATOR}}
+\index{ATTENUATOR\_MULTIPLICATOR@{ATTENUATOR\_MULTIPLICATOR}!driverAnalog.h@{driverAnalog.h}}
+\doxysubsubsection{\texorpdfstring{ATTENUATOR\_MULTIPLICATOR}{ATTENUATOR\_MULTIPLICATOR}}
+{\footnotesize\ttfamily \label{driver_analog_8h_ab740447b0224929bac4b8378412d02af} 
+\+\#define ATTENUATOR\+\_\+\+MULTIPLICATOR~2.\+0f}
+
+
+
+Coefficient multiplicateur pour compenser un pont diviseur externe. 
+
+\Hypertarget{driver_analog_8h_a2b253ff8dc858bafc4bb77978b98b521}\index{driverAnalog.h@{driverAnalog.h}!NBR\_ANALOG\_SENSOR@{NBR\_ANALOG\_SENSOR}}
+\index{NBR\_ANALOG\_SENSOR@{NBR\_ANALOG\_SENSOR}!driverAnalog.h@{driverAnalog.h}}
+\doxysubsubsection{\texorpdfstring{NBR\_ANALOG\_SENSOR}{NBR\_ANALOG\_SENSOR}}
+{\footnotesize\ttfamily \label{driver_analog_8h_a2b253ff8dc858bafc4bb77978b98b521} 
+\+\#define NBR\+\_\+\+ANALOG\+\_\+\+SENSOR~4U}
+
+
+
+Nombre total de canaux convertis par la séquence ADC (Ranks). 
+
+
+
+\label{driver_analog_8h_doc-enum-members}
+\Hypertarget{driver_analog_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{driver_analog_8h_af51dcdaed089c23aa51f7be006dc69c4}\index{driverAnalog.h@{driverAnalog.h}!Analog\_Result\_t@{Analog\_Result\_t}}
+\index{Analog\_Result\_t@{Analog\_Result\_t}!driverAnalog.h@{driverAnalog.h}}
+\doxysubsubsection{\texorpdfstring{Analog\_Result\_t}{Analog\_Result\_t}}
+{\footnotesize\ttfamily \label{driver_analog_8h_af51dcdaed089c23aa51f7be006dc69c4} 
+enum \doxymbox{\hyperlink{driver_analog_8h_af51dcdaed089c23aa51f7be006dc69c4}{Analog\+\_\+\+Result\+\_\+t}}}
+
+
+
+Code de retour immédiat pour les appels de l\textquotesingle{}API. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANALOG\_OK@{ANALOG\_OK}!driverAnalog.h@{driverAnalog.h}}
+\index{driverAnalog.h@{driverAnalog.h}!ANALOG\_OK@{ANALOG\_OK}}
+}\Hypertarget{driver_analog_8h_af51dcdaed089c23aa51f7be006dc69c4ac393781bf1cc6966378f70ad49d2d401}\label{driver_analog_8h_af51dcdaed089c23aa51f7be006dc69c4ac393781bf1cc6966378f70ad49d2d401} 
+ANALOG\+\_\+\+OK&Opération acceptée avec succès \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANALOG\_ERR\_PARAM@{ANALOG\_ERR\_PARAM}!driverAnalog.h@{driverAnalog.h}}
+\index{driverAnalog.h@{driverAnalog.h}!ANALOG\_ERR\_PARAM@{ANALOG\_ERR\_PARAM}}
+}\Hypertarget{driver_analog_8h_af51dcdaed089c23aa51f7be006dc69c4ad2b216ef435441a04c9c311c2d78b2e5}\label{driver_analog_8h_af51dcdaed089c23aa51f7be006dc69c4ad2b216ef435441a04c9c311c2d78b2e5} 
+ANALOG\+\_\+\+ERR\+\_\+\+PARAM&Erreur de paramètre (ex:\+ pointeur NULL) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANALOG\_ERR\_BUSY@{ANALOG\_ERR\_BUSY}!driverAnalog.h@{driverAnalog.h}}
+\index{driverAnalog.h@{driverAnalog.h}!ANALOG\_ERR\_BUSY@{ANALOG\_ERR\_BUSY}}
+}\Hypertarget{driver_analog_8h_af51dcdaed089c23aa51f7be006dc69c4ac38d730ab0d0d0589b85858413cc7be5}\label{driver_analog_8h_af51dcdaed089c23aa51f7be006dc69c4ac38d730ab0d0d0589b85858413cc7be5} 
+ANALOG\+\_\+\+ERR\+\_\+\+BUSY&Refus :\+ Une conversion DMA est déjà en cours \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANALOG\_ERR\_HAL@{ANALOG\_ERR\_HAL}!driverAnalog.h@{driverAnalog.h}}
+\index{driverAnalog.h@{driverAnalog.h}!ANALOG\_ERR\_HAL@{ANALOG\_ERR\_HAL}}
+}\Hypertarget{driver_analog_8h_af51dcdaed089c23aa51f7be006dc69c4a4a876a3a82aa5dfc59a3a34a53afbeb5}\label{driver_analog_8h_af51dcdaed089c23aa51f7be006dc69c4a4a876a3a82aa5dfc59a3a34a53afbeb5} 
+ANALOG\+\_\+\+ERR\+\_\+\+HAL&Erreur retournée par la couche d\textquotesingle{}abstraction matérielle (HAL) \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{driver_analog_8h_a265ba346976a3893bb384d3e9f56bb78}\index{driverAnalog.h@{driverAnalog.h}!Analog\_State\_t@{Analog\_State\_t}}
+\index{Analog\_State\_t@{Analog\_State\_t}!driverAnalog.h@{driverAnalog.h}}
+\doxysubsubsection{\texorpdfstring{Analog\_State\_t}{Analog\_State\_t}}
+{\footnotesize\ttfamily \label{driver_analog_8h_a265ba346976a3893bb384d3e9f56bb78} 
+enum \doxymbox{\hyperlink{driver_analog_8h_a265ba346976a3893bb384d3e9f56bb78}{Analog\+\_\+\+State\+\_\+t}}}
+
+
+
+États internes de la machine d\textquotesingle{}état (FSM). 
+
+\begin{DoxyNote}{Note}
+À usage interne par \doxylink{driver_analog_8h_a9954dbb1a49b2e43a09dedc54a48d79c}{Analog\+\_\+\+Process()}. 
+\end{DoxyNote}
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANALOG\_IDLE@{ANALOG\_IDLE}!driverAnalog.h@{driverAnalog.h}}
+\index{driverAnalog.h@{driverAnalog.h}!ANALOG\_IDLE@{ANALOG\_IDLE}}
+}\Hypertarget{driver_analog_8h_a265ba346976a3893bb384d3e9f56bb78afdd294605d2bf321eca2690912324dc1}\label{driver_analog_8h_a265ba346976a3893bb384d3e9f56bb78afdd294605d2bf321eca2690912324dc1} 
+ANALOG\+\_\+\+IDLE&Repos, attente d\textquotesingle{}une commande Start \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANALOG\_START\_CONVERSION@{ANALOG\_START\_CONVERSION}!driverAnalog.h@{driverAnalog.h}}
+\index{driverAnalog.h@{driverAnalog.h}!ANALOG\_START\_CONVERSION@{ANALOG\_START\_CONVERSION}}
+}\Hypertarget{driver_analog_8h_a265ba346976a3893bb384d3e9f56bb78a5b03926559a2e874c06cb683f09d651d}\label{driver_analog_8h_a265ba346976a3893bb384d3e9f56bb78a5b03926559a2e874c06cb683f09d651d} 
+ANALOG\+\_\+\+START\+\_\+\+CONVERSION&Lancement matériel de la séquence DMA \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANALOG\_WAIT\_CONVERSION@{ANALOG\_WAIT\_CONVERSION}!driverAnalog.h@{driverAnalog.h}}
+\index{driverAnalog.h@{driverAnalog.h}!ANALOG\_WAIT\_CONVERSION@{ANALOG\_WAIT\_CONVERSION}}
+}\Hypertarget{driver_analog_8h_a265ba346976a3893bb384d3e9f56bb78ac3bc92d03e3d0da3b6ca6c5fb7d1f50f}\label{driver_analog_8h_a265ba346976a3893bb384d3e9f56bb78ac3bc92d03e3d0da3b6ca6c5fb7d1f50f} 
+ANALOG\+\_\+\+WAIT\+\_\+\+CONVERSION&Attente du flag de fin d\textquotesingle{}interruption DMA avec Timeout \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANALOG\_PROCESS\_DATA@{ANALOG\_PROCESS\_DATA}!driverAnalog.h@{driverAnalog.h}}
+\index{driverAnalog.h@{driverAnalog.h}!ANALOG\_PROCESS\_DATA@{ANALOG\_PROCESS\_DATA}}
+}\Hypertarget{driver_analog_8h_a265ba346976a3893bb384d3e9f56bb78a01963c6df14ab6d04f7d154bf9aa6476}\label{driver_analog_8h_a265ba346976a3893bb384d3e9f56bb78a01963c6df14ab6d04f7d154bf9aa6476} 
+ANALOG\+\_\+\+PROCESS\+\_\+\+DATA&Calculs de compensation et conversion bits vers valeurs physiques \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{driver_analog_8h_a67e4ace606a4946983ae18c7f7970cbf}\index{driverAnalog.h@{driverAnalog.h}!Analog\_Status\_t@{Analog\_Status\_t}}
+\index{Analog\_Status\_t@{Analog\_Status\_t}!driverAnalog.h@{driverAnalog.h}}
+\doxysubsubsection{\texorpdfstring{Analog\_Status\_t}{Analog\_Status\_t}}
+{\footnotesize\ttfamily \label{driver_analog_8h_a67e4ace606a4946983ae18c7f7970cbf} 
+enum \doxymbox{\hyperlink{driver_analog_8h_a67e4ace606a4946983ae18c7f7970cbf}{Analog\+\_\+\+Status\+\_\+t}}}
+
+
+
+Statut opérationnel global du driver analogique. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANALOG\_STATUS\_READY@{ANALOG\_STATUS\_READY}!driverAnalog.h@{driverAnalog.h}}
+\index{driverAnalog.h@{driverAnalog.h}!ANALOG\_STATUS\_READY@{ANALOG\_STATUS\_READY}}
+}\Hypertarget{driver_analog_8h_a67e4ace606a4946983ae18c7f7970cbfad13798b1a3a04a689d20668d92f74206}\label{driver_analog_8h_a67e4ace606a4946983ae18c7f7970cbfad13798b1a3a04a689d20668d92f74206} 
+ANALOG\+\_\+\+STATUS\+\_\+\+READY&Driver prêt à lancer une nouvelle séquence de conversion \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANALOG\_STATUS\_BUSY@{ANALOG\_STATUS\_BUSY}!driverAnalog.h@{driverAnalog.h}}
+\index{driverAnalog.h@{driverAnalog.h}!ANALOG\_STATUS\_BUSY@{ANALOG\_STATUS\_BUSY}}
+}\Hypertarget{driver_analog_8h_a67e4ace606a4946983ae18c7f7970cbfad77efc015db0617891c3e4ca2f3e27c8}\label{driver_analog_8h_a67e4ace606a4946983ae18c7f7970cbfad77efc015db0617891c3e4ca2f3e27c8} 
+ANALOG\+\_\+\+STATUS\+\_\+\+BUSY&Séquence de conversion DMA et traitement mathématique en cours \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANALOG\_STATUS\_ERROR@{ANALOG\_STATUS\_ERROR}!driverAnalog.h@{driverAnalog.h}}
+\index{driverAnalog.h@{driverAnalog.h}!ANALOG\_STATUS\_ERROR@{ANALOG\_STATUS\_ERROR}}
+}\Hypertarget{driver_analog_8h_a67e4ace606a4946983ae18c7f7970cbfa20b1ce2712ac17b9da25f7960054e5f0}\label{driver_analog_8h_a67e4ace606a4946983ae18c7f7970cbfa20b1ce2712ac17b9da25f7960054e5f0} 
+ANALOG\+\_\+\+STATUS\+\_\+\+ERROR&Erreur critique (ex:\+ Timeout DMA, échec de calibration) \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{driver_analog_8h_doc-func-members}
+\Hypertarget{driver_analog_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{driver_analog_8h_ad22fd8d893a43f1ba2c0ba4aa171efe8}\index{driverAnalog.h@{driverAnalog.h}!Analog\_ConvCpltCallback@{Analog\_ConvCpltCallback}}
+\index{Analog\_ConvCpltCallback@{Analog\_ConvCpltCallback}!driverAnalog.h@{driverAnalog.h}}
+\doxysubsubsection{\texorpdfstring{Analog\_ConvCpltCallback()}{Analog\_ConvCpltCallback()}}
+{\footnotesize\ttfamily \label{driver_analog_8h_ad22fd8d893a43f1ba2c0ba4aa171efe8} 
+void Analog\+\_\+\+Conv\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_analog__t}{Analog\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hanalog}{}\end{DoxyParamCaption})}
+
+
+
+Fonction de rappel (Callback) à insérer dans l\textquotesingle{}interruption HAL\+\_\+\+ADC\+\_\+\+Conv\+Cplt\+Callback. 
+
+\begin{DoxyNote}{Note}
+Lève le drapeau de fin de conversion pour débloquer la machine d\textquotesingle{}état. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em hanalog} & Pointeur vers l\textquotesingle{}instance du driver Analogique. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_analog_8h_ad22fd8d893a43f1ba2c0ba4aa171efe8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_analog_8h_a53c52728e5f98bce7ffb92ea1ac6c21e}\index{driverAnalog.h@{driverAnalog.h}!Analog\_GetStatus@{Analog\_GetStatus}}
+\index{Analog\_GetStatus@{Analog\_GetStatus}!driverAnalog.h@{driverAnalog.h}}
+\doxysubsubsection{\texorpdfstring{Analog\_GetStatus()}{Analog\_GetStatus()}}
+{\footnotesize\ttfamily \label{driver_analog_8h_a53c52728e5f98bce7ffb92ea1ac6c21e} 
+\doxymbox{\hyperlink{driver_analog_8h_a67e4ace606a4946983ae18c7f7970cbf}{Analog\+\_\+\+Status\+\_\+t}} Analog\+\_\+\+Get\+Status (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_analog__t}{Analog\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hanalog}{}\end{DoxyParamCaption})}
+
+
+
+Retourne le statut opérationnel actuel du driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hanalog} & Pointeur vers l\textquotesingle{}instance du driver Analogique. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em ANALOG\+\_\+\+STATUS\+\_\+\+READY,ANALOG\+\_\+\+STATUS\+\_\+\+BUSY} & ou ANALOG\+\_\+\+STATUS\+\_\+\+ERROR. \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{driver_analog_8h_a53c52728e5f98bce7ffb92ea1ac6c21e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_analog_8h_a866228196e63804439b8618f3549c297}\index{driverAnalog.h@{driverAnalog.h}!Analog\_Init@{Analog\_Init}}
+\index{Analog\_Init@{Analog\_Init}!driverAnalog.h@{driverAnalog.h}}
+\doxysubsubsection{\texorpdfstring{Analog\_Init()}{Analog\_Init()}}
+{\footnotesize\ttfamily \label{driver_analog_8h_a866228196e63804439b8618f3549c297} 
+\doxymbox{\hyperlink{driver_analog_8h_af51dcdaed089c23aa51f7be006dc69c4}{Analog\+\_\+\+Result\+\_\+t}} Analog\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_analog__t}{Analog\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hanalog}{, }\item[{ADC\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hadc}{}\end{DoxyParamCaption})}
+
+
+
+Initialise le driver analogique et lance la calibration matérielle. 
+
+\begin{DoxyNote}{Note}
+Doit être appelée une seule fois au démarrage de l\textquotesingle{}application. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em hanalog} & Pointeur vers l\textquotesingle{}instance du driver Analogique. \\
+\hline
+{\em hadc} & Pointeur vers le handle HAL de l\textquotesingle{}ADC (déjà initialisé par Cube\+MX). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em ANALOG\+\_\+\+OK} & en cas de succès, ANALOG\+\_\+\+ERR\+\_\+\+HAL si la calibration échoue. \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{driver_analog_8h_a866228196e63804439b8618f3549c297_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_analog_8h_a9954dbb1a49b2e43a09dedc54a48d79c}\index{driverAnalog.h@{driverAnalog.h}!Analog\_Process@{Analog\_Process}}
+\index{Analog\_Process@{Analog\_Process}!driverAnalog.h@{driverAnalog.h}}
+\doxysubsubsection{\texorpdfstring{Analog\_Process()}{Analog\_Process()}}
+{\footnotesize\ttfamily \label{driver_analog_8h_a9954dbb1a49b2e43a09dedc54a48d79c} 
+void Analog\+\_\+\+Process (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_analog__t}{Analog\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hanalog}{}\end{DoxyParamCaption})}
+
+
+
+Machine d\textquotesingle{}état (FSM) gérant la séquence DMA, les timeouts et les calculs physiques. 
+
+\begin{DoxyNote}{Note}
+Doit être appelée régulièrement dans la boucle principale (main/\+while(1)). 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em hanalog} & Pointeur vers l\textquotesingle{}instance du driver Analogique. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{driver_analog_8h_a9954dbb1a49b2e43a09dedc54a48d79c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_analog_8h_afee6bed3ae606eeebb59feda2dc2208b}\index{driverAnalog.h@{driverAnalog.h}!Analog\_Start@{Analog\_Start}}
+\index{Analog\_Start@{Analog\_Start}!driverAnalog.h@{driverAnalog.h}}
+\doxysubsubsection{\texorpdfstring{Analog\_Start()}{Analog\_Start()}}
+{\footnotesize\ttfamily \label{driver_analog_8h_afee6bed3ae606eeebb59feda2dc2208b} 
+\doxymbox{\hyperlink{driver_analog_8h_af51dcdaed089c23aa51f7be006dc69c4}{Analog\+\_\+\+Result\+\_\+t}} Analog\+\_\+\+Start (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_analog__t}{Analog\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hanalog}{}\end{DoxyParamCaption})}
+
+
+
+Demande le démarrage d\textquotesingle{}une nouvelle séquence de conversions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hanalog} & Pointeur vers l\textquotesingle{}instance du driver Analogique. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em ANALOG\+\_\+\+OK} & si la demande est acceptée, ANALOG\+\_\+\+ERR\+\_\+\+BUSY si l\textquotesingle{}ADC est déjà occupé. \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_analog_8h_afee6bed3ae606eeebb59feda2dc2208b_icgraph}
+\end{center}
+\end{figure}

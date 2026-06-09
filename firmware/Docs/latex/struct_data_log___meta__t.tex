@@ -1,0 +1,80 @@
+\doxysection{Data\+Log\+\_\+\+Meta\+\_\+t Struct Reference}
+\hypertarget{struct_data_log___meta__t}{}\label{struct_data_log___meta__t}\index{DataLog\_Meta\_t@{DataLog\_Meta\_t}}
+
+
+Structure des métadonnées stockées de manière persistante en FRAM.  
+
+
+
+
+{\ttfamily \+\#include $<$driver\+Data\+Log.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \doxymbox{\hyperlink{struct_data_log___meta__t_a8c61e64b8675498cee79c59d3f8131e2}{magic}}
+\item 
+uint16\+\_\+t \doxymbox{\hyperlink{struct_data_log___meta__t_a5a6ed8c04a3db86066924b1a1bf4dad3}{reserved}}
+\item 
+uint32\+\_\+t \doxymbox{\hyperlink{struct_data_log___meta__t_a2dfc42919a9acb43ebacd8cbe73abae2}{write\+\_\+ptr}}
+\item 
+uint32\+\_\+t \doxymbox{\hyperlink{struct_data_log___meta__t_a1fe8f41d0f874ab0b86c9a8e9312699b}{newest\+\_\+id}}
+\item 
+uint32\+\_\+t \doxymbox{\hyperlink{struct_data_log___meta__t_a4884a7ccd4130787e66aa141d47478a3}{record\+\_\+count}}
+\item 
+uint32\+\_\+t \doxymbox{\hyperlink{struct_data_log___meta__t_a603b72c0117082d58af376d6028506a9}{has\+\_\+wrapped}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure des métadonnées stockées de manière persistante en FRAM. 
+
+\begin{DoxyNote}{Note}
+Ne jamais manipuler ces données directement depuis l\textquotesingle{}application. 
+\end{DoxyNote}
+
+
+\label{struct_data_log___meta__t_doc-variable-members}
+\Hypertarget{struct_data_log___meta__t_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{struct_data_log___meta__t_a603b72c0117082d58af376d6028506a9}\index{DataLog\_Meta\_t@{DataLog\_Meta\_t}!has\_wrapped@{has\_wrapped}}
+\index{has\_wrapped@{has\_wrapped}!DataLog\_Meta\_t@{DataLog\_Meta\_t}}
+\doxysubsubsection{\texorpdfstring{has\_wrapped}{has\_wrapped}}
+{\footnotesize\ttfamily \label{struct_data_log___meta__t_a603b72c0117082d58af376d6028506a9} 
+uint32\+\_\+t has\+\_\+wrapped}
+
+Vaut 1 si la mémoire a fait un tour complet (aligné sur 32 bits) \Hypertarget{struct_data_log___meta__t_a8c61e64b8675498cee79c59d3f8131e2}\index{DataLog\_Meta\_t@{DataLog\_Meta\_t}!magic@{magic}}
+\index{magic@{magic}!DataLog\_Meta\_t@{DataLog\_Meta\_t}}
+\doxysubsubsection{\texorpdfstring{magic}{magic}}
+{\footnotesize\ttfamily \label{struct_data_log___meta__t_a8c61e64b8675498cee79c59d3f8131e2} 
+uint16\+\_\+t magic}
+
+Mot magique d\textquotesingle{}identification (DATALOG\+\_\+\+MAGIC) \Hypertarget{struct_data_log___meta__t_a1fe8f41d0f874ab0b86c9a8e9312699b}\index{DataLog\_Meta\_t@{DataLog\_Meta\_t}!newest\_id@{newest\_id}}
+\index{newest\_id@{newest\_id}!DataLog\_Meta\_t@{DataLog\_Meta\_t}}
+\doxysubsubsection{\texorpdfstring{newest\_id}{newest\_id}}
+{\footnotesize\ttfamily \label{struct_data_log___meta__t_a1fe8f41d0f874ab0b86c9a8e9312699b} 
+uint32\+\_\+t newest\+\_\+id}
+
+Identifiant (ID) incrémental du dernier record écrit \Hypertarget{struct_data_log___meta__t_a4884a7ccd4130787e66aa141d47478a3}\index{DataLog\_Meta\_t@{DataLog\_Meta\_t}!record\_count@{record\_count}}
+\index{record\_count@{record\_count}!DataLog\_Meta\_t@{DataLog\_Meta\_t}}
+\doxysubsubsection{\texorpdfstring{record\_count}{record\_count}}
+{\footnotesize\ttfamily \label{struct_data_log___meta__t_a4884a7ccd4130787e66aa141d47478a3} 
+uint32\+\_\+t record\+\_\+count}
+
+Nombre actuel d\textquotesingle{}enregistrements valides en mémoire \Hypertarget{struct_data_log___meta__t_a5a6ed8c04a3db86066924b1a1bf4dad3}\index{DataLog\_Meta\_t@{DataLog\_Meta\_t}!reserved@{reserved}}
+\index{reserved@{reserved}!DataLog\_Meta\_t@{DataLog\_Meta\_t}}
+\doxysubsubsection{\texorpdfstring{reserved}{reserved}}
+{\footnotesize\ttfamily \label{struct_data_log___meta__t_a5a6ed8c04a3db86066924b1a1bf4dad3} 
+uint16\+\_\+t reserved}
+
+Padding pour alignement mémoire \Hypertarget{struct_data_log___meta__t_a2dfc42919a9acb43ebacd8cbe73abae2}\index{DataLog\_Meta\_t@{DataLog\_Meta\_t}!write\_ptr@{write\_ptr}}
+\index{write\_ptr@{write\_ptr}!DataLog\_Meta\_t@{DataLog\_Meta\_t}}
+\doxysubsubsection{\texorpdfstring{write\_ptr}{write\_ptr}}
+{\footnotesize\ttfamily \label{struct_data_log___meta__t_a2dfc42919a9acb43ebacd8cbe73abae2} 
+uint32\+\_\+t write\+\_\+ptr}
+
+Adresse matérielle de la prochaine écriture 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Inc/\+\doxymbox{\hyperlink{driver_data_log_8h}{driver\+Data\+Log.\+h}}\end{DoxyCompactItemize}

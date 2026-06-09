@@ -1,0 +1,107 @@
+\doxysection{BLE\+\_\+t Struct Reference}
+\hypertarget{struct_b_l_e__t}{}\label{struct_b_l_e__t}\index{BLE\_t@{BLE\_t}}
+
+
+{\ttfamily \+\#include $<$driver\+BLE.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+UART\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{struct_b_l_e__t_a1ed7dab212fde0a3a4600d33399c67b6}{huart}}
+\item 
+\doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6}{BLE\+\_\+\+State\+\_\+t}} \doxymbox{\hyperlink{struct_b_l_e__t_a269faee48e06c9572af255e96e2861e0}{state}}
+\item 
+\doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9}{BLE\+\_\+\+Status\+\_\+t}} \doxymbox{\hyperlink{struct_b_l_e__t_ac9c4e0eb026e7a1f33eb67b4f8d888f2}{status}}
+\item 
+uint32\+\_\+t \doxymbox{\hyperlink{struct_b_l_e__t_a7a774117bc8f5719b6529890b5b9ecea}{timer\+\_\+start}}
+\item 
+volatile bool \doxymbox{\hyperlink{struct_b_l_e__t_a15791a7d318790d7885cd78e66650b8a}{rx\+\_\+flag}}
+\item 
+volatile bool \doxymbox{\hyperlink{struct_b_l_e__t_a5e11d8e6a56f3df44d344651b25882d2}{tx\+\_\+flag}}
+\item 
+uint8\+\_\+t \doxymbox{\hyperlink{struct_b_l_e__t_ae8f2ad0d144bd14d52143af49a070d1e}{rx\+\_\+buffer}} \+[255]\+
+\item 
+uint16\+\_\+t \doxymbox{\hyperlink{struct_b_l_e__t_a1c25fa346610a07ae63dd88ecf64cd56}{rx\+\_\+size}}
+\item 
+uint8\+\_\+t \doxymbox{\hyperlink{struct_b_l_e__t_a498cfddc77b1406232558e428189431f}{config\+\_\+step}}
+\item 
+uint8\+\_\+t \doxymbox{\hyperlink{struct_b_l_e__t_ad7f3b7d0c00bba5352cf56e5ecd54519}{retry\+\_\+count}}
+\item 
+char \doxymbox{\hyperlink{struct_b_l_e__t_a97e5099bb8961a972e097bfdfbf50cff}{tx\+\_\+buffer}} \+[256]\+
+\end{DoxyCompactItemize}
+
+
+\label{struct_b_l_e__t_doc-variable-members}
+\Hypertarget{struct_b_l_e__t_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{struct_b_l_e__t_a498cfddc77b1406232558e428189431f}\index{BLE\_t@{BLE\_t}!config\_step@{config\_step}}
+\index{config\_step@{config\_step}!BLE\_t@{BLE\_t}}
+\doxysubsubsection{\texorpdfstring{config\_step}{config\_step}}
+{\footnotesize\ttfamily \label{struct_b_l_e__t_a498cfddc77b1406232558e428189431f} 
+uint8\+\_\+t config\+\_\+step}
+
+\Hypertarget{struct_b_l_e__t_a1ed7dab212fde0a3a4600d33399c67b6}\index{BLE\_t@{BLE\_t}!huart@{huart}}
+\index{huart@{huart}!BLE\_t@{BLE\_t}}
+\doxysubsubsection{\texorpdfstring{huart}{huart}}
+{\footnotesize\ttfamily \label{struct_b_l_e__t_a1ed7dab212fde0a3a4600d33399c67b6} 
+UART\+\_\+\+Handle\+Type\+Def\texorpdfstring{$\ast$}{*} huart}
+
+\Hypertarget{struct_b_l_e__t_ad7f3b7d0c00bba5352cf56e5ecd54519}\index{BLE\_t@{BLE\_t}!retry\_count@{retry\_count}}
+\index{retry\_count@{retry\_count}!BLE\_t@{BLE\_t}}
+\doxysubsubsection{\texorpdfstring{retry\_count}{retry\_count}}
+{\footnotesize\ttfamily \label{struct_b_l_e__t_ad7f3b7d0c00bba5352cf56e5ecd54519} 
+uint8\+\_\+t retry\+\_\+count}
+
+\Hypertarget{struct_b_l_e__t_ae8f2ad0d144bd14d52143af49a070d1e}\index{BLE\_t@{BLE\_t}!rx\_buffer@{rx\_buffer}}
+\index{rx\_buffer@{rx\_buffer}!BLE\_t@{BLE\_t}}
+\doxysubsubsection{\texorpdfstring{rx\_buffer}{rx\_buffer}}
+{\footnotesize\ttfamily \label{struct_b_l_e__t_ae8f2ad0d144bd14d52143af49a070d1e} 
+uint8\+\_\+t rx\+\_\+buffer\+[255]\+}
+
+\Hypertarget{struct_b_l_e__t_a15791a7d318790d7885cd78e66650b8a}\index{BLE\_t@{BLE\_t}!rx\_flag@{rx\_flag}}
+\index{rx\_flag@{rx\_flag}!BLE\_t@{BLE\_t}}
+\doxysubsubsection{\texorpdfstring{rx\_flag}{rx\_flag}}
+{\footnotesize\ttfamily \label{struct_b_l_e__t_a15791a7d318790d7885cd78e66650b8a} 
+volatile bool rx\+\_\+flag}
+
+\Hypertarget{struct_b_l_e__t_a1c25fa346610a07ae63dd88ecf64cd56}\index{BLE\_t@{BLE\_t}!rx\_size@{rx\_size}}
+\index{rx\_size@{rx\_size}!BLE\_t@{BLE\_t}}
+\doxysubsubsection{\texorpdfstring{rx\_size}{rx\_size}}
+{\footnotesize\ttfamily \label{struct_b_l_e__t_a1c25fa346610a07ae63dd88ecf64cd56} 
+uint16\+\_\+t rx\+\_\+size}
+
+\Hypertarget{struct_b_l_e__t_a269faee48e06c9572af255e96e2861e0}\index{BLE\_t@{BLE\_t}!state@{state}}
+\index{state@{state}!BLE\_t@{BLE\_t}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \label{struct_b_l_e__t_a269faee48e06c9572af255e96e2861e0} 
+\doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6}{BLE\+\_\+\+State\+\_\+t}} state}
+
+\Hypertarget{struct_b_l_e__t_ac9c4e0eb026e7a1f33eb67b4f8d888f2}\index{BLE\_t@{BLE\_t}!status@{status}}
+\index{status@{status}!BLE\_t@{BLE\_t}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily \label{struct_b_l_e__t_ac9c4e0eb026e7a1f33eb67b4f8d888f2} 
+\doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9}{BLE\+\_\+\+Status\+\_\+t}} status}
+
+\Hypertarget{struct_b_l_e__t_a7a774117bc8f5719b6529890b5b9ecea}\index{BLE\_t@{BLE\_t}!timer\_start@{timer\_start}}
+\index{timer\_start@{timer\_start}!BLE\_t@{BLE\_t}}
+\doxysubsubsection{\texorpdfstring{timer\_start}{timer\_start}}
+{\footnotesize\ttfamily \label{struct_b_l_e__t_a7a774117bc8f5719b6529890b5b9ecea} 
+uint32\+\_\+t timer\+\_\+start}
+
+\Hypertarget{struct_b_l_e__t_a97e5099bb8961a972e097bfdfbf50cff}\index{BLE\_t@{BLE\_t}!tx\_buffer@{tx\_buffer}}
+\index{tx\_buffer@{tx\_buffer}!BLE\_t@{BLE\_t}}
+\doxysubsubsection{\texorpdfstring{tx\_buffer}{tx\_buffer}}
+{\footnotesize\ttfamily \label{struct_b_l_e__t_a97e5099bb8961a972e097bfdfbf50cff} 
+char tx\+\_\+buffer\+[256]\+}
+
+\Hypertarget{struct_b_l_e__t_a5e11d8e6a56f3df44d344651b25882d2}\index{BLE\_t@{BLE\_t}!tx\_flag@{tx\_flag}}
+\index{tx\_flag@{tx\_flag}!BLE\_t@{BLE\_t}}
+\doxysubsubsection{\texorpdfstring{tx\_flag}{tx\_flag}}
+{\footnotesize\ttfamily \label{struct_b_l_e__t_a5e11d8e6a56f3df44d344651b25882d2} 
+volatile bool tx\+\_\+flag}
+
+
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Inc/\+\doxymbox{\hyperlink{driver_b_l_e_8h}{driver\+BLE.\+h}}\end{DoxyCompactItemize}

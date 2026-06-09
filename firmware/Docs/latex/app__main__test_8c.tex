@@ -1,0 +1,506 @@
+\doxysection{C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Src/\+app\+\_\+main\+\_\+test.c File Reference}
+\hypertarget{app__main__test_8c}{}\label{app__main__test_8c}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/app\_main\_test.c@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/app\_main\_test.c}}
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$string.\+h$>$}\newline
+{\ttfamily \+\#include $<$time.\+h$>$}\newline
+{\ttfamily \+\#include "{}app\+\_\+main\+\_\+test.\+h"{}}\newline
+{\ttfamily \+\#include "{}usart.\+h"{}}\newline
+{\ttfamily \+\#include "{}main.\+h"{}}\newline
+{\ttfamily \+\#include "{}rtc.\+h"{}}\newline
+{\ttfamily \+\#include "{}adc.\+h"{}}\newline
+{\ttfamily \+\#include "{}spi.\+h"{}}\newline
+{\ttfamily \+\#include "{}lptim.\+h"{}}\newline
+{\ttfamily \+\#include "{}dma.\+h"{}}\newline
+{\ttfamily \+\#include "{}driver\+DS18\+B20.\+h"{}}\newline
+{\ttfamily \+\#include "{}driver\+LPPCayenne.\+h"{}}\newline
+{\ttfamily \+\#include "{}driver\+Analog.\+h"{}}\newline
+{\ttfamily \+\#include "{}driver\+BLE.\+h"{}}\newline
+{\ttfamily \+\#include "{}driver\+FRAM.\+h"{}}\newline
+{\ttfamily \+\#include "{}driver\+Data\+Log.\+h"{}}\newline
+{\ttfamily \+\#include "{}driver\+Lo\+Ra\+WAN.\+h"{}}\newline
+{\ttfamily \+\#include "{}driver\+RTC.\+h"{}}\newline
+Include dependency graph for app\+\_\+main\+\_\+test.\+c:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{app__main__test_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{app__main__test_8c_a251f3809a0715a52895f901847b28ec3}{ENABLE\+\_\+\+DATALOG\+\_\+\+TESTS}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{app__main__test_8c_adff80ac59d9346ed44f00c4b927e6fd0}{ENABLE\+\_\+\+LORAWAN\+\_\+\+TESTS}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{app__main__test_8c_a6e84fd3ddadd283f5c329e977964ca8d}{ENABLE\+\_\+\+DS18\+B20\+\_\+\+TESTS}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{app__main__test_8c_a6982a0459ab84fb3f9c6b6b5f27cbd9a}{ENABLE\+\_\+\+FRAM\+\_\+\+TESTS}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{app__main__test_8c_a8c51fec63a4ab2daa27315bf9597aed7}{ENABLE\+\_\+\+ANALOG\+\_\+\+TESTS}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{app__main__test_8c_a36e156bd8846a33cfb53d1cf3f3cc038}{ENABLE\+\_\+\+LPP\+\_\+\+TESTS}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{app__main__test_8c_a4e459df6ec0ce374717a51518bfa4336}{ENABLE\+\_\+\+BLE\+\_\+\+TESTS}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{app__main__test_8c_af793d3343d4edebf2faac919e5756901}{BLE\+\_\+\+PARSING\+\_\+\+TIMER}}~25
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722}{Main\+App\+\_\+\+State\+\_\+t}} \{ \newline
+\doxymbox{\hyperlink{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722a7bed2cbf33a9fd2c8dab28b984509b2d}{APP\+\_\+\+STATE\+\_\+\+INIT\+\_\+\+LORA}}
+, \doxymbox{\hyperlink{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722afce2db10ab1359fbaa7aed9839b9b7d3}{APP\+\_\+\+STATE\+\_\+\+WAIT\+\_\+\+MEASURE}}
+, \doxymbox{\hyperlink{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722a8bab74073fca34c806e9c63cf2b4fa5c}{APP\+\_\+\+STATE\+\_\+\+SAVE\+\_\+\+RECORD}}
+, \doxymbox{\hyperlink{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722a5b645e7af891597e657cd22766f91b3c}{APP\+\_\+\+STATE\+\_\+\+WAIT\+\_\+\+SAVE}}
+, \newline
+\doxymbox{\hyperlink{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722abf64b3f50e4bd0c831783127693508ed}{APP\+\_\+\+STATE\+\_\+\+SEND\+\_\+\+LORA}}
+, \doxymbox{\hyperlink{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722af653c7450b549886625e73447f12f1f0}{APP\+\_\+\+STATE\+\_\+\+WAIT\+\_\+\+TX}}
+, \doxymbox{\hyperlink{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722a70a990acc81602a40e8babdb5d606b06}{APP\+\_\+\+STATE\+\_\+\+WAIT\+\_\+\+LORA\+\_\+\+SLEEP}}
+, \doxymbox{\hyperlink{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722af8aeb5a9c3fdd9dfc888f09d7df9fe8d}{APP\+\_\+\+STATE\+\_\+\+SLEEP}}
+, \newline
+\doxymbox{\hyperlink{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722a1ba3f22c125d192f1880c4706902e94f}{APP\+\_\+\+STATE\+\_\+\+BLE\+\_\+\+ACTIVE}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{app__main__test_8c_a70af21c671abfcc773614a9a4f63d920}{System\+Clock\+\_\+\+Config}} (void)
+\begin{DoxyCompactList}\small\item\em System Clock Configuration. \end{DoxyCompactList}\item 
+struct \doxymbox{\hyperlink{app__main__test_8c_ab898071398b359603a35c202e9c65f3b}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}} ((packed))
+\item 
+void \doxymbox{\hyperlink{app__main__test_8c_a4ee62d16935757fc638ff8b1b0c31188}{start\+Measures}} (void)
+\item 
+void \doxymbox{\hyperlink{app__main__test_8c_a7dfd9b79bc5a37d7df40207afbc5431f}{setup}} (void)
+\item 
+void \doxymbox{\hyperlink{app__main__test_8c_a0b33edabd7f1c4e4a0bf32c67269be2f}{loop}} (void)
+\item 
+void \doxymbox{\hyperlink{app__main__test_8c_a0b334860563f4a109443e0a604af2300}{HAL\+\_\+\+GPIO\+\_\+\+EXTI\+\_\+\+Falling\+\_\+\+Callback}} (uint16\+\_\+t GPIO\+\_\+\+Pin)
+\item 
+void \doxymbox{\hyperlink{app__main__test_8c_ac1dd7334499ef88df8187a45c0d28ee8}{HAL\+\_\+\+LPTIM\+\_\+\+Auto\+Reload\+Match\+Callback}} (LPTIM\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hlptim)
+\item 
+void \doxymbox{\hyperlink{app__main__test_8c_af20a88180db1113be1e89266917d148b}{HAL\+\_\+\+ADC\+\_\+\+Conv\+Cplt\+Callback}} (ADC\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hadc)
+\item 
+void \doxymbox{\hyperlink{app__main__test_8c_ae494a9643f29b87d6d81e5264e60e57b}{HAL\+\_\+\+UART\+\_\+\+Rx\+Cplt\+Callback}} (UART\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}huart)
+\item 
+void \doxymbox{\hyperlink{app__main__test_8c_a925534fb8bf7ca464fd05c982fe4bfa0}{HAL\+\_\+\+UARTEx\+\_\+\+Rx\+Event\+Callback}} (UART\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}huart, uint16\+\_\+t Size)
+\item 
+void \doxymbox{\hyperlink{app__main__test_8c_abcdf9b59049eccbc87d54042f9235b1a}{HAL\+\_\+\+UART\+\_\+\+Tx\+Cplt\+Callback}} (UART\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}huart)
+\item 
+void \doxymbox{\hyperlink{app__main__test_8c_a0a99ab4f6aa6ee7dc2abca5483910dde}{HAL\+\_\+\+SPI\+\_\+\+Tx\+Cplt\+Callback}} (SPI\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hspi)
+\item 
+void \doxymbox{\hyperlink{app__main__test_8c_a3df7021fe24cf874f8b1eec5bd5f4cb3}{HAL\+\_\+\+SPI\+\_\+\+Rx\+Cplt\+Callback}} (SPI\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hspi)
+\item 
+void \doxymbox{\hyperlink{app__main__test_8c_a04e63f382f172164c8e7cae4ff5d883c}{HAL\+\_\+\+SPI\+\_\+\+Tx\+Rx\+Cplt\+Callback}} (SPI\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hspi)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+COM\+\_\+\+Init\+Type\+Def \doxymbox{\hyperlink{app__main__test_8c_acb96369fe128d70225ea05b727002522}{Bsp\+COMInit}}
+\item 
+\doxymbox{\hyperlink{app__main__test_8c_a89564acbd65a405bb1c578039bf875d5}{My\+Record\+\_\+t}}
+\item 
+RTC\+\_\+\+Time\+Type\+Def \doxymbox{\hyperlink{app__main__test_8c_afed4f29eda0f2d0900a0b347e29a8c91}{s\+Time}} = \{0\}
+\item 
+RTC\+\_\+\+Date\+Type\+Def \doxymbox{\hyperlink{app__main__test_8c_aa805acf5185e2a95f250a2da91bf84e0}{s\+Date}} = \{0\}
+\item 
+RTC\+\_\+\+Time\+Type\+Def \doxymbox{\hyperlink{app__main__test_8c_a0e1f2fa4a2707c513e5b7c21e01a9503}{s\+Time\+\_\+read}}
+\item 
+RTC\+\_\+\+Date\+Type\+Def \doxymbox{\hyperlink{app__main__test_8c_a764de331aa6fda8bf1e3c6715d56d63a}{s\+Date\+\_\+read}}
+\end{DoxyCompactItemize}
+
+
+\label{app__main__test_8c_doc-define-members}
+\Hypertarget{app__main__test_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{app__main__test_8c_af793d3343d4edebf2faac919e5756901}\index{app\_main\_test.c@{app\_main\_test.c}!BLE\_PARSING\_TIMER@{BLE\_PARSING\_TIMER}}
+\index{BLE\_PARSING\_TIMER@{BLE\_PARSING\_TIMER}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{BLE\_PARSING\_TIMER}{BLE\_PARSING\_TIMER}}
+{\footnotesize\ttfamily \label{app__main__test_8c_af793d3343d4edebf2faac919e5756901} 
+\+\#define BLE\+\_\+\+PARSING\+\_\+\+TIMER~25}
+
+\Hypertarget{app__main__test_8c_a8c51fec63a4ab2daa27315bf9597aed7}\index{app\_main\_test.c@{app\_main\_test.c}!ENABLE\_ANALOG\_TESTS@{ENABLE\_ANALOG\_TESTS}}
+\index{ENABLE\_ANALOG\_TESTS@{ENABLE\_ANALOG\_TESTS}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{ENABLE\_ANALOG\_TESTS}{ENABLE\_ANALOG\_TESTS}}
+{\footnotesize\ttfamily \label{app__main__test_8c_a8c51fec63a4ab2daa27315bf9597aed7} 
+\+\#define ENABLE\+\_\+\+ANALOG\+\_\+\+TESTS~0}
+
+\Hypertarget{app__main__test_8c_a4e459df6ec0ce374717a51518bfa4336}\index{app\_main\_test.c@{app\_main\_test.c}!ENABLE\_BLE\_TESTS@{ENABLE\_BLE\_TESTS}}
+\index{ENABLE\_BLE\_TESTS@{ENABLE\_BLE\_TESTS}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{ENABLE\_BLE\_TESTS}{ENABLE\_BLE\_TESTS}}
+{\footnotesize\ttfamily \label{app__main__test_8c_a4e459df6ec0ce374717a51518bfa4336} 
+\+\#define ENABLE\+\_\+\+BLE\+\_\+\+TESTS~0}
+
+\Hypertarget{app__main__test_8c_a251f3809a0715a52895f901847b28ec3}\index{app\_main\_test.c@{app\_main\_test.c}!ENABLE\_DATALOG\_TESTS@{ENABLE\_DATALOG\_TESTS}}
+\index{ENABLE\_DATALOG\_TESTS@{ENABLE\_DATALOG\_TESTS}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{ENABLE\_DATALOG\_TESTS}{ENABLE\_DATALOG\_TESTS}}
+{\footnotesize\ttfamily \label{app__main__test_8c_a251f3809a0715a52895f901847b28ec3} 
+\+\#define ENABLE\+\_\+\+DATALOG\+\_\+\+TESTS~0}
+
+\Hypertarget{app__main__test_8c_a6e84fd3ddadd283f5c329e977964ca8d}\index{app\_main\_test.c@{app\_main\_test.c}!ENABLE\_DS18B20\_TESTS@{ENABLE\_DS18B20\_TESTS}}
+\index{ENABLE\_DS18B20\_TESTS@{ENABLE\_DS18B20\_TESTS}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{ENABLE\_DS18B20\_TESTS}{ENABLE\_DS18B20\_TESTS}}
+{\footnotesize\ttfamily \label{app__main__test_8c_a6e84fd3ddadd283f5c329e977964ca8d} 
+\+\#define ENABLE\+\_\+\+DS18\+B20\+\_\+\+TESTS~0}
+
+\Hypertarget{app__main__test_8c_a6982a0459ab84fb3f9c6b6b5f27cbd9a}\index{app\_main\_test.c@{app\_main\_test.c}!ENABLE\_FRAM\_TESTS@{ENABLE\_FRAM\_TESTS}}
+\index{ENABLE\_FRAM\_TESTS@{ENABLE\_FRAM\_TESTS}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{ENABLE\_FRAM\_TESTS}{ENABLE\_FRAM\_TESTS}}
+{\footnotesize\ttfamily \label{app__main__test_8c_a6982a0459ab84fb3f9c6b6b5f27cbd9a} 
+\+\#define ENABLE\+\_\+\+FRAM\+\_\+\+TESTS~0}
+
+\Hypertarget{app__main__test_8c_adff80ac59d9346ed44f00c4b927e6fd0}\index{app\_main\_test.c@{app\_main\_test.c}!ENABLE\_LORAWAN\_TESTS@{ENABLE\_LORAWAN\_TESTS}}
+\index{ENABLE\_LORAWAN\_TESTS@{ENABLE\_LORAWAN\_TESTS}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{ENABLE\_LORAWAN\_TESTS}{ENABLE\_LORAWAN\_TESTS}}
+{\footnotesize\ttfamily \label{app__main__test_8c_adff80ac59d9346ed44f00c4b927e6fd0} 
+\+\#define ENABLE\+\_\+\+LORAWAN\+\_\+\+TESTS~0}
+
+\Hypertarget{app__main__test_8c_a36e156bd8846a33cfb53d1cf3f3cc038}\index{app\_main\_test.c@{app\_main\_test.c}!ENABLE\_LPP\_TESTS@{ENABLE\_LPP\_TESTS}}
+\index{ENABLE\_LPP\_TESTS@{ENABLE\_LPP\_TESTS}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{ENABLE\_LPP\_TESTS}{ENABLE\_LPP\_TESTS}}
+{\footnotesize\ttfamily \label{app__main__test_8c_a36e156bd8846a33cfb53d1cf3f3cc038} 
+\+\#define ENABLE\+\_\+\+LPP\+\_\+\+TESTS~0}
+
+
+
+\label{app__main__test_8c_doc-enum-members}
+\Hypertarget{app__main__test_8c_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722}\index{app\_main\_test.c@{app\_main\_test.c}!MainApp\_State\_t@{MainApp\_State\_t}}
+\index{MainApp\_State\_t@{MainApp\_State\_t}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{MainApp\_State\_t}{MainApp\_State\_t}}
+{\footnotesize\ttfamily \label{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722} 
+enum \doxymbox{\hyperlink{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722}{Main\+App\+\_\+\+State\+\_\+t}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{APP\_STATE\_INIT\_LORA@{APP\_STATE\_INIT\_LORA}!app\_main\_test.c@{app\_main\_test.c}}
+\index{app\_main\_test.c@{app\_main\_test.c}!APP\_STATE\_INIT\_LORA@{APP\_STATE\_INIT\_LORA}}
+}\Hypertarget{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722a7bed2cbf33a9fd2c8dab28b984509b2d}\label{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722a7bed2cbf33a9fd2c8dab28b984509b2d} 
+APP\+\_\+\+STATE\+\_\+\+INIT\+\_\+\+LORA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{APP\_STATE\_WAIT\_MEASURE@{APP\_STATE\_WAIT\_MEASURE}!app\_main\_test.c@{app\_main\_test.c}}
+\index{app\_main\_test.c@{app\_main\_test.c}!APP\_STATE\_WAIT\_MEASURE@{APP\_STATE\_WAIT\_MEASURE}}
+}\Hypertarget{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722afce2db10ab1359fbaa7aed9839b9b7d3}\label{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722afce2db10ab1359fbaa7aed9839b9b7d3} 
+APP\+\_\+\+STATE\+\_\+\+WAIT\+\_\+\+MEASURE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{APP\_STATE\_SAVE\_RECORD@{APP\_STATE\_SAVE\_RECORD}!app\_main\_test.c@{app\_main\_test.c}}
+\index{app\_main\_test.c@{app\_main\_test.c}!APP\_STATE\_SAVE\_RECORD@{APP\_STATE\_SAVE\_RECORD}}
+}\Hypertarget{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722a8bab74073fca34c806e9c63cf2b4fa5c}\label{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722a8bab74073fca34c806e9c63cf2b4fa5c} 
+APP\+\_\+\+STATE\+\_\+\+SAVE\+\_\+\+RECORD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{APP\_STATE\_WAIT\_SAVE@{APP\_STATE\_WAIT\_SAVE}!app\_main\_test.c@{app\_main\_test.c}}
+\index{app\_main\_test.c@{app\_main\_test.c}!APP\_STATE\_WAIT\_SAVE@{APP\_STATE\_WAIT\_SAVE}}
+}\Hypertarget{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722a5b645e7af891597e657cd22766f91b3c}\label{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722a5b645e7af891597e657cd22766f91b3c} 
+APP\+\_\+\+STATE\+\_\+\+WAIT\+\_\+\+SAVE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{APP\_STATE\_SEND\_LORA@{APP\_STATE\_SEND\_LORA}!app\_main\_test.c@{app\_main\_test.c}}
+\index{app\_main\_test.c@{app\_main\_test.c}!APP\_STATE\_SEND\_LORA@{APP\_STATE\_SEND\_LORA}}
+}\Hypertarget{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722abf64b3f50e4bd0c831783127693508ed}\label{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722abf64b3f50e4bd0c831783127693508ed} 
+APP\+\_\+\+STATE\+\_\+\+SEND\+\_\+\+LORA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{APP\_STATE\_WAIT\_TX@{APP\_STATE\_WAIT\_TX}!app\_main\_test.c@{app\_main\_test.c}}
+\index{app\_main\_test.c@{app\_main\_test.c}!APP\_STATE\_WAIT\_TX@{APP\_STATE\_WAIT\_TX}}
+}\Hypertarget{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722af653c7450b549886625e73447f12f1f0}\label{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722af653c7450b549886625e73447f12f1f0} 
+APP\+\_\+\+STATE\+\_\+\+WAIT\+\_\+\+TX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{APP\_STATE\_WAIT\_LORA\_SLEEP@{APP\_STATE\_WAIT\_LORA\_SLEEP}!app\_main\_test.c@{app\_main\_test.c}}
+\index{app\_main\_test.c@{app\_main\_test.c}!APP\_STATE\_WAIT\_LORA\_SLEEP@{APP\_STATE\_WAIT\_LORA\_SLEEP}}
+}\Hypertarget{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722a70a990acc81602a40e8babdb5d606b06}\label{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722a70a990acc81602a40e8babdb5d606b06} 
+APP\+\_\+\+STATE\+\_\+\+WAIT\+\_\+\+LORA\+\_\+\+SLEEP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{APP\_STATE\_SLEEP@{APP\_STATE\_SLEEP}!app\_main\_test.c@{app\_main\_test.c}}
+\index{app\_main\_test.c@{app\_main\_test.c}!APP\_STATE\_SLEEP@{APP\_STATE\_SLEEP}}
+}\Hypertarget{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722af8aeb5a9c3fdd9dfc888f09d7df9fe8d}\label{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722af8aeb5a9c3fdd9dfc888f09d7df9fe8d} 
+APP\+\_\+\+STATE\+\_\+\+SLEEP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{APP\_STATE\_BLE\_ACTIVE@{APP\_STATE\_BLE\_ACTIVE}!app\_main\_test.c@{app\_main\_test.c}}
+\index{app\_main\_test.c@{app\_main\_test.c}!APP\_STATE\_BLE\_ACTIVE@{APP\_STATE\_BLE\_ACTIVE}}
+}\Hypertarget{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722a1ba3f22c125d192f1880c4706902e94f}\label{app__main__test_8c_a51eb73cd19803fc310a1817bedc66722a1ba3f22c125d192f1880c4706902e94f} 
+APP\+\_\+\+STATE\+\_\+\+BLE\+\_\+\+ACTIVE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{app__main__test_8c_doc-func-members}
+\Hypertarget{app__main__test_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{app__main__test_8c_ab898071398b359603a35c202e9c65f3b}\index{app\_main\_test.c@{app\_main\_test.c}!\_\_attribute\_\_@{\_\_attribute\_\_}}
+\index{\_\_attribute\_\_@{\_\_attribute\_\_}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{\_\_attribute\_\_()}{\_\_attribute\_\_()}}
+{\footnotesize\ttfamily \label{app__main__test_8c_ab898071398b359603a35c202e9c65f3b} 
+struct \+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(packed)}]{}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{app__main__test_8c_ab898071398b359603a35c202e9c65f3b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{app__main__test_8c_af20a88180db1113be1e89266917d148b}\index{app\_main\_test.c@{app\_main\_test.c}!HAL\_ADC\_ConvCpltCallback@{HAL\_ADC\_ConvCpltCallback}}
+\index{HAL\_ADC\_ConvCpltCallback@{HAL\_ADC\_ConvCpltCallback}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_ADC\_ConvCpltCallback()}{HAL\_ADC\_ConvCpltCallback()}}
+{\footnotesize\ttfamily \label{app__main__test_8c_af20a88180db1113be1e89266917d148b} 
+void HAL\+\_\+\+ADC\+\_\+\+Conv\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{ADC\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hadc}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{app__main__test_8c_af20a88180db1113be1e89266917d148b_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{app__main__test_8c_a0b334860563f4a109443e0a604af2300}\index{app\_main\_test.c@{app\_main\_test.c}!HAL\_GPIO\_EXTI\_Falling\_Callback@{HAL\_GPIO\_EXTI\_Falling\_Callback}}
+\index{HAL\_GPIO\_EXTI\_Falling\_Callback@{HAL\_GPIO\_EXTI\_Falling\_Callback}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_GPIO\_EXTI\_Falling\_Callback()}{HAL\_GPIO\_EXTI\_Falling\_Callback()}}
+{\footnotesize\ttfamily \label{app__main__test_8c_a0b334860563f4a109443e0a604af2300} 
+void HAL\+\_\+\+GPIO\+\_\+\+EXTI\+\_\+\+Falling\+\_\+\+Callback (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{GPIO\+\_\+\+Pin}{}\end{DoxyParamCaption})}
+
+\Hypertarget{app__main__test_8c_ac1dd7334499ef88df8187a45c0d28ee8}\index{app\_main\_test.c@{app\_main\_test.c}!HAL\_LPTIM\_AutoReloadMatchCallback@{HAL\_LPTIM\_AutoReloadMatchCallback}}
+\index{HAL\_LPTIM\_AutoReloadMatchCallback@{HAL\_LPTIM\_AutoReloadMatchCallback}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_LPTIM\_AutoReloadMatchCallback()}{HAL\_LPTIM\_AutoReloadMatchCallback()}}
+{\footnotesize\ttfamily \label{app__main__test_8c_ac1dd7334499ef88df8187a45c0d28ee8} 
+void HAL\+\_\+\+LPTIM\+\_\+\+Auto\+Reload\+Match\+Callback (\begin{DoxyParamCaption}\item[{LPTIM\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hlptim}{}\end{DoxyParamCaption})}
+
+\Hypertarget{app__main__test_8c_a3df7021fe24cf874f8b1eec5bd5f4cb3}\index{app\_main\_test.c@{app\_main\_test.c}!HAL\_SPI\_RxCpltCallback@{HAL\_SPI\_RxCpltCallback}}
+\index{HAL\_SPI\_RxCpltCallback@{HAL\_SPI\_RxCpltCallback}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_SPI\_RxCpltCallback()}{HAL\_SPI\_RxCpltCallback()}}
+{\footnotesize\ttfamily \label{app__main__test_8c_a3df7021fe24cf874f8b1eec5bd5f4cb3} 
+void HAL\+\_\+\+SPI\+\_\+\+Rx\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{SPI\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hspi}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{app__main__test_8c_a3df7021fe24cf874f8b1eec5bd5f4cb3_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{app__main__test_8c_a0a99ab4f6aa6ee7dc2abca5483910dde}\index{app\_main\_test.c@{app\_main\_test.c}!HAL\_SPI\_TxCpltCallback@{HAL\_SPI\_TxCpltCallback}}
+\index{HAL\_SPI\_TxCpltCallback@{HAL\_SPI\_TxCpltCallback}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_SPI\_TxCpltCallback()}{HAL\_SPI\_TxCpltCallback()}}
+{\footnotesize\ttfamily \label{app__main__test_8c_a0a99ab4f6aa6ee7dc2abca5483910dde} 
+void HAL\+\_\+\+SPI\+\_\+\+Tx\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{SPI\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hspi}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{app__main__test_8c_a0a99ab4f6aa6ee7dc2abca5483910dde_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{app__main__test_8c_a04e63f382f172164c8e7cae4ff5d883c}\index{app\_main\_test.c@{app\_main\_test.c}!HAL\_SPI\_TxRxCpltCallback@{HAL\_SPI\_TxRxCpltCallback}}
+\index{HAL\_SPI\_TxRxCpltCallback@{HAL\_SPI\_TxRxCpltCallback}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_SPI\_TxRxCpltCallback()}{HAL\_SPI\_TxRxCpltCallback()}}
+{\footnotesize\ttfamily \label{app__main__test_8c_a04e63f382f172164c8e7cae4ff5d883c} 
+void HAL\+\_\+\+SPI\+\_\+\+Tx\+Rx\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{SPI\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hspi}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{app__main__test_8c_a04e63f382f172164c8e7cae4ff5d883c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{app__main__test_8c_ae494a9643f29b87d6d81e5264e60e57b}\index{app\_main\_test.c@{app\_main\_test.c}!HAL\_UART\_RxCpltCallback@{HAL\_UART\_RxCpltCallback}}
+\index{HAL\_UART\_RxCpltCallback@{HAL\_UART\_RxCpltCallback}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_UART\_RxCpltCallback()}{HAL\_UART\_RxCpltCallback()}}
+{\footnotesize\ttfamily \label{app__main__test_8c_ae494a9643f29b87d6d81e5264e60e57b} 
+void HAL\+\_\+\+UART\+\_\+\+Rx\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{UART\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{huart}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{app__main__test_8c_ae494a9643f29b87d6d81e5264e60e57b_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{app__main__test_8c_abcdf9b59049eccbc87d54042f9235b1a}\index{app\_main\_test.c@{app\_main\_test.c}!HAL\_UART\_TxCpltCallback@{HAL\_UART\_TxCpltCallback}}
+\index{HAL\_UART\_TxCpltCallback@{HAL\_UART\_TxCpltCallback}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_UART\_TxCpltCallback()}{HAL\_UART\_TxCpltCallback()}}
+{\footnotesize\ttfamily \label{app__main__test_8c_abcdf9b59049eccbc87d54042f9235b1a} 
+void HAL\+\_\+\+UART\+\_\+\+Tx\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{UART\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{huart}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{app__main__test_8c_abcdf9b59049eccbc87d54042f9235b1a_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{app__main__test_8c_a925534fb8bf7ca464fd05c982fe4bfa0}\index{app\_main\_test.c@{app\_main\_test.c}!HAL\_UARTEx\_RxEventCallback@{HAL\_UARTEx\_RxEventCallback}}
+\index{HAL\_UARTEx\_RxEventCallback@{HAL\_UARTEx\_RxEventCallback}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_UARTEx\_RxEventCallback()}{HAL\_UARTEx\_RxEventCallback()}}
+{\footnotesize\ttfamily \label{app__main__test_8c_a925534fb8bf7ca464fd05c982fe4bfa0} 
+void HAL\+\_\+\+UARTEx\+\_\+\+Rx\+Event\+Callback (\begin{DoxyParamCaption}\item[{UART\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{huart}{, }\item[{uint16\+\_\+t}]{Size}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{app__main__test_8c_a925534fb8bf7ca464fd05c982fe4bfa0_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{app__main__test_8c_a0b33edabd7f1c4e4a0bf32c67269be2f}\index{app\_main\_test.c@{app\_main\_test.c}!loop@{loop}}
+\index{loop@{loop}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily \label{app__main__test_8c_a0b33edabd7f1c4e4a0bf32c67269be2f} 
+void loop (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{app__main__test_8c_a0b33edabd7f1c4e4a0bf32c67269be2f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=187pt]{app__main__test_8c_a0b33edabd7f1c4e4a0bf32c67269be2f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{app__main__test_8c_a7dfd9b79bc5a37d7df40207afbc5431f}\index{app\_main\_test.c@{app\_main\_test.c}!setup@{setup}}
+\index{setup@{setup}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily \label{app__main__test_8c_a7dfd9b79bc5a37d7df40207afbc5431f} 
+void setup (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{app__main__test_8c_a7dfd9b79bc5a37d7df40207afbc5431f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{app__main__test_8c_a7dfd9b79bc5a37d7df40207afbc5431f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{app__main__test_8c_a4ee62d16935757fc638ff8b1b0c31188}\index{app\_main\_test.c@{app\_main\_test.c}!startMeasures@{startMeasures}}
+\index{startMeasures@{startMeasures}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{startMeasures()}{startMeasures()}}
+{\footnotesize\ttfamily \label{app__main__test_8c_a4ee62d16935757fc638ff8b1b0c31188} 
+void start\+Measures (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{app__main__test_8c_a4ee62d16935757fc638ff8b1b0c31188_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{app__main__test_8c_a4ee62d16935757fc638ff8b1b0c31188_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{app__main__test_8c_a70af21c671abfcc773614a9a4f63d920}\index{app\_main\_test.c@{app\_main\_test.c}!SystemClock\_Config@{SystemClock\_Config}}
+\index{SystemClock\_Config@{SystemClock\_Config}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{SystemClock\_Config()}{SystemClock\_Config()}}
+{\footnotesize\ttfamily \label{app__main__test_8c_a70af21c671abfcc773614a9a4f63d920} 
+void System\+Clock\+\_\+\+Config (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+System Clock Configuration. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Configure the main internal regulator output voltage
+
+Configure LSE Drive Capability
+
+Initializes the RCC Oscillators according to the specified parameters in the RCC\+\_\+\+Osc\+Init\+Type\+Def structure.
+
+Initializes the CPU, AHB and APB buses clocks
+
+Enable MSI Auto calibrationHere is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=301pt]{app__main__test_8c_a70af21c671abfcc773614a9a4f63d920_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{app__main__test_8c_a70af21c671abfcc773614a9a4f63d920_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{app__main__test_8c_doc-var-members}
+\Hypertarget{app__main__test_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{app__main__test_8c_acb96369fe128d70225ea05b727002522}\index{app\_main\_test.c@{app\_main\_test.c}!BspCOMInit@{BspCOMInit}}
+\index{BspCOMInit@{BspCOMInit}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{BspCOMInit}{BspCOMInit}}
+{\footnotesize\ttfamily \label{app__main__test_8c_acb96369fe128d70225ea05b727002522} 
+COM\+\_\+\+Init\+Type\+Def Bsp\+COMInit\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{app__main__test_8c_a89564acbd65a405bb1c578039bf875d5}\index{app\_main\_test.c@{app\_main\_test.c}!MyRecord\_t@{MyRecord\_t}}
+\index{MyRecord\_t@{MyRecord\_t}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{MyRecord\_t}{MyRecord\_t}}
+{\footnotesize\ttfamily \label{app__main__test_8c_a89564acbd65a405bb1c578039bf875d5} 
+My\+Record\+\_\+t}
+
+\Hypertarget{app__main__test_8c_aa805acf5185e2a95f250a2da91bf84e0}\index{app\_main\_test.c@{app\_main\_test.c}!sDate@{sDate}}
+\index{sDate@{sDate}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{sDate}{sDate}}
+{\footnotesize\ttfamily \label{app__main__test_8c_aa805acf5185e2a95f250a2da91bf84e0} 
+RTC\+\_\+\+Date\+Type\+Def s\+Date = \{0\}}
+
+\Hypertarget{app__main__test_8c_a764de331aa6fda8bf1e3c6715d56d63a}\index{app\_main\_test.c@{app\_main\_test.c}!sDate\_read@{sDate\_read}}
+\index{sDate\_read@{sDate\_read}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{sDate\_read}{sDate\_read}}
+{\footnotesize\ttfamily \label{app__main__test_8c_a764de331aa6fda8bf1e3c6715d56d63a} 
+RTC\+\_\+\+Date\+Type\+Def s\+Date\+\_\+read}
+
+\Hypertarget{app__main__test_8c_afed4f29eda0f2d0900a0b347e29a8c91}\index{app\_main\_test.c@{app\_main\_test.c}!sTime@{sTime}}
+\index{sTime@{sTime}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{sTime}{sTime}}
+{\footnotesize\ttfamily \label{app__main__test_8c_afed4f29eda0f2d0900a0b347e29a8c91} 
+RTC\+\_\+\+Time\+Type\+Def s\+Time = \{0\}}
+
+\Hypertarget{app__main__test_8c_a0e1f2fa4a2707c513e5b7c21e01a9503}\index{app\_main\_test.c@{app\_main\_test.c}!sTime\_read@{sTime\_read}}
+\index{sTime\_read@{sTime\_read}!app\_main\_test.c@{app\_main\_test.c}}
+\doxysubsubsection{\texorpdfstring{sTime\_read}{sTime\_read}}
+{\footnotesize\ttfamily \label{app__main__test_8c_a0e1f2fa4a2707c513e5b7c21e01a9503} 
+RTC\+\_\+\+Time\+Type\+Def s\+Time\+\_\+read}
+

@@ -1,0 +1,135 @@
+\doxysection{C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Src/\+test\+\_\+datalog.c File Reference}
+\hypertarget{test__datalog_8c}{}\label{test__datalog_8c}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/test\_datalog.c@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/test\_datalog.c}}
+{\ttfamily \+\#include "{}test\+\_\+datalog.\+h"{}}\newline
+{\ttfamily \+\#include "{}driver\+Data\+Log.\+h"{}}\newline
+{\ttfamily \+\#include "{}driver\+FRAM.\+h"{}}\newline
+{\ttfamily \+\#include "{}main.\+h"{}}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$string.\+h$>$}\newline
+Include dependency graph for test\+\_\+datalog.\+c:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__datalog_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{test__datalog_8c_a2ddacbe405fe687f6fb48cdcbebf2f3b}{EXPECT}}(cond,  msg)
+\item 
+\+\#define \doxymbox{\hyperlink{test__datalog_8c_a6ffea8cdf1ef4b07935b62dc59d009db}{EXPECT\+\_\+\+EQ}}(actual,  expected,  msg)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{test__datalog_8c_ab898071398b359603a35c202e9c65f3b}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}} ((packed))
+\item 
+bool \doxymbox{\hyperlink{test__datalog_8c_ac14ad0bc0b21b39d85d3286f59631e72}{Test\+Data\+Log\+\_\+\+Run\+All}} (\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*}hfram)
+\begin{DoxyCompactList}\small\item\em Lance la batterie de tests Data\+Log. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{test__datalog_8c_afc2df74a85e16874f4d0aa0a08ac5516}{Test\+Record\+\_\+t}}
+\end{DoxyCompactItemize}
+
+
+\label{test__datalog_8c_doc-define-members}
+\Hypertarget{test__datalog_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{test__datalog_8c_a2ddacbe405fe687f6fb48cdcbebf2f3b}\index{test\_datalog.c@{test\_datalog.c}!EXPECT@{EXPECT}}
+\index{EXPECT@{EXPECT}!test\_datalog.c@{test\_datalog.c}}
+\doxysubsubsection{\texorpdfstring{EXPECT}{EXPECT}}
+{\footnotesize\ttfamily \label{test__datalog_8c_a2ddacbe405fe687f6fb48cdcbebf2f3b} 
+\+\#define EXPECT(\begin{DoxyParamCaption}\item[{}]{cond}{, }\item[{}]{msg}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ if\ (!(cond))\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ [FAIL]\ \%s\ (ligne\ \%d)\(\backslash\)r\(\backslash\)n"{}},\ msg,\ \_\_LINE\_\_);\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ [\ OK\ ]\ \%s\(\backslash\)r\(\backslash\)n"{}},\ msg);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+\Hypertarget{test__datalog_8c_a6ffea8cdf1ef4b07935b62dc59d009db}\index{test\_datalog.c@{test\_datalog.c}!EXPECT\_EQ@{EXPECT\_EQ}}
+\index{EXPECT\_EQ@{EXPECT\_EQ}!test\_datalog.c@{test\_datalog.c}}
+\doxysubsubsection{\texorpdfstring{EXPECT\_EQ}{EXPECT\_EQ}}
+{\footnotesize\ttfamily \label{test__datalog_8c_a6ffea8cdf1ef4b07935b62dc59d009db} 
+\+\#define EXPECT\+\_\+\+EQ(\begin{DoxyParamCaption}\item[{}]{actual}{, }\item[{}]{expected}{, }\item[{}]{msg}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ uint32\_t\ \_a\ =\ (uint32\_t)(actual);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ uint32\_t\ \_e\ =\ (uint32\_t)(expected);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ if\ (\_a\ !=\ \_e)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ [FAIL]\ \%s\ -\/\ Attendu:\ \%lu,\ Recu:\ \%lu\ (ligne\ \%d)\(\backslash\)r\(\backslash\)n"{}},\ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ msg,\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long})\_e,\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long})\_a,\ \_\_LINE\_\_);\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ [\ OK\ ]\ \%s\(\backslash\)r\(\backslash\)n"{}},\ msg);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+
+
+\label{test__datalog_8c_doc-func-members}
+\Hypertarget{test__datalog_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{test__datalog_8c_ab898071398b359603a35c202e9c65f3b}\index{test\_datalog.c@{test\_datalog.c}!\_\_attribute\_\_@{\_\_attribute\_\_}}
+\index{\_\_attribute\_\_@{\_\_attribute\_\_}!test\_datalog.c@{test\_datalog.c}}
+\doxysubsubsection{\texorpdfstring{\_\_attribute\_\_()}{\_\_attribute\_\_()}}
+{\footnotesize\ttfamily \label{test__datalog_8c_ab898071398b359603a35c202e9c65f3b} 
+struct \+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(packed)}]{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{test__datalog_8c_ab898071398b359603a35c202e9c65f3b_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{test__datalog_8c_ac14ad0bc0b21b39d85d3286f59631e72}\index{test\_datalog.c@{test\_datalog.c}!TestDataLog\_RunAll@{TestDataLog\_RunAll}}
+\index{TestDataLog\_RunAll@{TestDataLog\_RunAll}!test\_datalog.c@{test\_datalog.c}}
+\doxysubsubsection{\texorpdfstring{TestDataLog\_RunAll()}{TestDataLog\_RunAll()}}
+{\footnotesize\ttfamily \label{test__datalog_8c_ac14ad0bc0b21b39d85d3286f59631e72} 
+bool Test\+Data\+Log\+\_\+\+Run\+All (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hfram}{}\end{DoxyParamCaption})}
+
+
+
+Lance la batterie de tests Data\+Log. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hfram} & Handle FRAM DEJA INITIALISE par l\textquotesingle{}application. Les callbacks HAL SPI doivent router vers ce handle. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si tous les tests passent. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{test__datalog_8c_ac14ad0bc0b21b39d85d3286f59631e72_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{test__datalog_8c_doc-var-members}
+\Hypertarget{test__datalog_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{test__datalog_8c_afc2df74a85e16874f4d0aa0a08ac5516}\index{test\_datalog.c@{test\_datalog.c}!TestRecord\_t@{TestRecord\_t}}
+\index{TestRecord\_t@{TestRecord\_t}!test\_datalog.c@{test\_datalog.c}}
+\doxysubsubsection{\texorpdfstring{TestRecord\_t}{TestRecord\_t}}
+{\footnotesize\ttfamily \label{test__datalog_8c_afc2df74a85e16874f4d0aa0a08ac5516} 
+Test\+Record\+\_\+t}
+

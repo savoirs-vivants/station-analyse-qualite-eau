@@ -1,0 +1,63 @@
+\doxysection{driver\+LPPCayenne.\+h}
+\hypertarget{driver_l_p_p_cayenne_8h_source}{}\label{driver_l_p_p_cayenne_8h_source}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverLPPCayenne.h@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverLPPCayenne.h}}
+\doxymbox{\hyperlink{driver_l_p_p_cayenne_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifndef\ INC\_DRIVERLPPCAYENNE\_H\_}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ INC\_DRIVERLPPCAYENNE\_H\_}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{/*\ ==========================================================================}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *\ CONFIGURATION\ DU\ DRIVER}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ *\ ==========================================================================\ */}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ LPP\_MAX\_PAYLOAD\_SIZE\ \ \ \ 51U}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{comment}{/*\ -\/-\/-\/\ Types\ standards\ Cayenne\ LPP\ -\/-\/-\/\ */}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ LPP\_TYPE\_DIGITAL\_INPUT\ \ 0x00}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ LPP\_TYPE\_DIGITAL\_OUTPUT\ 0x01}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ LPP\_TYPE\_ANALOG\_INPUT\ \ \ 0x02}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ LPP\_TYPE\_ANALOG\_OUTPUT\ \ 0x03}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ LPP\_TYPE\_ILLUMINANCE\ \ \ \ 0x65}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ LPP\_TYPE\_PRESENCE\ \ \ \ \ \ \ 0x66}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ LPP\_TYPE\_TEMPERATURE\ \ \ \ 0x67\ \ }\textcolor{comment}{/*\ 103\ en\ décimal\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ LPP\_TYPE\_HUMIDITY\ \ \ \ \ \ \ 0x68\ \ }\textcolor{comment}{/*\ 104\ en\ décimal\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{comment}{/*\ ==========================================================================}}
+\DoxyCodeLine{00039\ \textcolor{comment}{\ *\ ÉNUMÉRATIONS\ ET\ STRUCTURES}}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ *\ ==========================================================================\ */}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7ea0864bf4359d0fb33cf11b59fe3ddffd0}{LPP\_OK}}\ =\ 0,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7eaf371ad4a3874c42ece9855e8d7717446}{LPP\_ERR\_PARAM}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7ea7bb77756bdd8a53be7020db46f2e115f}{LPP\_ERR\_SIZE}}\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00049\ \}\ \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7e}{LPP\_Result\_t}};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00055\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{struct_l_p_p___payload__t_adb4cb2a6e2a68caf8b2a3dbcd67c1d25}{buffer}}[\doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_add8e65127ad79edf282811d375da0161}{LPP\_MAX\_PAYLOAD\_SIZE}}];\ }
+\DoxyCodeLine{00056\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{struct_l_p_p___payload__t_ae2ce70877723af65fcb26453839cbbb3}{cursor}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00057\ \}\ \doxymbox{\hyperlink{struct_l_p_p___payload__t}{LPP\_Payload\_t}};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{comment}{/*\ ==========================================================================}}
+\DoxyCodeLine{00060\ \textcolor{comment}{\ *\ PROTOTYPES\ DES\ FONCTIONS\ (API\ PUBLIQUE)}}
+\DoxyCodeLine{00061\ \textcolor{comment}{\ *\ ==========================================================================\ */}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00068\ \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7e}{LPP\_Result\_t}}\ \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_ab0a2ce9b51da855f59afc377b2e89fda}{LPP\_Init}}(\doxymbox{\hyperlink{struct_l_p_p___payload__t}{LPP\_Payload\_t}}\ *payload);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00077\ \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7e}{LPP\_Result\_t}}\ \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a6c42bfc5a0a176ebf449a4566a95f543}{LPP\_AddTemperature}}(\doxymbox{\hyperlink{struct_l_p_p___payload__t}{LPP\_Payload\_t}}\ *payload,\ uint8\_t\ channel,\ \textcolor{keywordtype}{float}\ celsius);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00086\ \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7e}{LPP\_Result\_t}}\ \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a6be2974801ab57dd38f90abf31a20d3c}{LPP\_AddAnalogInput}}(\doxymbox{\hyperlink{struct_l_p_p___payload__t}{LPP\_Payload\_t}}\ *payload,\ uint8\_t\ channel,\ \textcolor{keywordtype}{float}\ value);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00095\ \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7e}{LPP\_Result\_t}}\ \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a96bbc62a32a704c3ad8ca9ec841521d8}{LPP\_AddHumidity}}(\doxymbox{\hyperlink{struct_l_p_p___payload__t}{LPP\_Payload\_t}}\ *payload,\ uint8\_t\ channel,\ \textcolor{keywordtype}{float}\ rh\_percentage);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00104\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a3e65db4a7169a0447b7fe07662703b13}{LPP\_GetATCommand}}(\doxymbox{\hyperlink{struct_l_p_p___payload__t}{LPP\_Payload\_t}}\ *payload,\ \textcolor{keywordtype}{char}\ *at\_cmd\_buffer,\ \textcolor{keywordtype}{size\_t}\ max\_len);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00113\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_aae7eb5e5898204de0ed8ba27da8873cc}{LPP\_GetPayloadHex}}(\doxymbox{\hyperlink{struct_l_p_p___payload__t}{LPP\_Payload\_t}}\ *payload,\ \textcolor{keywordtype}{char}\ *hex\_buffer,\ \textcolor{keywordtype}{size\_t}\ max\_len);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ INC\_DRIVERLPPCAYENNE\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

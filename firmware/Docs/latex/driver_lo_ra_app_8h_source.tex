@@ -1,0 +1,39 @@
+\doxysection{driver\+Lo\+Ra\+App.\+h}
+\hypertarget{driver_lo_ra_app_8h_source}{}\label{driver_lo_ra_app_8h_source}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverLoRaApp.h@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverLoRaApp.h}}
+\doxymbox{\hyperlink{driver_lo_ra_app_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ driverLoRaApp.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 8\ avr.\ 2026}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ valen}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ INC\_DRIVERLORAAPP\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ INC\_DRIVERLORAAPP\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{driver_lo_ra_8h}{driverLoRa.h}}"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\doxymbox{\hyperlink{struct_lo_ra___command__t_a504a7f40c3261db3e10e1d2776642dd6}{cmd}};}
+\DoxyCodeLine{00019\ \ \ \ \ uint32\_t\ \doxymbox{\hyperlink{struct_lo_ra___command__t_aca14dfa629015ee4cc42bd01d9933944}{timeout\_ms}};}
+\DoxyCodeLine{00020\ \}\ \doxymbox{\hyperlink{struct_lo_ra___command__t}{LoRa\_Command\_t}};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00023\ \ \ \ \ \doxymbox{\hyperlink{struct_lo_ra__t}{LoRa\_t}}\ *\doxymbox{\hyperlink{struct_lo_ra_w_a_n___manager__t_a03dcfb38381e76d5dca589fa8323cdad}{hardware\_driver}};\ \textcolor{comment}{//\ Lien\ vers\ le\ Moteur}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_lo_ra___command__t}{LoRa\_Command\_t}}\ *\doxymbox{\hyperlink{struct_lo_ra_w_a_n___manager__t_afbacf5c1331630743854c7a5b1117de0}{sequence}};\ \ \ \ \ \ \textcolor{comment}{//\ La\ liste\ des\ commandes}}
+\DoxyCodeLine{00025\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{struct_lo_ra_w_a_n___manager__t_adecf4cbf1ed7d4f015ad5b6ef9ca1b61}{total\_steps}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Nombre\ de\ commandes}}
+\DoxyCodeLine{00026\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{struct_lo_ra_w_a_n___manager__t_af1260bcdda25efc4a9e26921a8e79cb3}{current\_step}};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_lo_ra_w_a_n___manager__t_a466fcc592ff391c7cb164d9d94707871}{is\_ready}};}
+\DoxyCodeLine{00028\ \}\ \doxymbox{\hyperlink{struct_lo_ra_w_a_n___manager__t}{LoRaWAN\_Manager\_t}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_lo_ra_app_8h_a42db2c6d3925f1c86ebfdd004cc7da83}{LoRa\_App\_Init}}(\doxymbox{\hyperlink{struct_lo_ra_w_a_n___manager__t}{LoRaWAN\_Manager\_t}}\ *hlorapp,\ \doxymbox{\hyperlink{struct_lo_ra__t}{LoRa\_t}}\ *hlora,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_lo_ra___command__t}{LoRa\_Command\_t}}\ *cmds);}
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_lo_ra_app_8h_a6f48cdb117beed1327cee06821cd0800}{LoRa\_App\_Process}}(\doxymbox{\hyperlink{struct_lo_ra_w_a_n___manager__t}{LoRaWAN\_Manager\_t}}\ *hlorapp);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ INC\_DRIVERLORAAPP\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

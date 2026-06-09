@@ -1,0 +1,107 @@
+\doxysection{C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Src/\+test\+\_\+analog.c File Reference}
+\hypertarget{test__analog_8c}{}\label{test__analog_8c}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/test\_analog.c@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/test\_analog.c}}
+
+
+Implémentation des tests de robustesse analogique.  
+
+
+{\ttfamily \+\#include "{}test\+\_\+analog.\+h"{}}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+Include dependency graph for test\+\_\+analog.\+c:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__analog_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{test__analog_8c_a2ddacbe405fe687f6fb48cdcbebf2f3b}{EXPECT}}(cond,  msg)
+\item 
+\+\#define \doxymbox{\hyperlink{test__analog_8c_a6ffea8cdf1ef4b07935b62dc59d009db}{EXPECT\+\_\+\+EQ}}(actual,  expected,  msg)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{test__analog_8c_a0c311f10c4e675eccb5ba0e2d64557bc}{Test\+Analog\+\_\+\+Run\+All}} (\doxymbox{\hyperlink{struct_analog__t}{Analog\+\_\+t}} \texorpdfstring{$\ast$}{*}hanalog)
+\begin{DoxyCompactList}\small\item\em Lance tous les tests de la couche analogique. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implémentation des tests de robustesse analogique. 
+
+
+
+\label{test__analog_8c_doc-define-members}
+\Hypertarget{test__analog_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{test__analog_8c_a2ddacbe405fe687f6fb48cdcbebf2f3b}\index{test\_analog.c@{test\_analog.c}!EXPECT@{EXPECT}}
+\index{EXPECT@{EXPECT}!test\_analog.c@{test\_analog.c}}
+\doxysubsubsection{\texorpdfstring{EXPECT}{EXPECT}}
+{\footnotesize\ttfamily \label{test__analog_8c_a2ddacbe405fe687f6fb48cdcbebf2f3b} 
+\+\#define EXPECT(\begin{DoxyParamCaption}\item[{}]{cond}{, }\item[{}]{msg}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ if\ (!(cond))\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ [FAIL]\ \%s\ (ligne\ \%d)\(\backslash\)r\(\backslash\)n"{}},\ msg,\ \_\_LINE\_\_);\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ [\ OK\ ]\ \%s\(\backslash\)r\(\backslash\)n"{}},\ msg);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+\Hypertarget{test__analog_8c_a6ffea8cdf1ef4b07935b62dc59d009db}\index{test\_analog.c@{test\_analog.c}!EXPECT\_EQ@{EXPECT\_EQ}}
+\index{EXPECT\_EQ@{EXPECT\_EQ}!test\_analog.c@{test\_analog.c}}
+\doxysubsubsection{\texorpdfstring{EXPECT\_EQ}{EXPECT\_EQ}}
+{\footnotesize\ttfamily \label{test__analog_8c_a6ffea8cdf1ef4b07935b62dc59d009db} 
+\+\#define EXPECT\+\_\+\+EQ(\begin{DoxyParamCaption}\item[{}]{actual}{, }\item[{}]{expected}{, }\item[{}]{msg}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ if\ ((actual)\ !=\ (expected))\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ [FAIL]\ \%s\ -\/\ Recu:\ \%d,\ Attendu:\ \%d\ (ligne\ \%d)\(\backslash\)r\(\backslash\)n"{}},\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ msg,\ (\textcolor{keywordtype}{int})actual,\ (\textcolor{keywordtype}{int})expected,\ \_\_LINE\_\_);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ [\ OK\ ]\ \%s\(\backslash\)r\(\backslash\)n"{}},\ msg);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+
+
+\label{test__analog_8c_doc-func-members}
+\Hypertarget{test__analog_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{test__analog_8c_a0c311f10c4e675eccb5ba0e2d64557bc}\index{test\_analog.c@{test\_analog.c}!TestAnalog\_RunAll@{TestAnalog\_RunAll}}
+\index{TestAnalog\_RunAll@{TestAnalog\_RunAll}!test\_analog.c@{test\_analog.c}}
+\doxysubsubsection{\texorpdfstring{TestAnalog\_RunAll()}{TestAnalog\_RunAll()}}
+{\footnotesize\ttfamily \label{test__analog_8c_a0c311f10c4e675eccb5ba0e2d64557bc} 
+bool Test\+Analog\+\_\+\+Run\+All (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_analog__t}{Analog\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hanalog}{}\end{DoxyParamCaption})}
+
+
+
+Lance tous les tests de la couche analogique. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hanalog} & Pointeur vers le handle analogique de l\textquotesingle{}application. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si succès, false si une erreur critique est détectée. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{test__analog_8c_a0c311f10c4e675eccb5ba0e2d64557bc_icgraph}
+\end{center}
+\end{figure}

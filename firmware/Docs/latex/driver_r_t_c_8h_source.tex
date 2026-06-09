@@ -1,0 +1,33 @@
+\doxysection{driver\+RTC.\+h}
+\hypertarget{driver_r_t_c_8h_source}{}\label{driver_r_t_c_8h_source}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverRTC.h@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverRTC.h}}
+\doxymbox{\hyperlink{driver_r_t_c_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ driverRTC.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 7\ mai\ 2026}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ valen}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ INC\_DRIVERRTC\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ INC\_DRIVERRTC\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{rtc_8h}{rtc.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{/*\ ==========================================}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ CONFIGURATION\ DE\ L'HEURE\ DE\ COMPILATION}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ ==========================================\ */}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ Mettre\ à\ 1\ si\ vous\ compilez\ pendant\ l'heure\ d'été\ (Avril\ à\ Octobre)}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ Mettre\ à\ 0\ si\ vous\ compilez\ pendant\ l'heure\ d'hiver\ (Novembre\ à\ Mars)}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ IS\_SUMMER\_TIME\ 1}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_r_t_c_8h_a494a13f6dc06fc1b330d8ac7f15f1c67}{configRTC}}(RTC\_HandleTypeDef\ *\doxymbox{\hyperlink{rtc_8h_aa0c7fca836406ade332e1e3f1039d8ab}{hrtc}},\ RTC\_TimeTypeDef\ *\doxymbox{\hyperlink{app__main__test_8c_afed4f29eda0f2d0900a0b347e29a8c91}{sTime}},\ RTC\_DateTypeDef\ *\doxymbox{\hyperlink{app__main__test_8c_aa805acf5185e2a95f250a2da91bf84e0}{sDate}});}
+\DoxyCodeLine{00024\ uint32\_t\ \doxymbox{\hyperlink{driver_r_t_c_8h_adaa0993b12bc61940e096e6a8d791dcd}{Get\_UNIX\_Timestamp}}(RTC\_TimeTypeDef\ *\doxymbox{\hyperlink{app__main__test_8c_a0e1f2fa4a2707c513e5b7c21e01a9503}{sTime\_read}},\ RTC\_DateTypeDef\ *\doxymbox{\hyperlink{app__main__test_8c_a764de331aa6fda8bf1e3c6715d56d63a}{sDate\_read}});}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ INC\_DRIVERRTC\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,83 @@
+\doxysection{Lo\+Ra\+\_\+t Struct Reference}
+\hypertarget{struct_lo_ra__t}{}\label{struct_lo_ra__t}\index{LoRa\_t@{LoRa\_t}}
+
+
+{\ttfamily \+\#include $<$driver\+Lo\+Ra.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+UART\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{struct_lo_ra__t_a1ed7dab212fde0a3a4600d33399c67b6}{huart}}
+\item 
+\doxymbox{\hyperlink{driver_lo_ra_8h_a748d6f3893526134d6e8da9ae7dffccf}{Lo\+Ra\+\_\+\+State\+\_\+t}} \doxymbox{\hyperlink{struct_lo_ra__t_ac64ae6822627b36d3c6f29e3a05df1fd}{state}}
+\item 
+uint8\+\_\+t \doxymbox{\hyperlink{struct_lo_ra__t_ac264247c65eed13bdaa98a71ffae3725}{rx\+\_\+buffer}} \+[\doxymbox{\hyperlink{driver_lo_ra_8h_a59295f088dce2dcf4a275baceaf92ff3}{LORA\+\_\+\+RX\+\_\+\+BUFFER\+\_\+\+SIZE}}]\+
+\item 
+uint16\+\_\+t \doxymbox{\hyperlink{struct_lo_ra__t_a9ce595b3296a1dd2cfd6e8bf3f9360d1}{rx\+\_\+length}}
+\item 
+uint32\+\_\+t \doxymbox{\hyperlink{struct_lo_ra__t_aaffa55a39c7af7fbb0e4b95bee856e8f}{cmd\+\_\+start\+\_\+time}}
+\item 
+uint32\+\_\+t \doxymbox{\hyperlink{struct_lo_ra__t_af79d017ef11fe10fb72600f3c4ceb1dd}{current\+\_\+timeout\+\_\+ms}}
+\item 
+volatile bool \doxymbox{\hyperlink{struct_lo_ra__t_a366115ed21b61b5d0ec5cf197b956ca6}{event\+\_\+tx\+\_\+complete}}
+\item 
+volatile bool \doxymbox{\hyperlink{struct_lo_ra__t_a498206a6facd5353570c2edbbf89aca7}{event\+\_\+rx\+\_\+complete}}
+\end{DoxyCompactItemize}
+
+
+\label{struct_lo_ra__t_doc-variable-members}
+\Hypertarget{struct_lo_ra__t_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{struct_lo_ra__t_aaffa55a39c7af7fbb0e4b95bee856e8f}\index{LoRa\_t@{LoRa\_t}!cmd\_start\_time@{cmd\_start\_time}}
+\index{cmd\_start\_time@{cmd\_start\_time}!LoRa\_t@{LoRa\_t}}
+\doxysubsubsection{\texorpdfstring{cmd\_start\_time}{cmd\_start\_time}}
+{\footnotesize\ttfamily \label{struct_lo_ra__t_aaffa55a39c7af7fbb0e4b95bee856e8f} 
+uint32\+\_\+t cmd\+\_\+start\+\_\+time}
+
+\Hypertarget{struct_lo_ra__t_af79d017ef11fe10fb72600f3c4ceb1dd}\index{LoRa\_t@{LoRa\_t}!current\_timeout\_ms@{current\_timeout\_ms}}
+\index{current\_timeout\_ms@{current\_timeout\_ms}!LoRa\_t@{LoRa\_t}}
+\doxysubsubsection{\texorpdfstring{current\_timeout\_ms}{current\_timeout\_ms}}
+{\footnotesize\ttfamily \label{struct_lo_ra__t_af79d017ef11fe10fb72600f3c4ceb1dd} 
+uint32\+\_\+t current\+\_\+timeout\+\_\+ms}
+
+\Hypertarget{struct_lo_ra__t_a498206a6facd5353570c2edbbf89aca7}\index{LoRa\_t@{LoRa\_t}!event\_rx\_complete@{event\_rx\_complete}}
+\index{event\_rx\_complete@{event\_rx\_complete}!LoRa\_t@{LoRa\_t}}
+\doxysubsubsection{\texorpdfstring{event\_rx\_complete}{event\_rx\_complete}}
+{\footnotesize\ttfamily \label{struct_lo_ra__t_a498206a6facd5353570c2edbbf89aca7} 
+volatile bool event\+\_\+rx\+\_\+complete}
+
+\Hypertarget{struct_lo_ra__t_a366115ed21b61b5d0ec5cf197b956ca6}\index{LoRa\_t@{LoRa\_t}!event\_tx\_complete@{event\_tx\_complete}}
+\index{event\_tx\_complete@{event\_tx\_complete}!LoRa\_t@{LoRa\_t}}
+\doxysubsubsection{\texorpdfstring{event\_tx\_complete}{event\_tx\_complete}}
+{\footnotesize\ttfamily \label{struct_lo_ra__t_a366115ed21b61b5d0ec5cf197b956ca6} 
+volatile bool event\+\_\+tx\+\_\+complete}
+
+\Hypertarget{struct_lo_ra__t_a1ed7dab212fde0a3a4600d33399c67b6}\index{LoRa\_t@{LoRa\_t}!huart@{huart}}
+\index{huart@{huart}!LoRa\_t@{LoRa\_t}}
+\doxysubsubsection{\texorpdfstring{huart}{huart}}
+{\footnotesize\ttfamily \label{struct_lo_ra__t_a1ed7dab212fde0a3a4600d33399c67b6} 
+UART\+\_\+\+Handle\+Type\+Def\texorpdfstring{$\ast$}{*} huart}
+
+\Hypertarget{struct_lo_ra__t_ac264247c65eed13bdaa98a71ffae3725}\index{LoRa\_t@{LoRa\_t}!rx\_buffer@{rx\_buffer}}
+\index{rx\_buffer@{rx\_buffer}!LoRa\_t@{LoRa\_t}}
+\doxysubsubsection{\texorpdfstring{rx\_buffer}{rx\_buffer}}
+{\footnotesize\ttfamily \label{struct_lo_ra__t_ac264247c65eed13bdaa98a71ffae3725} 
+uint8\+\_\+t rx\+\_\+buffer\+[\doxymbox{\hyperlink{driver_lo_ra_8h_a59295f088dce2dcf4a275baceaf92ff3}{LORA\+\_\+\+RX\+\_\+\+BUFFER\+\_\+\+SIZE}}]\+}
+
+\Hypertarget{struct_lo_ra__t_a9ce595b3296a1dd2cfd6e8bf3f9360d1}\index{LoRa\_t@{LoRa\_t}!rx\_length@{rx\_length}}
+\index{rx\_length@{rx\_length}!LoRa\_t@{LoRa\_t}}
+\doxysubsubsection{\texorpdfstring{rx\_length}{rx\_length}}
+{\footnotesize\ttfamily \label{struct_lo_ra__t_a9ce595b3296a1dd2cfd6e8bf3f9360d1} 
+uint16\+\_\+t rx\+\_\+length}
+
+\Hypertarget{struct_lo_ra__t_ac64ae6822627b36d3c6f29e3a05df1fd}\index{LoRa\_t@{LoRa\_t}!state@{state}}
+\index{state@{state}!LoRa\_t@{LoRa\_t}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \label{struct_lo_ra__t_ac64ae6822627b36d3c6f29e3a05df1fd} 
+\doxymbox{\hyperlink{driver_lo_ra_8h_a748d6f3893526134d6e8da9ae7dffccf}{Lo\+Ra\+\_\+\+State\+\_\+t}} state}
+
+
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Inc/\+\doxymbox{\hyperlink{driver_lo_ra_8h}{driver\+Lo\+Ra.\+h}}\end{DoxyCompactItemize}

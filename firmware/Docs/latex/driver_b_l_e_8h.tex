@@ -1,0 +1,416 @@
+\doxysection{C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Inc/\+driver\+BLE.h File Reference}
+\hypertarget{driver_b_l_e_8h}{}\label{driver_b_l_e_8h}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverBLE.h@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverBLE.h}}
+{\ttfamily \+\#include $<$stdint.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \+\#include "{}stm32u0xx\+\_\+hal.\+h"{}}\newline
+{\ttfamily \+\#include "{}main.\+h"{}}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+Include dependency graph for driver\+BLE.\+h:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_b_l_e_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_b_l_e_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{driver_b_l_e_8h_a905e5dee878f046206bf5b9fa4c2feb4}{BLE\+\_\+\+DEBUG\+\_\+\+ENABLE}}~1
+\item 
+\+\#define \doxymbox{\hyperlink{driver_b_l_e_8h_a6abb06cd96fff88fc7007b8dc45697ae}{BLE\+\_\+\+PRINT}}(...)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6}{BLE\+\_\+\+State\+\_\+t}} \{ \newline
+\doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6adbd207a6313c19a7e4bfbb92922866ba}{BLE\+\_\+\+STATE\+\_\+\+IDLE}}
+, \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a8fa26fa56e4c869d4658e1e9d544906b}{BLE\+\_\+\+STATE\+\_\+\+START}}
+, \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a833fc67add8cfb11463aa2cb2ebf0c2f}{BLE\+\_\+\+STATE\+\_\+\+CONFIGURING}}
+, \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a9de0e937a530b3cfb7486d08e84c5c07}{BLE\+\_\+\+STATE\+\_\+\+CONFIGURING\+\_\+\+WAIT}}
+, \newline
+\doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a4d8d871f03f3c64cf23d00c70c432cbb}{BLE\+\_\+\+STATE\+\_\+\+WAIT\+\_\+\+CMD}}
+, \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6ab5be5eef71457e751816fca8f7de192d}{BLE\+\_\+\+STATE\+\_\+\+STREAMING}}
+, \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6add09d50a13bcf1b43d727660b68b5399}{BLE\+\_\+\+STATE\+\_\+\+STREAMING\+\_\+\+WAIT}}
+, \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a80659bebfb018d3a85307c14a57ce6bc}{BLE\+\_\+\+STATE\+\_\+\+WAIT\+\_\+\+ACK}}
+, \newline
+\doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a027434e401758bef0534dcf5778e4d29}{BLE\+\_\+\+STATE\+\_\+\+STOP}}
+, \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a70bc9c026782ad74df51abf09aa2891b}{BLE\+\_\+\+STATE\+\_\+\+ERROR}}
+ \}
+\item 
+enum \doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9}{BLE\+\_\+\+Status\+\_\+t}} \{ \newline
+\doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9ae604c8c149199eef5d9d955892fa2ce7}{BLE\+\_\+\+STATUS\+\_\+\+READY}}
+, \doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9a40dc89b3a7d9731e4cbea4c73d8b8ba5}{BLE\+\_\+\+STATUS\+\_\+\+BUSY}}
+, \doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9ae1d6f218486fe99be9061587a0323f5e}{BLE\+\_\+\+STATUS\+\_\+\+ERROR}}
+, \doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9a0d9db2de80c53539b993037b7077394a}{BLE\+\_\+\+STATUS\+\_\+\+CONNECTED}}
+, \newline
+\doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9abc0cf7123d07f4bf3943bf13cc1d2554}{BLE\+\_\+\+STATUS\+\_\+\+STREAMING}}
+, \doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9ad0c0389ddfcc0b8180ac771638f95611}{BLE\+\_\+\+STATUS\+\_\+\+CONFIGURING}}
+ \}
+\item 
+enum \doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436}{BLE\+\_\+\+Result\+\_\+t}} \{ \doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436af7fe6c49d6a223452e68e5a49d82d2e7}{BLE\+\_\+\+OK}}
+, \doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436abd700217effbeed3a10c5ef91f849361}{BLE\+\_\+\+ERR\+\_\+\+PARAM}}
+, \doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436aaa0c52ac5b1905e8035c78aeed3d1db4}{BLE\+\_\+\+ERR\+\_\+\+HW}}
+, \doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436a31fdb76b15acd9f647cceef1c33934c2}{BLE\+\_\+\+BUSY}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{driver_b_l_e_8h_adcc02e9775fb1ca89c4ff9a48fab2f15}{BLE\+\_\+\+Init}} (\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}hble, UART\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}huart)
+\item 
+\doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436}{BLE\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_b_l_e_8h_a3b49725295cf330ed7d6e10e5450e5c3}{BLE\+\_\+\+Configure}} (\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}hble)
+\item 
+\doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436}{BLE\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_b_l_e_8h_a8440dde80c9752cd14be912d3dba5e8a}{BLE\+\_\+\+Start}} (\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}hble)
+\item 
+void \doxymbox{\hyperlink{driver_b_l_e_8h_a29d82dad342f9f8873d0c5e08445b391}{BLE\+\_\+\+Process}} (\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}hble)
+\item 
+void \doxymbox{\hyperlink{driver_b_l_e_8h_a620ed719c4beb69463563378b72b9c3f}{BLE\+\_\+\+Rx\+Callback}} (\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}hble)
+\item 
+\doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436}{BLE\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_b_l_e_8h_a751707830902340a013a0c52f3f922a7}{BLE\+\_\+\+Send\+Chunk}} (\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}hble, const char \texorpdfstring{$\ast$}{*}chunk)
+\item 
+\doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436}{BLE\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_b_l_e_8h_a0607798e4e9620ec9f1977d494dd07bb}{BLE\+\_\+\+End\+Stream}} (\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}hble)
+\item 
+\doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9}{BLE\+\_\+\+Status\+\_\+t}} \doxymbox{\hyperlink{driver_b_l_e_8h_a15bb69158c0890ecad21435e56606cc0}{BLE\+\_\+\+Get\+Status}} (\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}hble)
+\item 
+void \doxymbox{\hyperlink{driver_b_l_e_8h_a437f086232132d04d711525328efbcad}{BLE\+\_\+\+Sleep}} (\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}hble)
+\item 
+void \doxymbox{\hyperlink{driver_b_l_e_8h_ab64aed1aa182dd86b71698728ad3cf14}{BLE\+\_\+\+Wake\+Up}} (\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}hble)
+\item 
+void \doxymbox{\hyperlink{driver_b_l_e_8h_aeb8061ddfd0086a34b0c490bb3a4cbfb}{BLE\+\_\+\+Rx\+Event\+Callback}} (\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}hble, uint16\+\_\+t Size)
+\item 
+void \doxymbox{\hyperlink{driver_b_l_e_8h_a66346fdb01ea454e6a556daf21ce485a}{BLE\+\_\+\+Tx\+Cplt\+Callback}} (\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}hble)
+\end{DoxyCompactItemize}
+
+
+\label{driver_b_l_e_8h_doc-define-members}
+\Hypertarget{driver_b_l_e_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{driver_b_l_e_8h_a905e5dee878f046206bf5b9fa4c2feb4}\index{driverBLE.h@{driverBLE.h}!BLE\_DEBUG\_ENABLE@{BLE\_DEBUG\_ENABLE}}
+\index{BLE\_DEBUG\_ENABLE@{BLE\_DEBUG\_ENABLE}!driverBLE.h@{driverBLE.h}}
+\doxysubsubsection{\texorpdfstring{BLE\_DEBUG\_ENABLE}{BLE\_DEBUG\_ENABLE}}
+{\footnotesize\ttfamily \label{driver_b_l_e_8h_a905e5dee878f046206bf5b9fa4c2feb4} 
+\+\#define BLE\+\_\+\+DEBUG\+\_\+\+ENABLE~1}
+
+\Hypertarget{driver_b_l_e_8h_a6abb06cd96fff88fc7007b8dc45697ae}\index{driverBLE.h@{driverBLE.h}!BLE\_PRINT@{BLE\_PRINT}}
+\index{BLE\_PRINT@{BLE\_PRINT}!driverBLE.h@{driverBLE.h}}
+\doxysubsubsection{\texorpdfstring{BLE\_PRINT}{BLE\_PRINT}}
+{\footnotesize\ttfamily \label{driver_b_l_e_8h_a6abb06cd96fff88fc7007b8dc45697ae} 
+\+\#define BLE\+\_\+\+PRINT(\begin{DoxyParamCaption}\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{printf(\textcolor{stringliteral}{"{}[BLE]\ "{}}\ \_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
+
+
+\label{driver_b_l_e_8h_doc-enum-members}
+\Hypertarget{driver_b_l_e_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436}\index{driverBLE.h@{driverBLE.h}!BLE\_Result\_t@{BLE\_Result\_t}}
+\index{BLE\_Result\_t@{BLE\_Result\_t}!driverBLE.h@{driverBLE.h}}
+\doxysubsubsection{\texorpdfstring{BLE\_Result\_t}{BLE\_Result\_t}}
+{\footnotesize\ttfamily \label{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436} 
+enum \doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436}{BLE\+\_\+\+Result\+\_\+t}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLE\_OK@{BLE\_OK}!driverBLE.h@{driverBLE.h}}
+\index{driverBLE.h@{driverBLE.h}!BLE\_OK@{BLE\_OK}}
+}\Hypertarget{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436af7fe6c49d6a223452e68e5a49d82d2e7}\label{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436af7fe6c49d6a223452e68e5a49d82d2e7} 
+BLE\+\_\+\+OK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLE\_ERR\_PARAM@{BLE\_ERR\_PARAM}!driverBLE.h@{driverBLE.h}}
+\index{driverBLE.h@{driverBLE.h}!BLE\_ERR\_PARAM@{BLE\_ERR\_PARAM}}
+}\Hypertarget{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436abd700217effbeed3a10c5ef91f849361}\label{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436abd700217effbeed3a10c5ef91f849361} 
+BLE\+\_\+\+ERR\+\_\+\+PARAM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLE\_ERR\_HW@{BLE\_ERR\_HW}!driverBLE.h@{driverBLE.h}}
+\index{driverBLE.h@{driverBLE.h}!BLE\_ERR\_HW@{BLE\_ERR\_HW}}
+}\Hypertarget{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436aaa0c52ac5b1905e8035c78aeed3d1db4}\label{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436aaa0c52ac5b1905e8035c78aeed3d1db4} 
+BLE\+\_\+\+ERR\+\_\+\+HW&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLE\_BUSY@{BLE\_BUSY}!driverBLE.h@{driverBLE.h}}
+\index{driverBLE.h@{driverBLE.h}!BLE\_BUSY@{BLE\_BUSY}}
+}\Hypertarget{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436a31fdb76b15acd9f647cceef1c33934c2}\label{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436a31fdb76b15acd9f647cceef1c33934c2} 
+BLE\+\_\+\+BUSY&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6}\index{driverBLE.h@{driverBLE.h}!BLE\_State\_t@{BLE\_State\_t}}
+\index{BLE\_State\_t@{BLE\_State\_t}!driverBLE.h@{driverBLE.h}}
+\doxysubsubsection{\texorpdfstring{BLE\_State\_t}{BLE\_State\_t}}
+{\footnotesize\ttfamily \label{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6} 
+enum \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6}{BLE\+\_\+\+State\+\_\+t}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLE\_STATE\_IDLE@{BLE\_STATE\_IDLE}!driverBLE.h@{driverBLE.h}}
+\index{driverBLE.h@{driverBLE.h}!BLE\_STATE\_IDLE@{BLE\_STATE\_IDLE}}
+}\Hypertarget{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6adbd207a6313c19a7e4bfbb92922866ba}\label{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6adbd207a6313c19a7e4bfbb92922866ba} 
+BLE\+\_\+\+STATE\+\_\+\+IDLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLE\_STATE\_START@{BLE\_STATE\_START}!driverBLE.h@{driverBLE.h}}
+\index{driverBLE.h@{driverBLE.h}!BLE\_STATE\_START@{BLE\_STATE\_START}}
+}\Hypertarget{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a8fa26fa56e4c869d4658e1e9d544906b}\label{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a8fa26fa56e4c869d4658e1e9d544906b} 
+BLE\+\_\+\+STATE\+\_\+\+START&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLE\_STATE\_CONFIGURING@{BLE\_STATE\_CONFIGURING}!driverBLE.h@{driverBLE.h}}
+\index{driverBLE.h@{driverBLE.h}!BLE\_STATE\_CONFIGURING@{BLE\_STATE\_CONFIGURING}}
+}\Hypertarget{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a833fc67add8cfb11463aa2cb2ebf0c2f}\label{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a833fc67add8cfb11463aa2cb2ebf0c2f} 
+BLE\+\_\+\+STATE\+\_\+\+CONFIGURING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLE\_STATE\_CONFIGURING\_WAIT@{BLE\_STATE\_CONFIGURING\_WAIT}!driverBLE.h@{driverBLE.h}}
+\index{driverBLE.h@{driverBLE.h}!BLE\_STATE\_CONFIGURING\_WAIT@{BLE\_STATE\_CONFIGURING\_WAIT}}
+}\Hypertarget{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a9de0e937a530b3cfb7486d08e84c5c07}\label{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a9de0e937a530b3cfb7486d08e84c5c07} 
+BLE\+\_\+\+STATE\+\_\+\+CONFIGURING\+\_\+\+WAIT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLE\_STATE\_WAIT\_CMD@{BLE\_STATE\_WAIT\_CMD}!driverBLE.h@{driverBLE.h}}
+\index{driverBLE.h@{driverBLE.h}!BLE\_STATE\_WAIT\_CMD@{BLE\_STATE\_WAIT\_CMD}}
+}\Hypertarget{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a4d8d871f03f3c64cf23d00c70c432cbb}\label{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a4d8d871f03f3c64cf23d00c70c432cbb} 
+BLE\+\_\+\+STATE\+\_\+\+WAIT\+\_\+\+CMD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLE\_STATE\_STREAMING@{BLE\_STATE\_STREAMING}!driverBLE.h@{driverBLE.h}}
+\index{driverBLE.h@{driverBLE.h}!BLE\_STATE\_STREAMING@{BLE\_STATE\_STREAMING}}
+}\Hypertarget{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6ab5be5eef71457e751816fca8f7de192d}\label{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6ab5be5eef71457e751816fca8f7de192d} 
+BLE\+\_\+\+STATE\+\_\+\+STREAMING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLE\_STATE\_STREAMING\_WAIT@{BLE\_STATE\_STREAMING\_WAIT}!driverBLE.h@{driverBLE.h}}
+\index{driverBLE.h@{driverBLE.h}!BLE\_STATE\_STREAMING\_WAIT@{BLE\_STATE\_STREAMING\_WAIT}}
+}\Hypertarget{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6add09d50a13bcf1b43d727660b68b5399}\label{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6add09d50a13bcf1b43d727660b68b5399} 
+BLE\+\_\+\+STATE\+\_\+\+STREAMING\+\_\+\+WAIT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLE\_STATE\_WAIT\_ACK@{BLE\_STATE\_WAIT\_ACK}!driverBLE.h@{driverBLE.h}}
+\index{driverBLE.h@{driverBLE.h}!BLE\_STATE\_WAIT\_ACK@{BLE\_STATE\_WAIT\_ACK}}
+}\Hypertarget{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a80659bebfb018d3a85307c14a57ce6bc}\label{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a80659bebfb018d3a85307c14a57ce6bc} 
+BLE\+\_\+\+STATE\+\_\+\+WAIT\+\_\+\+ACK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLE\_STATE\_STOP@{BLE\_STATE\_STOP}!driverBLE.h@{driverBLE.h}}
+\index{driverBLE.h@{driverBLE.h}!BLE\_STATE\_STOP@{BLE\_STATE\_STOP}}
+}\Hypertarget{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a027434e401758bef0534dcf5778e4d29}\label{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a027434e401758bef0534dcf5778e4d29} 
+BLE\+\_\+\+STATE\+\_\+\+STOP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLE\_STATE\_ERROR@{BLE\_STATE\_ERROR}!driverBLE.h@{driverBLE.h}}
+\index{driverBLE.h@{driverBLE.h}!BLE\_STATE\_ERROR@{BLE\_STATE\_ERROR}}
+}\Hypertarget{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a70bc9c026782ad74df51abf09aa2891b}\label{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a70bc9c026782ad74df51abf09aa2891b} 
+BLE\+\_\+\+STATE\+\_\+\+ERROR&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9}\index{driverBLE.h@{driverBLE.h}!BLE\_Status\_t@{BLE\_Status\_t}}
+\index{BLE\_Status\_t@{BLE\_Status\_t}!driverBLE.h@{driverBLE.h}}
+\doxysubsubsection{\texorpdfstring{BLE\_Status\_t}{BLE\_Status\_t}}
+{\footnotesize\ttfamily \label{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9} 
+enum \doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9}{BLE\+\_\+\+Status\+\_\+t}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLE\_STATUS\_READY@{BLE\_STATUS\_READY}!driverBLE.h@{driverBLE.h}}
+\index{driverBLE.h@{driverBLE.h}!BLE\_STATUS\_READY@{BLE\_STATUS\_READY}}
+}\Hypertarget{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9ae604c8c149199eef5d9d955892fa2ce7}\label{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9ae604c8c149199eef5d9d955892fa2ce7} 
+BLE\+\_\+\+STATUS\+\_\+\+READY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLE\_STATUS\_BUSY@{BLE\_STATUS\_BUSY}!driverBLE.h@{driverBLE.h}}
+\index{driverBLE.h@{driverBLE.h}!BLE\_STATUS\_BUSY@{BLE\_STATUS\_BUSY}}
+}\Hypertarget{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9a40dc89b3a7d9731e4cbea4c73d8b8ba5}\label{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9a40dc89b3a7d9731e4cbea4c73d8b8ba5} 
+BLE\+\_\+\+STATUS\+\_\+\+BUSY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLE\_STATUS\_ERROR@{BLE\_STATUS\_ERROR}!driverBLE.h@{driverBLE.h}}
+\index{driverBLE.h@{driverBLE.h}!BLE\_STATUS\_ERROR@{BLE\_STATUS\_ERROR}}
+}\Hypertarget{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9ae1d6f218486fe99be9061587a0323f5e}\label{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9ae1d6f218486fe99be9061587a0323f5e} 
+BLE\+\_\+\+STATUS\+\_\+\+ERROR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLE\_STATUS\_CONNECTED@{BLE\_STATUS\_CONNECTED}!driverBLE.h@{driverBLE.h}}
+\index{driverBLE.h@{driverBLE.h}!BLE\_STATUS\_CONNECTED@{BLE\_STATUS\_CONNECTED}}
+}\Hypertarget{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9a0d9db2de80c53539b993037b7077394a}\label{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9a0d9db2de80c53539b993037b7077394a} 
+BLE\+\_\+\+STATUS\+\_\+\+CONNECTED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLE\_STATUS\_STREAMING@{BLE\_STATUS\_STREAMING}!driverBLE.h@{driverBLE.h}}
+\index{driverBLE.h@{driverBLE.h}!BLE\_STATUS\_STREAMING@{BLE\_STATUS\_STREAMING}}
+}\Hypertarget{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9abc0cf7123d07f4bf3943bf13cc1d2554}\label{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9abc0cf7123d07f4bf3943bf13cc1d2554} 
+BLE\+\_\+\+STATUS\+\_\+\+STREAMING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLE\_STATUS\_CONFIGURING@{BLE\_STATUS\_CONFIGURING}!driverBLE.h@{driverBLE.h}}
+\index{driverBLE.h@{driverBLE.h}!BLE\_STATUS\_CONFIGURING@{BLE\_STATUS\_CONFIGURING}}
+}\Hypertarget{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9ad0c0389ddfcc0b8180ac771638f95611}\label{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9ad0c0389ddfcc0b8180ac771638f95611} 
+BLE\+\_\+\+STATUS\+\_\+\+CONFIGURING&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{driver_b_l_e_8h_doc-func-members}
+\Hypertarget{driver_b_l_e_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{driver_b_l_e_8h_a3b49725295cf330ed7d6e10e5450e5c3}\index{driverBLE.h@{driverBLE.h}!BLE\_Configure@{BLE\_Configure}}
+\index{BLE\_Configure@{BLE\_Configure}!driverBLE.h@{driverBLE.h}}
+\doxysubsubsection{\texorpdfstring{BLE\_Configure()}{BLE\_Configure()}}
+{\footnotesize\ttfamily \label{driver_b_l_e_8h_a3b49725295cf330ed7d6e10e5450e5c3} 
+\doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436}{BLE\+\_\+\+Result\+\_\+t}} BLE\+\_\+\+Configure (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hble}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{driver_b_l_e_8h_a3b49725295cf330ed7d6e10e5450e5c3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_b_l_e_8h_a0607798e4e9620ec9f1977d494dd07bb}\index{driverBLE.h@{driverBLE.h}!BLE\_EndStream@{BLE\_EndStream}}
+\index{BLE\_EndStream@{BLE\_EndStream}!driverBLE.h@{driverBLE.h}}
+\doxysubsubsection{\texorpdfstring{BLE\_EndStream()}{BLE\_EndStream()}}
+{\footnotesize\ttfamily \label{driver_b_l_e_8h_a0607798e4e9620ec9f1977d494dd07bb} 
+\doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436}{BLE\+\_\+\+Result\+\_\+t}} BLE\+\_\+\+End\+Stream (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hble}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{driver_b_l_e_8h_a0607798e4e9620ec9f1977d494dd07bb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_b_l_e_8h_a15bb69158c0890ecad21435e56606cc0}\index{driverBLE.h@{driverBLE.h}!BLE\_GetStatus@{BLE\_GetStatus}}
+\index{BLE\_GetStatus@{BLE\_GetStatus}!driverBLE.h@{driverBLE.h}}
+\doxysubsubsection{\texorpdfstring{BLE\_GetStatus()}{BLE\_GetStatus()}}
+{\footnotesize\ttfamily \label{driver_b_l_e_8h_a15bb69158c0890ecad21435e56606cc0} 
+\doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9}{BLE\+\_\+\+Status\+\_\+t}} BLE\+\_\+\+Get\+Status (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hble}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{driver_b_l_e_8h_a15bb69158c0890ecad21435e56606cc0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_b_l_e_8h_adcc02e9775fb1ca89c4ff9a48fab2f15}\index{driverBLE.h@{driverBLE.h}!BLE\_Init@{BLE\_Init}}
+\index{BLE\_Init@{BLE\_Init}!driverBLE.h@{driverBLE.h}}
+\doxysubsubsection{\texorpdfstring{BLE\_Init()}{BLE\_Init()}}
+{\footnotesize\ttfamily \label{driver_b_l_e_8h_adcc02e9775fb1ca89c4ff9a48fab2f15} 
+void BLE\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hble}{, }\item[{UART\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{huart}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=283pt]{driver_b_l_e_8h_adcc02e9775fb1ca89c4ff9a48fab2f15_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_b_l_e_8h_a29d82dad342f9f8873d0c5e08445b391}\index{driverBLE.h@{driverBLE.h}!BLE\_Process@{BLE\_Process}}
+\index{BLE\_Process@{BLE\_Process}!driverBLE.h@{driverBLE.h}}
+\doxysubsubsection{\texorpdfstring{BLE\_Process()}{BLE\_Process()}}
+{\footnotesize\ttfamily \label{driver_b_l_e_8h_a29d82dad342f9f8873d0c5e08445b391} 
+void BLE\+\_\+\+Process (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hble}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{driver_b_l_e_8h_a29d82dad342f9f8873d0c5e08445b391_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_b_l_e_8h_a620ed719c4beb69463563378b72b9c3f}\index{driverBLE.h@{driverBLE.h}!BLE\_RxCallback@{BLE\_RxCallback}}
+\index{BLE\_RxCallback@{BLE\_RxCallback}!driverBLE.h@{driverBLE.h}}
+\doxysubsubsection{\texorpdfstring{BLE\_RxCallback()}{BLE\_RxCallback()}}
+{\footnotesize\ttfamily \label{driver_b_l_e_8h_a620ed719c4beb69463563378b72b9c3f} 
+void BLE\+\_\+\+Rx\+Callback (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hble}{}\end{DoxyParamCaption})}
+
+\Hypertarget{driver_b_l_e_8h_aeb8061ddfd0086a34b0c490bb3a4cbfb}\index{driverBLE.h@{driverBLE.h}!BLE\_RxEventCallback@{BLE\_RxEventCallback}}
+\index{BLE\_RxEventCallback@{BLE\_RxEventCallback}!driverBLE.h@{driverBLE.h}}
+\doxysubsubsection{\texorpdfstring{BLE\_RxEventCallback()}{BLE\_RxEventCallback()}}
+{\footnotesize\ttfamily \label{driver_b_l_e_8h_aeb8061ddfd0086a34b0c490bb3a4cbfb} 
+void BLE\+\_\+\+Rx\+Event\+Callback (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hble}{, }\item[{uint16\+\_\+t}]{Size}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_b_l_e_8h_aeb8061ddfd0086a34b0c490bb3a4cbfb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_b_l_e_8h_a751707830902340a013a0c52f3f922a7}\index{driverBLE.h@{driverBLE.h}!BLE\_SendChunk@{BLE\_SendChunk}}
+\index{BLE\_SendChunk@{BLE\_SendChunk}!driverBLE.h@{driverBLE.h}}
+\doxysubsubsection{\texorpdfstring{BLE\_SendChunk()}{BLE\_SendChunk()}}
+{\footnotesize\ttfamily \label{driver_b_l_e_8h_a751707830902340a013a0c52f3f922a7} 
+\doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436}{BLE\+\_\+\+Result\+\_\+t}} BLE\+\_\+\+Send\+Chunk (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hble}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{chunk}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{driver_b_l_e_8h_a751707830902340a013a0c52f3f922a7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_b_l_e_8h_a437f086232132d04d711525328efbcad}\index{driverBLE.h@{driverBLE.h}!BLE\_Sleep@{BLE\_Sleep}}
+\index{BLE\_Sleep@{BLE\_Sleep}!driverBLE.h@{driverBLE.h}}
+\doxysubsubsection{\texorpdfstring{BLE\_Sleep()}{BLE\_Sleep()}}
+{\footnotesize\ttfamily \label{driver_b_l_e_8h_a437f086232132d04d711525328efbcad} 
+void BLE\+\_\+\+Sleep (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hble}{}\end{DoxyParamCaption})}
+
+\Hypertarget{driver_b_l_e_8h_a8440dde80c9752cd14be912d3dba5e8a}\index{driverBLE.h@{driverBLE.h}!BLE\_Start@{BLE\_Start}}
+\index{BLE\_Start@{BLE\_Start}!driverBLE.h@{driverBLE.h}}
+\doxysubsubsection{\texorpdfstring{BLE\_Start()}{BLE\_Start()}}
+{\footnotesize\ttfamily \label{driver_b_l_e_8h_a8440dde80c9752cd14be912d3dba5e8a} 
+\doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436}{BLE\+\_\+\+Result\+\_\+t}} BLE\+\_\+\+Start (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hble}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{driver_b_l_e_8h_a8440dde80c9752cd14be912d3dba5e8a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_b_l_e_8h_a66346fdb01ea454e6a556daf21ce485a}\index{driverBLE.h@{driverBLE.h}!BLE\_TxCpltCallback@{BLE\_TxCpltCallback}}
+\index{BLE\_TxCpltCallback@{BLE\_TxCpltCallback}!driverBLE.h@{driverBLE.h}}
+\doxysubsubsection{\texorpdfstring{BLE\_TxCpltCallback()}{BLE\_TxCpltCallback()}}
+{\footnotesize\ttfamily \label{driver_b_l_e_8h_a66346fdb01ea454e6a556daf21ce485a} 
+void BLE\+\_\+\+Tx\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hble}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_b_l_e_8h_a66346fdb01ea454e6a556daf21ce485a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_b_l_e_8h_ab64aed1aa182dd86b71698728ad3cf14}\index{driverBLE.h@{driverBLE.h}!BLE\_WakeUp@{BLE\_WakeUp}}
+\index{BLE\_WakeUp@{BLE\_WakeUp}!driverBLE.h@{driverBLE.h}}
+\doxysubsubsection{\texorpdfstring{BLE\_WakeUp()}{BLE\_WakeUp()}}
+{\footnotesize\ttfamily \label{driver_b_l_e_8h_ab64aed1aa182dd86b71698728ad3cf14} 
+void BLE\+\_\+\+Wake\+Up (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hble}{}\end{DoxyParamCaption})}
+

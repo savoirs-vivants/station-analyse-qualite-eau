@@ -1,0 +1,339 @@
+\doxysection{C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Src/\+driver\+Lo\+Ra\+WAN.c File Reference}
+\hypertarget{driver_lo_ra_w_a_n_8c}{}\label{driver_lo_ra_w_a_n_8c}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/driverLoRaWAN.c@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/driverLoRaWAN.c}}
+{\ttfamily \+\#include "{}driver\+Lo\+Ra\+WAN.\+h"{}}\newline
+{\ttfamily \+\#include $<$string.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+Include dependency graph for driver\+Lo\+Ra\+WAN.\+c:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_lo_ra_w_a_n_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_lo_ra___a_t___cmd__t}{Lo\+Ra\+\_\+\+AT\+\_\+\+Cmd\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8c_a98fa7cec908c1fce506c113867b3c357}{CONFIG\+\_\+\+STEPS}}~(sizeof(config\+\_\+sequence) /\+ sizeof(config\+\_\+sequence\+[0]\+))
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5}{Lo\+Ra\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8c_a2e50bcbf6c8e4b386de091e3d90a2ce4}{Lo\+Ra\+WAN\+\_\+\+Init}} (\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{Lo\+Ra\+WAN\+\_\+t}} \texorpdfstring{$\ast$}{*}lora, UART\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}huart)
+\begin{DoxyCompactList}\small\item\em Initialise le driver en associant l\textquotesingle{}UART. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5}{Lo\+Ra\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8c_a7c8be45c272b8dc443f20f32d2bccb41}{Lo\+Ra\+WAN\+\_\+\+Configure}} (\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{Lo\+Ra\+WAN\+\_\+t}} \texorpdfstring{$\ast$}{*}lora)
+\begin{DoxyCompactList}\small\item\em Lance la séquence complète de configuration AT (Mode, Class, Dev\+EUI, App\+Key...). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5}{Lo\+Ra\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8c_a4871b8fc734feffe2d901152628d5e29}{Lo\+Ra\+WAN\+\_\+\+Join}} (\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{Lo\+Ra\+WAN\+\_\+t}} \texorpdfstring{$\ast$}{*}lora)
+\begin{DoxyCompactList}\small\item\em Demande au module de rejoindre le réseau (Join OTAA). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5}{Lo\+Ra\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8c_a359edb6c6a4c26c55105728e6ef1a830}{Lo\+Ra\+WAN\+\_\+\+Send\+Hex}} (\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{Lo\+Ra\+WAN\+\_\+t}} \texorpdfstring{$\ast$}{*}lora, const char \texorpdfstring{$\ast$}{*}hex\+\_\+payload)
+\begin{DoxyCompactList}\small\item\em Envoie une charge utile (Payload) sur le réseau Lo\+Ra\+WAN. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5}{Lo\+Ra\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8c_abed320808ce34857afa72de383e71026}{Lo\+Ra\+WAN\+\_\+\+Sleep}} (\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{Lo\+Ra\+WAN\+\_\+t}} \texorpdfstring{$\ast$}{*}lora)
+\begin{DoxyCompactList}\small\item\em Place le module Lo\+Ra\+WAN en mode basse consommation (AT+\+LOWPOWER). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8c_abe31eec2974d2b82a676d6bca867f926}{Lo\+Ra\+WAN\+\_\+\+Reset\+Error}} (\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{Lo\+Ra\+WAN\+\_\+t}} \texorpdfstring{$\ast$}{*}lora)
+\begin{DoxyCompactList}\small\item\em Acquitte une erreur fatale et replace le driver en état READY. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5}{Lo\+Ra\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8c_aa61ea0f38998fb17b9751c14ffdd0396}{Lo\+Ra\+WAN\+\_\+\+Wake\+Up}} (\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{Lo\+Ra\+WAN\+\_\+t}} \texorpdfstring{$\ast$}{*}lora)
+\begin{DoxyCompactList}\small\item\em Réveille matériellement le module Lo\+Ra\+WAN via une impulsion UART. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8c_ad95f8c0f5b95230fbd469d746f0ea414}{Lo\+Ra\+WAN\+\_\+\+Process}} (\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{Lo\+Ra\+WAN\+\_\+t}} \texorpdfstring{$\ast$}{*}lora)
+\begin{DoxyCompactList}\small\item\em Machine d\textquotesingle{}état (FSM) traitant les requêtes et les réponses UART de façon asynchrone. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_acfad30042d19683eb79faab6800dde82}{Lo\+Ra\+\_\+\+Status\+\_\+t}} \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8c_a5439b824a5a05b98885afd3027ce5219}{Lo\+Ra\+WAN\+\_\+\+Get\+Status}} (\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{Lo\+Ra\+WAN\+\_\+t}} \texorpdfstring{$\ast$}{*}lora)
+\begin{DoxyCompactList}\small\item\em Récupère le statut opérationnel public du driver. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{driver_lo_ra_w_a_n_8c_a488d84e151fb64da7f5b5572d439310a}{Lo\+Ra\+WAN\+\_\+\+Rx\+Event\+Callback}} (\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{Lo\+Ra\+WAN\+\_\+t}} \texorpdfstring{$\ast$}{*}lora, uint16\+\_\+t Size)
+\begin{DoxyCompactList}\small\item\em Callback à appeler depuis l\textquotesingle{}interruption HAL\+\_\+\+UARTEx\+\_\+\+Rx\+Event\+Callback. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{driver_lo_ra_w_a_n_8c_doc-define-members}
+\Hypertarget{driver_lo_ra_w_a_n_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{driver_lo_ra_w_a_n_8c_a98fa7cec908c1fce506c113867b3c357}\index{driverLoRaWAN.c@{driverLoRaWAN.c}!CONFIG\_STEPS@{CONFIG\_STEPS}}
+\index{CONFIG\_STEPS@{CONFIG\_STEPS}!driverLoRaWAN.c@{driverLoRaWAN.c}}
+\doxysubsubsection{\texorpdfstring{CONFIG\_STEPS}{CONFIG\_STEPS}}
+{\footnotesize\ttfamily \label{driver_lo_ra_w_a_n_8c_a98fa7cec908c1fce506c113867b3c357} 
+\+\#define CONFIG\+\_\+\+STEPS~(sizeof(config\+\_\+sequence) /\+ sizeof(config\+\_\+sequence\+[0]\+))}
+
+
+
+\label{driver_lo_ra_w_a_n_8c_doc-func-members}
+\Hypertarget{driver_lo_ra_w_a_n_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{driver_lo_ra_w_a_n_8c_a7c8be45c272b8dc443f20f32d2bccb41}\index{driverLoRaWAN.c@{driverLoRaWAN.c}!LoRaWAN\_Configure@{LoRaWAN\_Configure}}
+\index{LoRaWAN\_Configure@{LoRaWAN\_Configure}!driverLoRaWAN.c@{driverLoRaWAN.c}}
+\doxysubsubsection{\texorpdfstring{LoRaWAN\_Configure()}{LoRaWAN\_Configure()}}
+{\footnotesize\ttfamily \label{driver_lo_ra_w_a_n_8c_a7c8be45c272b8dc443f20f32d2bccb41} 
+\doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5}{Lo\+Ra\+\_\+\+Result\+\_\+t}} Lo\+Ra\+WAN\+\_\+\+Configure (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{Lo\+Ra\+WAN\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{lora}{}\end{DoxyParamCaption})}
+
+
+
+Lance la séquence complète de configuration AT (Mode, Class, Dev\+EUI, App\+Key...). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lora} & Pointeur vers l\textquotesingle{}instance du driver. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em LORA\+\_\+\+OK} & si accepté, LORA\+\_\+\+ERR\+\_\+\+BUSY si le module est occupé. \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{driver_lo_ra_w_a_n_8c_a7c8be45c272b8dc443f20f32d2bccb41_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_lo_ra_w_a_n_8c_a5439b824a5a05b98885afd3027ce5219}\index{driverLoRaWAN.c@{driverLoRaWAN.c}!LoRaWAN\_GetStatus@{LoRaWAN\_GetStatus}}
+\index{LoRaWAN\_GetStatus@{LoRaWAN\_GetStatus}!driverLoRaWAN.c@{driverLoRaWAN.c}}
+\doxysubsubsection{\texorpdfstring{LoRaWAN\_GetStatus()}{LoRaWAN\_GetStatus()}}
+{\footnotesize\ttfamily \label{driver_lo_ra_w_a_n_8c_a5439b824a5a05b98885afd3027ce5219} 
+\doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_acfad30042d19683eb79faab6800dde82}{Lo\+Ra\+\_\+\+Status\+\_\+t}} Lo\+Ra\+WAN\+\_\+\+Get\+Status (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{Lo\+Ra\+WAN\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{lora}{}\end{DoxyParamCaption})}
+
+
+
+Récupère le statut opérationnel public du driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lora} & Pointeur vers l\textquotesingle{}instance du driver. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em LORA\+\_\+\+STATUS\+\_\+\+READY,LORA\+\_\+\+STATUS\+\_\+\+BUSY,LORA\+\_\+\+STATUS\+\_\+\+SLEEP} & ou LORA\+\_\+\+STATUS\+\_\+\+ERROR. \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{driver_lo_ra_w_a_n_8c_a5439b824a5a05b98885afd3027ce5219_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_lo_ra_w_a_n_8c_a2e50bcbf6c8e4b386de091e3d90a2ce4}\index{driverLoRaWAN.c@{driverLoRaWAN.c}!LoRaWAN\_Init@{LoRaWAN\_Init}}
+\index{LoRaWAN\_Init@{LoRaWAN\_Init}!driverLoRaWAN.c@{driverLoRaWAN.c}}
+\doxysubsubsection{\texorpdfstring{LoRaWAN\_Init()}{LoRaWAN\_Init()}}
+{\footnotesize\ttfamily \label{driver_lo_ra_w_a_n_8c_a2e50bcbf6c8e4b386de091e3d90a2ce4} 
+\doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5}{Lo\+Ra\+\_\+\+Result\+\_\+t}} Lo\+Ra\+WAN\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{Lo\+Ra\+WAN\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{lora}{, }\item[{UART\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{huart}{}\end{DoxyParamCaption})}
+
+
+
+Initialise le driver en associant l\textquotesingle{}UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lora} & Pointeur vers l\textquotesingle{}instance du driver. \\
+\hline
+{\em huart} & Pointeur vers le handle UART HAL. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em LORA\+\_\+\+OK} & en cas de succès, LORA\+\_\+\+ERR\+\_\+\+PARAM si pointeur invalide. \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{driver_lo_ra_w_a_n_8c_a2e50bcbf6c8e4b386de091e3d90a2ce4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_lo_ra_w_a_n_8c_a4871b8fc734feffe2d901152628d5e29}\index{driverLoRaWAN.c@{driverLoRaWAN.c}!LoRaWAN\_Join@{LoRaWAN\_Join}}
+\index{LoRaWAN\_Join@{LoRaWAN\_Join}!driverLoRaWAN.c@{driverLoRaWAN.c}}
+\doxysubsubsection{\texorpdfstring{LoRaWAN\_Join()}{LoRaWAN\_Join()}}
+{\footnotesize\ttfamily \label{driver_lo_ra_w_a_n_8c_a4871b8fc734feffe2d901152628d5e29} 
+\doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5}{Lo\+Ra\+\_\+\+Result\+\_\+t}} Lo\+Ra\+WAN\+\_\+\+Join (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{Lo\+Ra\+WAN\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{lora}{}\end{DoxyParamCaption})}
+
+
+
+Demande au module de rejoindre le réseau (Join OTAA). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lora} & Pointeur vers l\textquotesingle{}instance du driver. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em LORA\+\_\+\+OK} & si accepté, LORA\+\_\+\+ERR\+\_\+\+BUSY si le module est occupé. \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{driver_lo_ra_w_a_n_8c_a4871b8fc734feffe2d901152628d5e29_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_lo_ra_w_a_n_8c_ad95f8c0f5b95230fbd469d746f0ea414}\index{driverLoRaWAN.c@{driverLoRaWAN.c}!LoRaWAN\_Process@{LoRaWAN\_Process}}
+\index{LoRaWAN\_Process@{LoRaWAN\_Process}!driverLoRaWAN.c@{driverLoRaWAN.c}}
+\doxysubsubsection{\texorpdfstring{LoRaWAN\_Process()}{LoRaWAN\_Process()}}
+{\footnotesize\ttfamily \label{driver_lo_ra_w_a_n_8c_ad95f8c0f5b95230fbd469d746f0ea414} 
+void Lo\+Ra\+WAN\+\_\+\+Process (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{Lo\+Ra\+WAN\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{lora}{}\end{DoxyParamCaption})}
+
+
+
+Machine d\textquotesingle{}état (FSM) traitant les requêtes et les réponses UART de façon asynchrone. 
+
+\begin{DoxyNote}{Note}
+Doit être appelée régulièrement dans la boucle principale (main /\+ while(1)). 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em lora} & Pointeur vers l\textquotesingle{}instance du driver. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{driver_lo_ra_w_a_n_8c_ad95f8c0f5b95230fbd469d746f0ea414_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_lo_ra_w_a_n_8c_abe31eec2974d2b82a676d6bca867f926}\index{driverLoRaWAN.c@{driverLoRaWAN.c}!LoRaWAN\_ResetError@{LoRaWAN\_ResetError}}
+\index{LoRaWAN\_ResetError@{LoRaWAN\_ResetError}!driverLoRaWAN.c@{driverLoRaWAN.c}}
+\doxysubsubsection{\texorpdfstring{LoRaWAN\_ResetError()}{LoRaWAN\_ResetError()}}
+{\footnotesize\ttfamily \label{driver_lo_ra_w_a_n_8c_abe31eec2974d2b82a676d6bca867f926} 
+void Lo\+Ra\+WAN\+\_\+\+Reset\+Error (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{Lo\+Ra\+WAN\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{lora}{}\end{DoxyParamCaption})}
+
+
+
+Acquitte une erreur fatale et replace le driver en état READY. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lora} & Pointeur vers l\textquotesingle{}instance du driver. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{driver_lo_ra_w_a_n_8c_abe31eec2974d2b82a676d6bca867f926_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_lo_ra_w_a_n_8c_a488d84e151fb64da7f5b5572d439310a}\index{driverLoRaWAN.c@{driverLoRaWAN.c}!LoRaWAN\_RxEventCallback@{LoRaWAN\_RxEventCallback}}
+\index{LoRaWAN\_RxEventCallback@{LoRaWAN\_RxEventCallback}!driverLoRaWAN.c@{driverLoRaWAN.c}}
+\doxysubsubsection{\texorpdfstring{LoRaWAN\_RxEventCallback()}{LoRaWAN\_RxEventCallback()}}
+{\footnotesize\ttfamily \label{driver_lo_ra_w_a_n_8c_a488d84e151fb64da7f5b5572d439310a} 
+void Lo\+Ra\+WAN\+\_\+\+Rx\+Event\+Callback (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{Lo\+Ra\+WAN\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{lora}{, }\item[{uint16\+\_\+t}]{Size}{}\end{DoxyParamCaption})}
+
+
+
+Callback à appeler depuis l\textquotesingle{}interruption HAL\+\_\+\+UARTEx\+\_\+\+Rx\+Event\+Callback. 
+
+\begin{DoxyNote}{Note}
+Avertit la FSM qu\textquotesingle{}une réponse AT a été reçue. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em lora} & Pointeur vers l\textquotesingle{}instance du driver. \\
+\hline
+{\em Size} & Taille des données reçues. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_lo_ra_w_a_n_8c_a488d84e151fb64da7f5b5572d439310a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_lo_ra_w_a_n_8c_a359edb6c6a4c26c55105728e6ef1a830}\index{driverLoRaWAN.c@{driverLoRaWAN.c}!LoRaWAN\_SendHex@{LoRaWAN\_SendHex}}
+\index{LoRaWAN\_SendHex@{LoRaWAN\_SendHex}!driverLoRaWAN.c@{driverLoRaWAN.c}}
+\doxysubsubsection{\texorpdfstring{LoRaWAN\_SendHex()}{LoRaWAN\_SendHex()}}
+{\footnotesize\ttfamily \label{driver_lo_ra_w_a_n_8c_a359edb6c6a4c26c55105728e6ef1a830} 
+\doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5}{Lo\+Ra\+\_\+\+Result\+\_\+t}} Lo\+Ra\+WAN\+\_\+\+Send\+Hex (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{Lo\+Ra\+WAN\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{lora}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{hex\+\_\+payload}{}\end{DoxyParamCaption})}
+
+
+
+Envoie une charge utile (Payload) sur le réseau Lo\+Ra\+WAN. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lora} & Pointeur vers l\textquotesingle{}instance du driver. \\
+\hline
+{\em hex\+\_\+payload} & Chaîne de caractères hexadécimale (ex:\+ "{}016700\+FF"{}). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em LORA\+\_\+\+OK,LORA\+\_\+\+ERR\+\_\+\+BUSY,ou} & LORA\+\_\+\+ERR\+\_\+\+NOT\+\_\+\+JOINED. \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{driver_lo_ra_w_a_n_8c_a359edb6c6a4c26c55105728e6ef1a830_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_lo_ra_w_a_n_8c_abed320808ce34857afa72de383e71026}\index{driverLoRaWAN.c@{driverLoRaWAN.c}!LoRaWAN\_Sleep@{LoRaWAN\_Sleep}}
+\index{LoRaWAN\_Sleep@{LoRaWAN\_Sleep}!driverLoRaWAN.c@{driverLoRaWAN.c}}
+\doxysubsubsection{\texorpdfstring{LoRaWAN\_Sleep()}{LoRaWAN\_Sleep()}}
+{\footnotesize\ttfamily \label{driver_lo_ra_w_a_n_8c_abed320808ce34857afa72de383e71026} 
+\doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5}{Lo\+Ra\+\_\+\+Result\+\_\+t}} Lo\+Ra\+WAN\+\_\+\+Sleep (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{Lo\+Ra\+WAN\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{lora}{}\end{DoxyParamCaption})}
+
+
+
+Place le module Lo\+Ra\+WAN en mode basse consommation (AT+\+LOWPOWER). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lora} & Pointeur vers l\textquotesingle{}instance du driver. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em LORA\+\_\+\+OK} & si accepté, LORA\+\_\+\+ERR\+\_\+\+BUSY si le module est occupé. \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{driver_lo_ra_w_a_n_8c_abed320808ce34857afa72de383e71026_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_lo_ra_w_a_n_8c_aa61ea0f38998fb17b9751c14ffdd0396}\index{driverLoRaWAN.c@{driverLoRaWAN.c}!LoRaWAN\_WakeUp@{LoRaWAN\_WakeUp}}
+\index{LoRaWAN\_WakeUp@{LoRaWAN\_WakeUp}!driverLoRaWAN.c@{driverLoRaWAN.c}}
+\doxysubsubsection{\texorpdfstring{LoRaWAN\_WakeUp()}{LoRaWAN\_WakeUp()}}
+{\footnotesize\ttfamily \label{driver_lo_ra_w_a_n_8c_aa61ea0f38998fb17b9751c14ffdd0396} 
+\doxymbox{\hyperlink{driver_lo_ra_w_a_n_8h_a3aa48a4c490794da3c650712bdf2c8d5}{Lo\+Ra\+\_\+\+Result\+\_\+t}} Lo\+Ra\+WAN\+\_\+\+Wake\+Up (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_lo_ra_w_a_n__t}{Lo\+Ra\+WAN\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{lora}{}\end{DoxyParamCaption})}
+
+
+
+Réveille matériellement le module Lo\+Ra\+WAN via une impulsion UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lora} & Pointeur vers l\textquotesingle{}instance du driver. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em LORA\+\_\+\+OK} & si accepté, LORA\+\_\+\+ERR\+\_\+\+BUSY si le module est occupé. \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{driver_lo_ra_w_a_n_8c_aa61ea0f38998fb17b9751c14ffdd0396_icgraph}
+\end{center}
+\end{figure}

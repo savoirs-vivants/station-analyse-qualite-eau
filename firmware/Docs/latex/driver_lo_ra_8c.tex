@@ -1,0 +1,85 @@
+\doxysection{C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Src/\+driver\+Lo\+Ra.c File Reference}
+\hypertarget{driver_lo_ra_8c}{}\label{driver_lo_ra_8c}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/driverLoRa.c@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/driverLoRa.c}}
+{\ttfamily \+\#include "{}driver\+Lo\+Ra.\+h"{}}\newline
+{\ttfamily \+\#include $<$string.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+Include dependency graph for driver\+Lo\+Ra.\+c:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{driver_lo_ra_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{driver_lo_ra_8c_acc6e112f969f4de0fc933ec56e5d3e97}{Lo\+Ra\+\_\+\+Init}} (\doxymbox{\hyperlink{struct_lo_ra__t}{Lo\+Ra\+\_\+t}} \texorpdfstring{$\ast$}{*}hlora, UART\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}huart)
+\item 
+void \doxymbox{\hyperlink{driver_lo_ra_8c_a2b7bd71bb59fd9e2b701fb4e79c172c1}{Lo\+Ra\+\_\+\+Reset\+State}} (\doxymbox{\hyperlink{struct_lo_ra__t}{Lo\+Ra\+\_\+t}} \texorpdfstring{$\ast$}{*}hlora)
+\item 
+bool \doxymbox{\hyperlink{driver_lo_ra_8c_a86814495750c7a5943708bc8f1a4fcb1}{Lo\+Ra\+\_\+\+Send\+Cmd\+Async}} (\doxymbox{\hyperlink{struct_lo_ra__t}{Lo\+Ra\+\_\+t}} \texorpdfstring{$\ast$}{*}hlora, const char \texorpdfstring{$\ast$}{*}cmd, uint32\+\_\+t timeout\+\_\+ms)
+\item 
+void \doxymbox{\hyperlink{driver_lo_ra_8c_a76f62b7224342951906abb96be57b714}{Lo\+Ra\+\_\+\+Process}} (\doxymbox{\hyperlink{struct_lo_ra__t}{Lo\+Ra\+\_\+t}} \texorpdfstring{$\ast$}{*}hlora)
+\item 
+void \doxymbox{\hyperlink{driver_lo_ra_8c_a025a514dde32fa4674e7ebf080cdb746}{Lo\+Ra\+\_\+\+Tx\+Callback}} (\doxymbox{\hyperlink{struct_lo_ra__t}{Lo\+Ra\+\_\+t}} \texorpdfstring{$\ast$}{*}hlora)
+\item 
+void \doxymbox{\hyperlink{driver_lo_ra_8c_a5e4dd9b31123ad44ede128667af9bbc8}{Lo\+Ra\+\_\+\+Rx\+Event\+Callback}} (\doxymbox{\hyperlink{struct_lo_ra__t}{Lo\+Ra\+\_\+t}} \texorpdfstring{$\ast$}{*}hlora, uint16\+\_\+t Size)
+\end{DoxyCompactItemize}
+
+
+\label{driver_lo_ra_8c_doc-func-members}
+\Hypertarget{driver_lo_ra_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{driver_lo_ra_8c_acc6e112f969f4de0fc933ec56e5d3e97}\index{driverLoRa.c@{driverLoRa.c}!LoRa\_Init@{LoRa\_Init}}
+\index{LoRa\_Init@{LoRa\_Init}!driverLoRa.c@{driverLoRa.c}}
+\doxysubsubsection{\texorpdfstring{LoRa\_Init()}{LoRa\_Init()}}
+{\footnotesize\ttfamily \label{driver_lo_ra_8c_acc6e112f969f4de0fc933ec56e5d3e97} 
+void Lo\+Ra\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_lo_ra__t}{Lo\+Ra\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hlora}{, }\item[{UART\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{huart}{}\end{DoxyParamCaption})}
+
+\Hypertarget{driver_lo_ra_8c_a76f62b7224342951906abb96be57b714}\index{driverLoRa.c@{driverLoRa.c}!LoRa\_Process@{LoRa\_Process}}
+\index{LoRa\_Process@{LoRa\_Process}!driverLoRa.c@{driverLoRa.c}}
+\doxysubsubsection{\texorpdfstring{LoRa\_Process()}{LoRa\_Process()}}
+{\footnotesize\ttfamily \label{driver_lo_ra_8c_a76f62b7224342951906abb96be57b714} 
+void Lo\+Ra\+\_\+\+Process (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_lo_ra__t}{Lo\+Ra\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hlora}{}\end{DoxyParamCaption})}
+
+\Hypertarget{driver_lo_ra_8c_a2b7bd71bb59fd9e2b701fb4e79c172c1}\index{driverLoRa.c@{driverLoRa.c}!LoRa\_ResetState@{LoRa\_ResetState}}
+\index{LoRa\_ResetState@{LoRa\_ResetState}!driverLoRa.c@{driverLoRa.c}}
+\doxysubsubsection{\texorpdfstring{LoRa\_ResetState()}{LoRa\_ResetState()}}
+{\footnotesize\ttfamily \label{driver_lo_ra_8c_a2b7bd71bb59fd9e2b701fb4e79c172c1} 
+void Lo\+Ra\+\_\+\+Reset\+State (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_lo_ra__t}{Lo\+Ra\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hlora}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{driver_lo_ra_8c_a2b7bd71bb59fd9e2b701fb4e79c172c1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_lo_ra_8c_a5e4dd9b31123ad44ede128667af9bbc8}\index{driverLoRa.c@{driverLoRa.c}!LoRa\_RxEventCallback@{LoRa\_RxEventCallback}}
+\index{LoRa\_RxEventCallback@{LoRa\_RxEventCallback}!driverLoRa.c@{driverLoRa.c}}
+\doxysubsubsection{\texorpdfstring{LoRa\_RxEventCallback()}{LoRa\_RxEventCallback()}}
+{\footnotesize\ttfamily \label{driver_lo_ra_8c_a5e4dd9b31123ad44ede128667af9bbc8} 
+void Lo\+Ra\+\_\+\+Rx\+Event\+Callback (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_lo_ra__t}{Lo\+Ra\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hlora}{, }\item[{uint16\+\_\+t}]{Size}{}\end{DoxyParamCaption})}
+
+\Hypertarget{driver_lo_ra_8c_a86814495750c7a5943708bc8f1a4fcb1}\index{driverLoRa.c@{driverLoRa.c}!LoRa\_SendCmdAsync@{LoRa\_SendCmdAsync}}
+\index{LoRa\_SendCmdAsync@{LoRa\_SendCmdAsync}!driverLoRa.c@{driverLoRa.c}}
+\doxysubsubsection{\texorpdfstring{LoRa\_SendCmdAsync()}{LoRa\_SendCmdAsync()}}
+{\footnotesize\ttfamily \label{driver_lo_ra_8c_a86814495750c7a5943708bc8f1a4fcb1} 
+bool Lo\+Ra\+\_\+\+Send\+Cmd\+Async (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_lo_ra__t}{Lo\+Ra\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hlora}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{cmd}{, }\item[{uint32\+\_\+t}]{timeout\+\_\+ms}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{driver_lo_ra_8c_a86814495750c7a5943708bc8f1a4fcb1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_lo_ra_8c_a025a514dde32fa4674e7ebf080cdb746}\index{driverLoRa.c@{driverLoRa.c}!LoRa\_TxCallback@{LoRa\_TxCallback}}
+\index{LoRa\_TxCallback@{LoRa\_TxCallback}!driverLoRa.c@{driverLoRa.c}}
+\doxysubsubsection{\texorpdfstring{LoRa\_TxCallback()}{LoRa\_TxCallback()}}
+{\footnotesize\ttfamily \label{driver_lo_ra_8c_a025a514dde32fa4674e7ebf080cdb746} 
+void Lo\+Ra\+\_\+\+Tx\+Callback (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_lo_ra__t}{Lo\+Ra\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hlora}{}\end{DoxyParamCaption})}
+

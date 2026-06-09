@@ -1,0 +1,518 @@
+\doxysection{C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Inc/\+driver\+FRAM.h File Reference}
+\hypertarget{driver_f_r_a_m_8h}{}\label{driver_f_r_a_m_8h}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverFRAM.h@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverFRAM.h}}
+
+
+Pilote asynchrone par DMA pour mémoire FRAM SPI.  
+
+
+{\ttfamily \+\#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \+\#include "{}main.\+h"{}}\newline
+{\ttfamily \+\#include "{}spi.\+h"{}}\newline
+{\ttfamily \+\#include "{}gpio.\+h"{}}\newline
+Include dependency graph for driver\+FRAM.\+h:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_f_r_a_m_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_f_r_a_m_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Structure de contexte du driver FRAM. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{driver_f_r_a_m_8h_ad4d796b98c583d49e83adabd74a63bf6}{MAX\+\_\+\+BUFFER\+\_\+\+SIZE}}~260
+\begin{DoxyCompactList}\small\item\em Taille maximale du buffer DMA (Payload de 256 octets + 4 octets de header SPI). \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{driver_f_r_a_m_8h_ae3cf210724c2da7abc4a85aa27c51937}{FRAM\+\_\+\+MAX\+\_\+\+ADDRESS}}~262144
+\begin{DoxyCompactList}\small\item\em Capacité totale de la FRAM en octets (Ex:\+ 2Mbits = 256 Ko = 262144 octets). \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{driver_f_r_a_m_8h_abe64358a4949ed9a0226ae0360a531b0}{FRAM\+\_\+\+TIMEOUT\+\_\+\+MS}}~5
+\begin{DoxyCompactList}\small\item\em Temps d\textquotesingle{}attente maximum autorisé pour une transaction DMA avant de déclarer une erreur (en millisecondes). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619}{FRAM\+\_\+\+Result\+\_\+t}} \{ \newline
+\doxymbox{\hyperlink{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619a9464eaf40cc9572d6c40f02b15c28601}{FRAM\+\_\+\+OK}} = 0
+, \doxymbox{\hyperlink{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619a49c8b39b61149c8259f4403ce24e21c6}{FRAM\+\_\+\+ERR\+\_\+\+PARAM}}
+, \doxymbox{\hyperlink{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619af055aba84bdb5b986a95532c15a81343}{FRAM\+\_\+\+ERR\+\_\+\+BUSY}}
+, \doxymbox{\hyperlink{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619afe551843c5c108e04c9368f6346afb67}{FRAM\+\_\+\+ERR\+\_\+\+HW}}
+, \newline
+\doxymbox{\hyperlink{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619a56af80b5affda674ed1695d019d8b5ec}{FRAM\+\_\+\+ERR\+\_\+\+TIMEOUT}}
+ \}
+\begin{DoxyCompactList}\small\item\em Code de retour immédiat lors de l\textquotesingle{}appel d\textquotesingle{}une fonction de l\textquotesingle{}API. \end{DoxyCompactList}\item 
+enum \doxymbox{\hyperlink{driver_f_r_a_m_8h_aa90c9f46ed56211e7103e818904525b9}{FRAM\+\_\+\+Status\+\_\+t}} \{ \doxymbox{\hyperlink{driver_f_r_a_m_8h_aa90c9f46ed56211e7103e818904525b9a269f6aacfcd87c5ce977b6a08b0f5cae}{FRAM\+\_\+\+STATUS\+\_\+\+READY}} = 0
+, \doxymbox{\hyperlink{driver_f_r_a_m_8h_aa90c9f46ed56211e7103e818904525b9a5beb8bf8a8ec891cd49d5813ade8c4fa}{FRAM\+\_\+\+STATUS\+\_\+\+BUSY}}
+, \doxymbox{\hyperlink{driver_f_r_a_m_8h_aa90c9f46ed56211e7103e818904525b9afc5f815bb56ccf7a86da0bb02d5cc7e6}{FRAM\+\_\+\+STATUS\+\_\+\+ERROR}}
+ \}
+\begin{DoxyCompactList}\small\item\em État global du driver, visible depuis l\textquotesingle{}extérieur (ex:\+ pour le Data\+Log). \end{DoxyCompactList}\item 
+enum \doxymbox{\hyperlink{driver_f_r_a_m_8h_a2d3eea839b9eb6543a3de30c0ed8fd65}{FRAM\+\_\+\+Error\+Code\+\_\+t}} \{ \newline
+\doxymbox{\hyperlink{driver_f_r_a_m_8h_a2d3eea839b9eb6543a3de30c0ed8fd65acd57e001bf9814a3dd5c2f14b224e526}{FRAM\+\_\+\+INT\+\_\+\+ERR\+\_\+\+NONE}} = 0
+, \doxymbox{\hyperlink{driver_f_r_a_m_8h_a2d3eea839b9eb6543a3de30c0ed8fd65a12c9a5cb744ac46ed657202a55696898}{FRAM\+\_\+\+INT\+\_\+\+ERR\+\_\+\+TIMEOUT\+\_\+\+WREN}}
+, \doxymbox{\hyperlink{driver_f_r_a_m_8h_a2d3eea839b9eb6543a3de30c0ed8fd65a8bf1ba06d10308c5dfe456b1d47112aa}{FRAM\+\_\+\+INT\+\_\+\+ERR\+\_\+\+TIMEOUT\+\_\+\+WRITE}}
+, \doxymbox{\hyperlink{driver_f_r_a_m_8h_a2d3eea839b9eb6543a3de30c0ed8fd65a096dbb42a1c749fbc2b6c8e5b5f65def}{FRAM\+\_\+\+INT\+\_\+\+ERR\+\_\+\+TIMEOUT\+\_\+\+READ}}
+, \newline
+\doxymbox{\hyperlink{driver_f_r_a_m_8h_a2d3eea839b9eb6543a3de30c0ed8fd65a52ae7bc8c15aed82a0d9361b73a25f5c}{FRAM\+\_\+\+INT\+\_\+\+ERR\+\_\+\+DMA\+\_\+\+HALT}}
+ \}
+\begin{DoxyCompactList}\small\item\em Code d\textquotesingle{}erreur interne détaillé pour le débogage de la machine d\textquotesingle{}état. \end{DoxyCompactList}\item 
+enum \doxymbox{\hyperlink{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5}{FRAM\+\_\+\+State\+\_\+t}} \{ \newline
+\doxymbox{\hyperlink{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5a1a589d05be03b62db95b8429f2d1dd06}{FRAM\+\_\+\+STATE\+\_\+\+IDLE}}
+, \doxymbox{\hyperlink{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5a6be2e43a7d77087bc7e7b1c552123705}{FRAM\+\_\+\+STATE\+\_\+\+WRITE\+\_\+\+EN}}
+, \doxymbox{\hyperlink{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5a96a3800ac3ffdfc2d2fc8614e0a3f079}{FRAM\+\_\+\+STATE\+\_\+\+WAIT\+\_\+\+WRITE\+\_\+\+EN}}
+, \doxymbox{\hyperlink{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5aadb8f22f6dbc46907319f79b1b19caa9}{FRAM\+\_\+\+STATE\+\_\+\+WRITE\+\_\+\+DATA}}
+, \newline
+\doxymbox{\hyperlink{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5a89f389a2d8aa0a70f5c3a7ed12f75bd6}{FRAM\+\_\+\+STATE\+\_\+\+WAIT\+\_\+\+WRITE\+\_\+\+DATA}}
+, \doxymbox{\hyperlink{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5aa8f8aeff29ff79b155639d58ca19a4d6}{FRAM\+\_\+\+STATE\+\_\+\+READ\+\_\+\+EN}}
+, \doxymbox{\hyperlink{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5a54b8bf27f9cc52c9ad632a0f16ae3dfb}{FRAM\+\_\+\+STATE\+\_\+\+WAIT\+\_\+\+READ\+\_\+\+DATA}}
+, \doxymbox{\hyperlink{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5a1a1151c246a1a0577b6c7b3b5790a41a}{FRAM\+\_\+\+STATE\+\_\+\+ERROR}}
+ \}
+\begin{DoxyCompactList}\small\item\em États internes de la machine d\textquotesingle{}état (FSM) du driver. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619}{FRAM\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_f_r_a_m_8h_a05c998c18403bda2555787fbaee7d2c4}{FRAM\+\_\+\+Init}} (\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*}hfram, SPI\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hspi, GPIO\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}gpio\+\_\+port, uint16\+\_\+t gpio\+\_\+pin)
+\begin{DoxyCompactList}\small\item\em Initialise la structure du driver et sécurise le bus SPI. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619}{FRAM\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_f_r_a_m_8h_a2ed88753d53d45f89881a459091a064d}{FRAM\+\_\+\+Read}} (\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*}hfram, uint32\+\_\+t address, uint8\+\_\+t \texorpdfstring{$\ast$}{*}rx\+\_\+data, uint16\+\_\+t data\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Lance une opération asynchrone de lecture depuis la FRAM. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619}{FRAM\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_f_r_a_m_8h_a518d592a5f33b7c30320913e25c8d89a}{FRAM\+\_\+\+Write}} (\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*}hfram, uint32\+\_\+t address, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint16\+\_\+t data\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Lance une opération asynchrone d\textquotesingle{}écriture vers la FRAM. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{driver_f_r_a_m_8h_a218f6946717b10b3813b1979da4fce49}{FRAM\+\_\+\+Process}} (\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*}hfram)
+\begin{DoxyCompactList}\small\item\em Machine d\textquotesingle{}état du driver. Doit être appelée régulièrement dans la boucle principale. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_f_r_a_m_8h_aa90c9f46ed56211e7103e818904525b9}{FRAM\+\_\+\+Status\+\_\+t}} \doxymbox{\hyperlink{driver_f_r_a_m_8h_a352f682afba9d287e205c51423bc79ff}{FRAM\+\_\+\+Get\+Status}} (\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*}hfram)
+\begin{DoxyCompactList}\small\item\em Renvoie le statut opérationnel actuel du driver. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{driver_f_r_a_m_8h_aeafafd463d7b0a53c3f171c5a4949aa9}{FRAM\+\_\+\+Rx\+\_\+\+Callback}} (\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*}hfram)
+\begin{DoxyCompactList}\small\item\em Callback à appeler dans HAL\+\_\+\+SPI\+\_\+\+Rx\+Cplt\+Callback ou HAL\+\_\+\+SPI\+\_\+\+Tx\+Rx\+Cplt\+Callback. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{driver_f_r_a_m_8h_a2b2faab018840ee82dca1baa6a25b1d0}{FRAM\+\_\+\+Tx\+\_\+\+Callback}} (\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*}hfram)
+\begin{DoxyCompactList}\small\item\em Callback à appeler dans HAL\+\_\+\+SPI\+\_\+\+Tx\+Cplt\+Callback. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Pilote asynchrone par DMA pour mémoire FRAM SPI. 
+
+\begin{DoxyAuthor}{Author}
+valen 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+16 avr. 2026
+\begin{DoxyItemize}
+\item Ce driver gère les écritures et lectures non-\/bloquantes vers une mémoire FRAM via le bus SPI et le DMA. Il intègre une machine d\textquotesingle{}état robuste avec gestion de timeouts et prévention des dépassements de mémoire. 
+\end{DoxyItemize}
+\end{DoxyDate}
+
+
+\label{driver_f_r_a_m_8h_doc-define-members}
+\Hypertarget{driver_f_r_a_m_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{driver_f_r_a_m_8h_ae3cf210724c2da7abc4a85aa27c51937}\index{driverFRAM.h@{driverFRAM.h}!FRAM\_MAX\_ADDRESS@{FRAM\_MAX\_ADDRESS}}
+\index{FRAM\_MAX\_ADDRESS@{FRAM\_MAX\_ADDRESS}!driverFRAM.h@{driverFRAM.h}}
+\doxysubsubsection{\texorpdfstring{FRAM\_MAX\_ADDRESS}{FRAM\_MAX\_ADDRESS}}
+{\footnotesize\ttfamily \label{driver_f_r_a_m_8h_ae3cf210724c2da7abc4a85aa27c51937} 
+\+\#define FRAM\+\_\+\+MAX\+\_\+\+ADDRESS~262144}
+
+
+
+Capacité totale de la FRAM en octets (Ex:\+ 2Mbits = 256 Ko = 262144 octets). 
+
+\Hypertarget{driver_f_r_a_m_8h_abe64358a4949ed9a0226ae0360a531b0}\index{driverFRAM.h@{driverFRAM.h}!FRAM\_TIMEOUT\_MS@{FRAM\_TIMEOUT\_MS}}
+\index{FRAM\_TIMEOUT\_MS@{FRAM\_TIMEOUT\_MS}!driverFRAM.h@{driverFRAM.h}}
+\doxysubsubsection{\texorpdfstring{FRAM\_TIMEOUT\_MS}{FRAM\_TIMEOUT\_MS}}
+{\footnotesize\ttfamily \label{driver_f_r_a_m_8h_abe64358a4949ed9a0226ae0360a531b0} 
+\+\#define FRAM\+\_\+\+TIMEOUT\+\_\+\+MS~5}
+
+
+
+Temps d\textquotesingle{}attente maximum autorisé pour une transaction DMA avant de déclarer une erreur (en millisecondes). 
+
+\Hypertarget{driver_f_r_a_m_8h_ad4d796b98c583d49e83adabd74a63bf6}\index{driverFRAM.h@{driverFRAM.h}!MAX\_BUFFER\_SIZE@{MAX\_BUFFER\_SIZE}}
+\index{MAX\_BUFFER\_SIZE@{MAX\_BUFFER\_SIZE}!driverFRAM.h@{driverFRAM.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_BUFFER\_SIZE}{MAX\_BUFFER\_SIZE}}
+{\footnotesize\ttfamily \label{driver_f_r_a_m_8h_ad4d796b98c583d49e83adabd74a63bf6} 
+\+\#define MAX\+\_\+\+BUFFER\+\_\+\+SIZE~260}
+
+
+
+Taille maximale du buffer DMA (Payload de 256 octets + 4 octets de header SPI). 
+
+
+
+\label{driver_f_r_a_m_8h_doc-enum-members}
+\Hypertarget{driver_f_r_a_m_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{driver_f_r_a_m_8h_a2d3eea839b9eb6543a3de30c0ed8fd65}\index{driverFRAM.h@{driverFRAM.h}!FRAM\_ErrorCode\_t@{FRAM\_ErrorCode\_t}}
+\index{FRAM\_ErrorCode\_t@{FRAM\_ErrorCode\_t}!driverFRAM.h@{driverFRAM.h}}
+\doxysubsubsection{\texorpdfstring{FRAM\_ErrorCode\_t}{FRAM\_ErrorCode\_t}}
+{\footnotesize\ttfamily \label{driver_f_r_a_m_8h_a2d3eea839b9eb6543a3de30c0ed8fd65} 
+enum \doxymbox{\hyperlink{driver_f_r_a_m_8h_a2d3eea839b9eb6543a3de30c0ed8fd65}{FRAM\+\_\+\+Error\+Code\+\_\+t}}}
+
+
+
+Code d\textquotesingle{}erreur interne détaillé pour le débogage de la machine d\textquotesingle{}état. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_INT\_ERR\_NONE@{FRAM\_INT\_ERR\_NONE}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_INT\_ERR\_NONE@{FRAM\_INT\_ERR\_NONE}}
+}\Hypertarget{driver_f_r_a_m_8h_a2d3eea839b9eb6543a3de30c0ed8fd65acd57e001bf9814a3dd5c2f14b224e526}\label{driver_f_r_a_m_8h_a2d3eea839b9eb6543a3de30c0ed8fd65acd57e001bf9814a3dd5c2f14b224e526} 
+FRAM\+\_\+\+INT\+\_\+\+ERR\+\_\+\+NONE&Aucune erreur \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_INT\_ERR\_TIMEOUT\_WREN@{FRAM\_INT\_ERR\_TIMEOUT\_WREN}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_INT\_ERR\_TIMEOUT\_WREN@{FRAM\_INT\_ERR\_TIMEOUT\_WREN}}
+}\Hypertarget{driver_f_r_a_m_8h_a2d3eea839b9eb6543a3de30c0ed8fd65a12c9a5cb744ac46ed657202a55696898}\label{driver_f_r_a_m_8h_a2d3eea839b9eb6543a3de30c0ed8fd65a12c9a5cb744ac46ed657202a55696898} 
+FRAM\+\_\+\+INT\+\_\+\+ERR\+\_\+\+TIMEOUT\+\_\+\+WREN&Plantage/\+\+Timeout en attendant le Write Enable (WREN) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_INT\_ERR\_TIMEOUT\_WRITE@{FRAM\_INT\_ERR\_TIMEOUT\_WRITE}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_INT\_ERR\_TIMEOUT\_WRITE@{FRAM\_INT\_ERR\_TIMEOUT\_WRITE}}
+}\Hypertarget{driver_f_r_a_m_8h_a2d3eea839b9eb6543a3de30c0ed8fd65a8bf1ba06d10308c5dfe456b1d47112aa}\label{driver_f_r_a_m_8h_a2d3eea839b9eb6543a3de30c0ed8fd65a8bf1ba06d10308c5dfe456b1d47112aa} 
+FRAM\+\_\+\+INT\+\_\+\+ERR\+\_\+\+TIMEOUT\+\_\+\+WRITE&Plantage/\+\+Timeout pendant l\textquotesingle{}envoi des données (WRITE) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_INT\_ERR\_TIMEOUT\_READ@{FRAM\_INT\_ERR\_TIMEOUT\_READ}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_INT\_ERR\_TIMEOUT\_READ@{FRAM\_INT\_ERR\_TIMEOUT\_READ}}
+}\Hypertarget{driver_f_r_a_m_8h_a2d3eea839b9eb6543a3de30c0ed8fd65a096dbb42a1c749fbc2b6c8e5b5f65def}\label{driver_f_r_a_m_8h_a2d3eea839b9eb6543a3de30c0ed8fd65a096dbb42a1c749fbc2b6c8e5b5f65def} 
+FRAM\+\_\+\+INT\+\_\+\+ERR\+\_\+\+TIMEOUT\+\_\+\+READ&Plantage/\+\+Timeout pendant la lecture (READ) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_INT\_ERR\_DMA\_HALT@{FRAM\_INT\_ERR\_DMA\_HALT}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_INT\_ERR\_DMA\_HALT@{FRAM\_INT\_ERR\_DMA\_HALT}}
+}\Hypertarget{driver_f_r_a_m_8h_a2d3eea839b9eb6543a3de30c0ed8fd65a52ae7bc8c15aed82a0d9361b73a25f5c}\label{driver_f_r_a_m_8h_a2d3eea839b9eb6543a3de30c0ed8fd65a52ae7bc8c15aed82a0d9361b73a25f5c} 
+FRAM\+\_\+\+INT\+\_\+\+ERR\+\_\+\+DMA\+\_\+\+HALT&Erreur matérielle remontée par le HAL SPI/\+\+DMA \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619}\index{driverFRAM.h@{driverFRAM.h}!FRAM\_Result\_t@{FRAM\_Result\_t}}
+\index{FRAM\_Result\_t@{FRAM\_Result\_t}!driverFRAM.h@{driverFRAM.h}}
+\doxysubsubsection{\texorpdfstring{FRAM\_Result\_t}{FRAM\_Result\_t}}
+{\footnotesize\ttfamily \label{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619} 
+enum \doxymbox{\hyperlink{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619}{FRAM\+\_\+\+Result\+\_\+t}}}
+
+
+
+Code de retour immédiat lors de l\textquotesingle{}appel d\textquotesingle{}une fonction de l\textquotesingle{}API. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_OK@{FRAM\_OK}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_OK@{FRAM\_OK}}
+}\Hypertarget{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619a9464eaf40cc9572d6c40f02b15c28601}\label{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619a9464eaf40cc9572d6c40f02b15c28601} 
+FRAM\+\_\+\+OK&Opération acceptée et démarrée avec succès \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_ERR\_PARAM@{FRAM\_ERR\_PARAM}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_ERR\_PARAM@{FRAM\_ERR\_PARAM}}
+}\Hypertarget{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619a49c8b39b61149c8259f4403ce24e21c6}\label{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619a49c8b39b61149c8259f4403ce24e21c6} 
+FRAM\+\_\+\+ERR\+\_\+\+PARAM&Paramètre invalide (Pointeur NULL, taille nulle, adresse hors limite) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_ERR\_BUSY@{FRAM\_ERR\_BUSY}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_ERR\_BUSY@{FRAM\_ERR\_BUSY}}
+}\Hypertarget{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619af055aba84bdb5b986a95532c15a81343}\label{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619af055aba84bdb5b986a95532c15a81343} 
+FRAM\+\_\+\+ERR\+\_\+\+BUSY&Le driver est déjà occupé par une autre transaction \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_ERR\_HW@{FRAM\_ERR\_HW}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_ERR\_HW@{FRAM\_ERR\_HW}}
+}\Hypertarget{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619afe551843c5c108e04c9368f6346afb67}\label{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619afe551843c5c108e04c9368f6346afb67} 
+FRAM\+\_\+\+ERR\+\_\+\+HW&Erreur matérielle immédiate remontée par le HAL \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_ERR\_TIMEOUT@{FRAM\_ERR\_TIMEOUT}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_ERR\_TIMEOUT@{FRAM\_ERR\_TIMEOUT}}
+}\Hypertarget{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619a56af80b5affda674ed1695d019d8b5ec}\label{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619a56af80b5affda674ed1695d019d8b5ec} 
+FRAM\+\_\+\+ERR\+\_\+\+TIMEOUT&Opération matérielle bloquée trop longtemps \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5}\index{driverFRAM.h@{driverFRAM.h}!FRAM\_State\_t@{FRAM\_State\_t}}
+\index{FRAM\_State\_t@{FRAM\_State\_t}!driverFRAM.h@{driverFRAM.h}}
+\doxysubsubsection{\texorpdfstring{FRAM\_State\_t}{FRAM\_State\_t}}
+{\footnotesize\ttfamily \label{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5} 
+enum \doxymbox{\hyperlink{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5}{FRAM\+\_\+\+State\+\_\+t}}}
+
+
+
+États internes de la machine d\textquotesingle{}état (FSM) du driver. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_STATE\_IDLE@{FRAM\_STATE\_IDLE}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_STATE\_IDLE@{FRAM\_STATE\_IDLE}}
+}\Hypertarget{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5a1a589d05be03b62db95b8429f2d1dd06}\label{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5a1a589d05be03b62db95b8429f2d1dd06} 
+FRAM\+\_\+\+STATE\+\_\+\+IDLE&Au repos \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_STATE\_WRITE\_EN@{FRAM\_STATE\_WRITE\_EN}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_STATE\_WRITE\_EN@{FRAM\_STATE\_WRITE\_EN}}
+}\Hypertarget{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5a6be2e43a7d77087bc7e7b1c552123705}\label{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5a6be2e43a7d77087bc7e7b1c552123705} 
+FRAM\+\_\+\+STATE\+\_\+\+WRITE\+\_\+\+EN&Envoi de la commande WREN \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_STATE\_WAIT\_WRITE\_EN@{FRAM\_STATE\_WAIT\_WRITE\_EN}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_STATE\_WAIT\_WRITE\_EN@{FRAM\_STATE\_WAIT\_WRITE\_EN}}
+}\Hypertarget{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5a96a3800ac3ffdfc2d2fc8614e0a3f079}\label{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5a96a3800ac3ffdfc2d2fc8614e0a3f079} 
+FRAM\+\_\+\+STATE\+\_\+\+WAIT\+\_\+\+WRITE\+\_\+\+EN&Attente de la fin de l\textquotesingle{}envoi WREN \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_STATE\_WRITE\_DATA@{FRAM\_STATE\_WRITE\_DATA}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_STATE\_WRITE\_DATA@{FRAM\_STATE\_WRITE\_DATA}}
+}\Hypertarget{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5aadb8f22f6dbc46907319f79b1b19caa9}\label{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5aadb8f22f6dbc46907319f79b1b19caa9} 
+FRAM\+\_\+\+STATE\+\_\+\+WRITE\+\_\+\+DATA&Envoi de la commande WRITE, de l\textquotesingle{}adresse et des données \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_STATE\_WAIT\_WRITE\_DATA@{FRAM\_STATE\_WAIT\_WRITE\_DATA}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_STATE\_WAIT\_WRITE\_DATA@{FRAM\_STATE\_WAIT\_WRITE\_DATA}}
+}\Hypertarget{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5a89f389a2d8aa0a70f5c3a7ed12f75bd6}\label{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5a89f389a2d8aa0a70f5c3a7ed12f75bd6} 
+FRAM\+\_\+\+STATE\+\_\+\+WAIT\+\_\+\+WRITE\+\_\+\+DATA&Attente de la fin de l\textquotesingle{}écriture des données \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_STATE\_READ\_EN@{FRAM\_STATE\_READ\_EN}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_STATE\_READ\_EN@{FRAM\_STATE\_READ\_EN}}
+}\Hypertarget{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5aa8f8aeff29ff79b155639d58ca19a4d6}\label{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5aa8f8aeff29ff79b155639d58ca19a4d6} 
+FRAM\+\_\+\+STATE\+\_\+\+READ\+\_\+\+EN&Envoi de la commande READ, de l\textquotesingle{}adresse et lecture des données \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_STATE\_WAIT\_READ\_DATA@{FRAM\_STATE\_WAIT\_READ\_DATA}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_STATE\_WAIT\_READ\_DATA@{FRAM\_STATE\_WAIT\_READ\_DATA}}
+}\Hypertarget{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5a54b8bf27f9cc52c9ad632a0f16ae3dfb}\label{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5a54b8bf27f9cc52c9ad632a0f16ae3dfb} 
+FRAM\+\_\+\+STATE\+\_\+\+WAIT\+\_\+\+READ\+\_\+\+DATA&Attente de la fin de la lecture continue \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_STATE\_ERROR@{FRAM\_STATE\_ERROR}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_STATE\_ERROR@{FRAM\_STATE\_ERROR}}
+}\Hypertarget{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5a1a1151c246a1a0577b6c7b3b5790a41a}\label{driver_f_r_a_m_8h_a278233057d17e33302ecc8459114a8a5a1a1151c246a1a0577b6c7b3b5790a41a} 
+FRAM\+\_\+\+STATE\+\_\+\+ERROR&Etat d\textquotesingle{}erreur \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{driver_f_r_a_m_8h_aa90c9f46ed56211e7103e818904525b9}\index{driverFRAM.h@{driverFRAM.h}!FRAM\_Status\_t@{FRAM\_Status\_t}}
+\index{FRAM\_Status\_t@{FRAM\_Status\_t}!driverFRAM.h@{driverFRAM.h}}
+\doxysubsubsection{\texorpdfstring{FRAM\_Status\_t}{FRAM\_Status\_t}}
+{\footnotesize\ttfamily \label{driver_f_r_a_m_8h_aa90c9f46ed56211e7103e818904525b9} 
+enum \doxymbox{\hyperlink{driver_f_r_a_m_8h_aa90c9f46ed56211e7103e818904525b9}{FRAM\+\_\+\+Status\+\_\+t}}}
+
+
+
+État global du driver, visible depuis l\textquotesingle{}extérieur (ex:\+ pour le Data\+Log). 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_STATUS\_READY@{FRAM\_STATUS\_READY}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_STATUS\_READY@{FRAM\_STATUS\_READY}}
+}\Hypertarget{driver_f_r_a_m_8h_aa90c9f46ed56211e7103e818904525b9a269f6aacfcd87c5ce977b6a08b0f5cae}\label{driver_f_r_a_m_8h_aa90c9f46ed56211e7103e818904525b9a269f6aacfcd87c5ce977b6a08b0f5cae} 
+FRAM\+\_\+\+STATUS\+\_\+\+READY&Prêt pour une nouvelle commande (Machine d\textquotesingle{}état IDLE) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_STATUS\_BUSY@{FRAM\_STATUS\_BUSY}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_STATUS\_BUSY@{FRAM\_STATUS\_BUSY}}
+}\Hypertarget{driver_f_r_a_m_8h_aa90c9f46ed56211e7103e818904525b9a5beb8bf8a8ec891cd49d5813ade8c4fa}\label{driver_f_r_a_m_8h_aa90c9f46ed56211e7103e818904525b9a5beb8bf8a8ec891cd49d5813ade8c4fa} 
+FRAM\+\_\+\+STATUS\+\_\+\+BUSY&En cours de lecture/\+écriture via DMA \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRAM\_STATUS\_ERROR@{FRAM\_STATUS\_ERROR}!driverFRAM.h@{driverFRAM.h}}
+\index{driverFRAM.h@{driverFRAM.h}!FRAM\_STATUS\_ERROR@{FRAM\_STATUS\_ERROR}}
+}\Hypertarget{driver_f_r_a_m_8h_aa90c9f46ed56211e7103e818904525b9afc5f815bb56ccf7a86da0bb02d5cc7e6}\label{driver_f_r_a_m_8h_aa90c9f46ed56211e7103e818904525b9afc5f815bb56ccf7a86da0bb02d5cc7e6} 
+FRAM\+\_\+\+STATUS\+\_\+\+ERROR&Erreur critique rencontrée, nécessite une action de la couche supérieure \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{driver_f_r_a_m_8h_doc-func-members}
+\Hypertarget{driver_f_r_a_m_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{driver_f_r_a_m_8h_a352f682afba9d287e205c51423bc79ff}\index{driverFRAM.h@{driverFRAM.h}!FRAM\_GetStatus@{FRAM\_GetStatus}}
+\index{FRAM\_GetStatus@{FRAM\_GetStatus}!driverFRAM.h@{driverFRAM.h}}
+\doxysubsubsection{\texorpdfstring{FRAM\_GetStatus()}{FRAM\_GetStatus()}}
+{\footnotesize\ttfamily \label{driver_f_r_a_m_8h_a352f682afba9d287e205c51423bc79ff} 
+\doxymbox{\hyperlink{driver_f_r_a_m_8h_aa90c9f46ed56211e7103e818904525b9}{FRAM\+\_\+\+Status\+\_\+t}} FRAM\+\_\+\+Get\+Status (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hfram}{}\end{DoxyParamCaption})}
+
+
+
+Renvoie le statut opérationnel actuel du driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hfram} & Pointeur vers l\textquotesingle{}instance du driver FRAM. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+FRAM\+\_\+\+STATUS\+\_\+\+READY, FRAM\+\_\+\+STATUS\+\_\+\+BUSY, ou FRAM\+\_\+\+STATUS\+\_\+\+ERROR. 
+\end{DoxyReturn}
+\Hypertarget{driver_f_r_a_m_8h_a05c998c18403bda2555787fbaee7d2c4}\index{driverFRAM.h@{driverFRAM.h}!FRAM\_Init@{FRAM\_Init}}
+\index{FRAM\_Init@{FRAM\_Init}!driverFRAM.h@{driverFRAM.h}}
+\doxysubsubsection{\texorpdfstring{FRAM\_Init()}{FRAM\_Init()}}
+{\footnotesize\ttfamily \label{driver_f_r_a_m_8h_a05c998c18403bda2555787fbaee7d2c4} 
+\doxymbox{\hyperlink{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619}{FRAM\+\_\+\+Result\+\_\+t}} FRAM\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hfram}{, }\item[{SPI\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hspi}{, }\item[{GPIO\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{gpio\+\_\+port}{, }\item[{uint16\+\_\+t}]{gpio\+\_\+pin}{}\end{DoxyParamCaption})}
+
+
+
+Initialise la structure du driver et sécurise le bus SPI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hfram} & Pointeur vers l\textquotesingle{}instance du driver FRAM. \\
+\hline
+{\em hspi} & Pointeur vers le handle SPI (ex:\+ \&hspi3). \\
+\hline
+{\em gpio\+\_\+port} & Port GPIO du Chip Select. \\
+\hline
+{\em gpio\+\_\+pin} & Broche GPIO du Chip Select. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em FRAM\+\_\+\+OK} & si succès, sinon un code d\textquotesingle{}erreur synchrone (FRAM\+\_\+\+ERR\+\_\+\+PARAM). \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{driver_f_r_a_m_8h_a05c998c18403bda2555787fbaee7d2c4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_f_r_a_m_8h_a218f6946717b10b3813b1979da4fce49}\index{driverFRAM.h@{driverFRAM.h}!FRAM\_Process@{FRAM\_Process}}
+\index{FRAM\_Process@{FRAM\_Process}!driverFRAM.h@{driverFRAM.h}}
+\doxysubsubsection{\texorpdfstring{FRAM\_Process()}{FRAM\_Process()}}
+{\footnotesize\ttfamily \label{driver_f_r_a_m_8h_a218f6946717b10b3813b1979da4fce49} 
+void FRAM\+\_\+\+Process (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hfram}{}\end{DoxyParamCaption})}
+
+
+
+Machine d\textquotesingle{}état du driver. Doit être appelée régulièrement dans la boucle principale. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hfram} & Pointeur vers l\textquotesingle{}instance du driver FRAM. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{driver_f_r_a_m_8h_a218f6946717b10b3813b1979da4fce49_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_f_r_a_m_8h_a2ed88753d53d45f89881a459091a064d}\index{driverFRAM.h@{driverFRAM.h}!FRAM\_Read@{FRAM\_Read}}
+\index{FRAM\_Read@{FRAM\_Read}!driverFRAM.h@{driverFRAM.h}}
+\doxysubsubsection{\texorpdfstring{FRAM\_Read()}{FRAM\_Read()}}
+{\footnotesize\ttfamily \label{driver_f_r_a_m_8h_a2ed88753d53d45f89881a459091a064d} 
+\doxymbox{\hyperlink{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619}{FRAM\+\_\+\+Result\+\_\+t}} FRAM\+\_\+\+Read (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hfram}{, }\item[{uint32\+\_\+t}]{address}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{rx\+\_\+data}{, }\item[{uint16\+\_\+t}]{data\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Lance une opération asynchrone de lecture depuis la FRAM. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hfram} & Pointeur vers l\textquotesingle{}instance du driver FRAM. \\
+\hline
+{\em address} & Adresse de départ en mémoire (doit être \texorpdfstring{$<$}{<} FRAM\+\_\+\+MAX\+\_\+\+ADDRESS). \\
+\hline
+{\em rx\+\_\+data} & Pointeur vers le buffer où stocker les données lues. \\
+\hline
+{\em data\+\_\+size} & Nombre d\textquotesingle{}octets à lire. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em FRAM\+\_\+\+OK} & si l\textquotesingle{}opération est acceptée, sinon un code d\textquotesingle{}erreur (BUSY, PARAM). \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_f_r_a_m_8h_a2ed88753d53d45f89881a459091a064d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_f_r_a_m_8h_aeafafd463d7b0a53c3f171c5a4949aa9}\index{driverFRAM.h@{driverFRAM.h}!FRAM\_Rx\_Callback@{FRAM\_Rx\_Callback}}
+\index{FRAM\_Rx\_Callback@{FRAM\_Rx\_Callback}!driverFRAM.h@{driverFRAM.h}}
+\doxysubsubsection{\texorpdfstring{FRAM\_Rx\_Callback()}{FRAM\_Rx\_Callback()}}
+{\footnotesize\ttfamily \label{driver_f_r_a_m_8h_aeafafd463d7b0a53c3f171c5a4949aa9} 
+void FRAM\+\_\+\+Rx\+\_\+\+Callback (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hfram}{}\end{DoxyParamCaption})}
+
+
+
+Callback à appeler dans HAL\+\_\+\+SPI\+\_\+\+Rx\+Cplt\+Callback ou HAL\+\_\+\+SPI\+\_\+\+Tx\+Rx\+Cplt\+Callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hfram} & Pointeur vers l\textquotesingle{}instance du driver FRAM. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_f_r_a_m_8h_aeafafd463d7b0a53c3f171c5a4949aa9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_f_r_a_m_8h_a2b2faab018840ee82dca1baa6a25b1d0}\index{driverFRAM.h@{driverFRAM.h}!FRAM\_Tx\_Callback@{FRAM\_Tx\_Callback}}
+\index{FRAM\_Tx\_Callback@{FRAM\_Tx\_Callback}!driverFRAM.h@{driverFRAM.h}}
+\doxysubsubsection{\texorpdfstring{FRAM\_Tx\_Callback()}{FRAM\_Tx\_Callback()}}
+{\footnotesize\ttfamily \label{driver_f_r_a_m_8h_a2b2faab018840ee82dca1baa6a25b1d0} 
+void FRAM\+\_\+\+Tx\+\_\+\+Callback (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hfram}{}\end{DoxyParamCaption})}
+
+
+
+Callback à appeler dans HAL\+\_\+\+SPI\+\_\+\+Tx\+Cplt\+Callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hfram} & Pointeur vers l\textquotesingle{}instance du driver FRAM. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_f_r_a_m_8h_a2b2faab018840ee82dca1baa6a25b1d0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_f_r_a_m_8h_a518d592a5f33b7c30320913e25c8d89a}\index{driverFRAM.h@{driverFRAM.h}!FRAM\_Write@{FRAM\_Write}}
+\index{FRAM\_Write@{FRAM\_Write}!driverFRAM.h@{driverFRAM.h}}
+\doxysubsubsection{\texorpdfstring{FRAM\_Write()}{FRAM\_Write()}}
+{\footnotesize\ttfamily \label{driver_f_r_a_m_8h_a518d592a5f33b7c30320913e25c8d89a} 
+\doxymbox{\hyperlink{driver_f_r_a_m_8h_a5c79796a1eed5fdbc3537a9758904619}{FRAM\+\_\+\+Result\+\_\+t}} FRAM\+\_\+\+Write (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hfram}{, }\item[{uint32\+\_\+t}]{address}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{uint16\+\_\+t}]{data\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Lance une opération asynchrone d\textquotesingle{}écriture vers la FRAM. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hfram} & Pointeur vers l\textquotesingle{}instance du driver FRAM. \\
+\hline
+{\em address} & Adresse de départ en mémoire (doit être \texorpdfstring{$<$}{<} FRAM\+\_\+\+MAX\+\_\+\+ADDRESS). \\
+\hline
+{\em data} & Pointeur vers les données à écrire. \\
+\hline
+{\em data\+\_\+size} & Nombre d\textquotesingle{}octets à écrire. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em FRAM\+\_\+\+OK} & si l\textquotesingle{}opération est acceptée, sinon un code d\textquotesingle{}erreur (BUSY, PARAM). \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_f_r_a_m_8h_a518d592a5f33b7c30320913e25c8d89a_icgraph}
+\end{center}
+\end{figure}

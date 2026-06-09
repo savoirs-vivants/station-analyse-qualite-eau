@@ -1,0 +1,623 @@
+\doxysection{C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Inc/\+driver\+Data\+Log.h File Reference}
+\hypertarget{driver_data_log_8h}{}\label{driver_data_log_8h}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverDataLog.h@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverDataLog.h}}
+
+
+Pilote de Datalogger circulaire asynchrone sur mémoire FRAM.  
+
+
+{\ttfamily \+\#include $<$stdint.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \+\#include "{}driver\+FRAM.\+h"{}}\newline
+Include dependency graph for driver\+Data\+Log.\+h:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_data_log_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_data_log_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_data_log___meta__t}{Data\+Log\+\_\+\+Meta\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Structure des métadonnées stockées de manière persistante en FRAM. \end{DoxyCompactList}\item 
+struct \doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Contexte d\textquotesingle{}exécution global du Datalogger. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{driver_data_log_8h_a0879797ae6624f6ca324e479427f78ec}{DATALOG\+\_\+\+USER\+\_\+\+DATA\+\_\+\+SIZE}}~12U
+\begin{DoxyCompactList}\small\item\em Taille en octets de la structure de données de l\textquotesingle{}utilisateur (Payload). \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{driver_data_log_8h_af327b5b7b20ccc2e686fce0c1d054950}{DATALOG\+\_\+\+MAGIC}}~0x5\+A7\+AU
+\begin{DoxyCompactList}\small\item\em Mot magique utilisé pour vérifier l\textquotesingle{}intégrité de la FRAM au boot. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{driver_data_log_8h_a2548e34261126587e67c699be9195c8c}{DATALOG\+\_\+\+FRAME\+\_\+\+SIZE}}~(4U + \doxymbox{\hyperlink{driver_data_log_8h_a0879797ae6624f6ca324e479427f78ec}{DATALOG\+\_\+\+USER\+\_\+\+DATA\+\_\+\+SIZE}})
+\begin{DoxyCompactList}\small\item\em Taille totale d\textquotesingle{}un enregistrement en mémoire (ID 32 bits + Payload). \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{driver_data_log_8h_a81d129478d16964a07eb88c032759b78}{DATALOG\+\_\+\+META\+\_\+\+ADDR}}~0x000000U
+\item 
+\+\#define \doxymbox{\hyperlink{driver_data_log_8h_a974eb3261153c3ae64c3dc4c8644babb}{DATALOG\+\_\+\+DATA\+\_\+\+START}}~0x000040U
+\item 
+\+\#define \doxymbox{\hyperlink{driver_data_log_8h_a1785dd6b63e6ed6c1f1c585810703e4a}{DATALOG\+\_\+\+DATA\+\_\+\+END}}~(256U \texorpdfstring{$\ast$}{*} 1024U -\/ 1U)
+\item 
+\+\#define \doxymbox{\hyperlink{driver_data_log_8h_a690967a8ca23be771665ad4125f4ac78}{DATALOG\+\_\+\+DATA\+\_\+\+ZONE\+\_\+\+SIZE}}~(\doxymbox{\hyperlink{driver_data_log_8h_a1785dd6b63e6ed6c1f1c585810703e4a}{DATALOG\+\_\+\+DATA\+\_\+\+END}} -\/ \doxymbox{\hyperlink{driver_data_log_8h_a974eb3261153c3ae64c3dc4c8644babb}{DATALOG\+\_\+\+DATA\+\_\+\+START}} + 1U)
+\item 
+\+\#define \doxymbox{\hyperlink{driver_data_log_8h_ada75c6f6eb8ea142c578f977245d4a8c}{DATALOG\+\_\+\+MAX\+\_\+\+RECORDS}}~(\doxymbox{\hyperlink{driver_data_log_8h_a690967a8ca23be771665ad4125f4ac78}{DATALOG\+\_\+\+DATA\+\_\+\+ZONE\+\_\+\+SIZE}} /\+ \doxymbox{\hyperlink{driver_data_log_8h_a2548e34261126587e67c699be9195c8c}{DATALOG\+\_\+\+FRAME\+\_\+\+SIZE}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0b}{Data\+Log\+\_\+\+Result\+\_\+t}} \{ \doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0bae3e3c76b2916f6f4f9af6e7f38fd5725}{DATALOG\+\_\+\+OK}} = 0
+, \doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0ba6d150d597b44f436bbc8fc19065b3994}{DATALOG\+\_\+\+ERR\+\_\+\+PARAM}}
+, \doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0ba04be4fbdf7d8afc73560b9de6dc85cc3}{DATALOG\+\_\+\+ERR\+\_\+\+BUSY}}
+, \doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0ba8eb0629d1dbacb8803d73a8ff1d9038d}{DATALOG\+\_\+\+ERR\+\_\+\+FRAM}}
+ \}
+\begin{DoxyCompactList}\small\item\em Code de retour immédiat pour les appels de fonctions d\textquotesingle{}écriture/\+configuration. \end{DoxyCompactList}\item 
+enum \doxymbox{\hyperlink{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0}{Data\+Log\+\_\+\+Status\+\_\+t}} \{ \newline
+\doxymbox{\hyperlink{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0a3373505407189936e45f4d69796c2ae7}{DATALOG\+\_\+\+STATUS\+\_\+\+UNINIT}} = 0
+, \doxymbox{\hyperlink{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0a99f928a0bb29999203f714e5da332528}{DATALOG\+\_\+\+STATUS\+\_\+\+INIT\+\_\+\+PENDING}}
+, \doxymbox{\hyperlink{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0a9b93d10295d33a3146915121ccd0258d}{DATALOG\+\_\+\+STATUS\+\_\+\+READY}}
+, \doxymbox{\hyperlink{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0a8d8e796b76952b16bbe35431aa88755b}{DATALOG\+\_\+\+STATUS\+\_\+\+BUSY}}
+, \newline
+\doxymbox{\hyperlink{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0a48f47685d2bbb1f067ed69d4fe2918f4}{DATALOG\+\_\+\+STATUS\+\_\+\+ERROR}}
+ \}
+\begin{DoxyCompactList}\small\item\em État opérationnel global du Datalogger. \end{DoxyCompactList}\item 
+enum \doxymbox{\hyperlink{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5e}{Data\+Log\+\_\+\+Read\+Result\+\_\+t}} \{ \newline
+\doxymbox{\hyperlink{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea84fa0b83581119e4a79834dd4260e06d}{DATALOG\+\_\+\+READ\+\_\+\+OK}} = 0
+, \doxymbox{\hyperlink{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea5cd1b03210bab65d4646c8c3a1a5b84d}{DATALOG\+\_\+\+READ\+\_\+\+PENDING}}
+, \doxymbox{\hyperlink{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea597213dec74c0dccfa348ab45dcdaf10}{DATALOG\+\_\+\+READ\+\_\+\+EOF}}
+, \doxymbox{\hyperlink{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea4cc133d91388c7b54a4e245a632d5fe1}{DATALOG\+\_\+\+READ\+\_\+\+ERR\+\_\+\+PARAM}}
+, \newline
+\doxymbox{\hyperlink{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea949620985a4b6f15db9a4823c0a6715c}{DATALOG\+\_\+\+READ\+\_\+\+ERR\+\_\+\+BUSY}}
+, \doxymbox{\hyperlink{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5eae80fd2e30cb9d64fa8af98259a442529}{DATALOG\+\_\+\+READ\+\_\+\+ERR\+\_\+\+HW}}
+ \}
+\begin{DoxyCompactList}\small\item\em Code de retour spécifique à la récupération des enregistrements (Read). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0b}{Data\+Log\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_data_log_8h_a7862ffc2728f00b95c80feb4f3d43cf9}{Data\+Log\+\_\+\+Init}} (\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}hdl, \doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*}hfram)
+\begin{DoxyCompactList}\small\item\em Initialise le contexte du Datalogger et lance le chargement des métadonnées. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{driver_data_log_8h_a8b4c9a060e5cba8d0afbb76e8f3ac706}{Data\+Log\+\_\+\+Process}} (\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}hdl)
+\begin{DoxyCompactList}\small\item\em Machine d\textquotesingle{}état (FSM) du Datalogger. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0}{Data\+Log\+\_\+\+Status\+\_\+t}} \doxymbox{\hyperlink{driver_data_log_8h_ab0e74db1a5d8e7c03fb0ee315160c327}{Data\+Log\+\_\+\+Get\+Status}} (\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}hdl)
+\begin{DoxyCompactList}\small\item\em Retourne le statut opérationnel actuel du Datalogger. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0b}{Data\+Log\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_data_log_8h_a3917e73f976143f229542e9f4abe58e6}{Data\+Log\+\_\+\+Write}} (\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}hdl, const void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Demande l\textquotesingle{}écriture asynchrone d\textquotesingle{}un nouvel enregistrement en mémoire. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0b}{Data\+Log\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_data_log_8h_ae11d8580eac690d4adc8b4057bb697b7}{Data\+Log\+\_\+\+Seek\+Oldest}} (\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}hdl)
+\begin{DoxyCompactList}\small\item\em Positionne la tête de lecture sur le plus vieil enregistrement non écrasé. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0b}{Data\+Log\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_data_log_8h_a1a10f035c15773735eec26e93720bb5b}{Data\+Log\+\_\+\+Seek\+By\+Id}} (\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}hdl, uint32\+\_\+t record\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Positionne la tête de lecture sur un enregistrement spécifique via son ID. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5e}{Data\+Log\+\_\+\+Read\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_data_log_8h_a1d96a3d82d1a92f0202e19a491461bc1}{Data\+Log\+\_\+\+Read\+Next}} (\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}hdl, void \texorpdfstring{$\ast$}{*}user\+\_\+buffer, uint32\+\_\+t \texorpdfstring{$\ast$}{*}out\+\_\+record\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Tente de lire l\textquotesingle{}enregistrement pointé par la tête de lecture et avance le curseur. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0b}{Data\+Log\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_data_log_8h_a277efd929ad481b5def8b58cde2fe032}{Data\+Log\+\_\+\+Format}} (\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}hdl)
+\item 
+uint32\+\_\+t \doxymbox{\hyperlink{driver_data_log_8h_acc471d5e2b5209681f07212ecfd12172}{Data\+Log\+\_\+\+Get\+Newest\+Id}} (\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}hdl)
+\begin{DoxyCompactList}\small\item\em Renvoie l\textquotesingle{}ID du tout dernier enregistrement sauvegardé en mémoire. \end{DoxyCompactList}\item 
+uint32\+\_\+t \doxymbox{\hyperlink{driver_data_log_8h_a37fac1c6c2ee27c686b3af61b60a1a47}{Data\+Log\+\_\+\+Get\+Oldest\+Id}} (\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}hdl)
+\begin{DoxyCompactList}\small\item\em Renvoie l\textquotesingle{}ID du plus vieil enregistrement encore disponible en mémoire. \end{DoxyCompactList}\item 
+uint32\+\_\+t \doxymbox{\hyperlink{driver_data_log_8h_a50589a5c3eb36319b58963aa993bb0cb}{Data\+Log\+\_\+\+Get\+Record\+Count}} (\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}hdl)
+\begin{DoxyCompactList}\small\item\em Renvoie le nombre total d\textquotesingle{}enregistrements valides actuellement en mémoire. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Pilote de Datalogger circulaire asynchrone sur mémoire FRAM. 
+
+\begin{DoxyAuthor}{Author}
+\+[Ton Nom/\+\+Projet]\+ 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+\+[Date actuelle]\+
+\end{DoxyDate}
+Ce module implémente un système de fichiers circulaire simple et robuste. Il stocke des blocs de données de taille fixe (payload utilisateur) tout en ajoutant de manière transparente un identifiant unique (record\+\_\+id) sur 32 bits.
+\begin{DoxyItemize}
+\item Le système est conçu pour être 100\% non-\/bloquant et s\textquotesingle{}appuie sur le driver asynchrone FRAM (DMA). La persistance est assurée par un bloc de métadonnées enregistré au début de la mémoire.
+\end{DoxyItemize}
+
+\begin{DoxyParagraph}{Exemple d\textquotesingle{}utilisation (Écriture) :\+}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{driver_data_log_8h_a7862ffc2728f00b95c80feb4f3d43cf9}{DataLog\_Init}}(\&myLog,\ \&myFRAM);}
+\DoxyCodeLine{\doxymbox{\hyperlink{driver_data_log_8h_a3917e73f976143f229542e9f4abe58e6}{DataLog\_Write}}(\&myLog,\ \&mes\_donnees);\ \textcolor{comment}{//\ Enregistre\ la\ structure\ utilisateur}}
+
+\end{DoxyCode}
+
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Exemple d\textquotesingle{}utilisation (Lecture) :\+}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{driver_data_log_8h_ae11d8580eac690d4adc8b4057bb697b7}{DataLog\_SeekOldest}}(\&myLog);\ \textcolor{comment}{//\ Positionne\ la\ tête\ de\ lecture}}
+\DoxyCodeLine{uint32\_t\ id;}
+\DoxyCodeLine{MesDonnees\_t\ buf;}
+\DoxyCodeLine{*\ \textcolor{keywordflow}{while}(\doxymbox{\hyperlink{driver_data_log_8h_a1d96a3d82d1a92f0202e19a491461bc1}{DataLog\_ReadNext}}(\&myLog,\ \&buf,\ \&\textcolor{keywordtype}{id})\ ==\ \doxymbox{\hyperlink{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea84fa0b83581119e4a79834dd4260e06d}{DATALOG\_READ\_OK}})\ \{}
+\DoxyCodeLine{\textcolor{comment}{//\ Traiter\ les\ données\ lues...}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+
+
+\label{driver_data_log_8h_doc-define-members}
+\Hypertarget{driver_data_log_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{driver_data_log_8h_a1785dd6b63e6ed6c1f1c585810703e4a}\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_DATA\_END@{DATALOG\_DATA\_END}}
+\index{DATALOG\_DATA\_END@{DATALOG\_DATA\_END}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DATALOG\_DATA\_END}{DATALOG\_DATA\_END}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_a1785dd6b63e6ed6c1f1c585810703e4a} 
+\+\#define DATALOG\+\_\+\+DATA\+\_\+\+END~(256U \texorpdfstring{$\ast$}{*} 1024U -\/ 1U)}
+
+Fin de la mémoire FRAM (ex:\+ 2Mbits = 256 Ko) \Hypertarget{driver_data_log_8h_a974eb3261153c3ae64c3dc4c8644babb}\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_DATA\_START@{DATALOG\_DATA\_START}}
+\index{DATALOG\_DATA\_START@{DATALOG\_DATA\_START}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DATALOG\_DATA\_START}{DATALOG\_DATA\_START}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_a974eb3261153c3ae64c3dc4c8644babb} 
+\+\#define DATALOG\+\_\+\+DATA\+\_\+\+START~0x000040U}
+
+Début de la zone de stockage circulaire \Hypertarget{driver_data_log_8h_a690967a8ca23be771665ad4125f4ac78}\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_DATA\_ZONE\_SIZE@{DATALOG\_DATA\_ZONE\_SIZE}}
+\index{DATALOG\_DATA\_ZONE\_SIZE@{DATALOG\_DATA\_ZONE\_SIZE}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DATALOG\_DATA\_ZONE\_SIZE}{DATALOG\_DATA\_ZONE\_SIZE}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_a690967a8ca23be771665ad4125f4ac78} 
+\+\#define DATALOG\+\_\+\+DATA\+\_\+\+ZONE\+\_\+\+SIZE~(\doxymbox{\hyperlink{driver_data_log_8h_a1785dd6b63e6ed6c1f1c585810703e4a}{DATALOG\+\_\+\+DATA\+\_\+\+END}} -\/ \doxymbox{\hyperlink{driver_data_log_8h_a974eb3261153c3ae64c3dc4c8644babb}{DATALOG\+\_\+\+DATA\+\_\+\+START}} + 1U)}
+
+Capacité totale de la zone circulaire \Hypertarget{driver_data_log_8h_a2548e34261126587e67c699be9195c8c}\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_FRAME\_SIZE@{DATALOG\_FRAME\_SIZE}}
+\index{DATALOG\_FRAME\_SIZE@{DATALOG\_FRAME\_SIZE}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DATALOG\_FRAME\_SIZE}{DATALOG\_FRAME\_SIZE}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_a2548e34261126587e67c699be9195c8c} 
+\+\#define DATALOG\+\_\+\+FRAME\+\_\+\+SIZE~(4U + \doxymbox{\hyperlink{driver_data_log_8h_a0879797ae6624f6ca324e479427f78ec}{DATALOG\+\_\+\+USER\+\_\+\+DATA\+\_\+\+SIZE}})}
+
+
+
+Taille totale d\textquotesingle{}un enregistrement en mémoire (ID 32 bits + Payload). 
+
+\Hypertarget{driver_data_log_8h_af327b5b7b20ccc2e686fce0c1d054950}\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_MAGIC@{DATALOG\_MAGIC}}
+\index{DATALOG\_MAGIC@{DATALOG\_MAGIC}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DATALOG\_MAGIC}{DATALOG\_MAGIC}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_af327b5b7b20ccc2e686fce0c1d054950} 
+\+\#define DATALOG\+\_\+\+MAGIC~0x5\+A7\+AU}
+
+
+
+Mot magique utilisé pour vérifier l\textquotesingle{}intégrité de la FRAM au boot. 
+
+\Hypertarget{driver_data_log_8h_ada75c6f6eb8ea142c578f977245d4a8c}\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_MAX\_RECORDS@{DATALOG\_MAX\_RECORDS}}
+\index{DATALOG\_MAX\_RECORDS@{DATALOG\_MAX\_RECORDS}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DATALOG\_MAX\_RECORDS}{DATALOG\_MAX\_RECORDS}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_ada75c6f6eb8ea142c578f977245d4a8c} 
+\+\#define DATALOG\+\_\+\+MAX\+\_\+\+RECORDS~(\doxymbox{\hyperlink{driver_data_log_8h_a690967a8ca23be771665ad4125f4ac78}{DATALOG\+\_\+\+DATA\+\_\+\+ZONE\+\_\+\+SIZE}} /\+ \doxymbox{\hyperlink{driver_data_log_8h_a2548e34261126587e67c699be9195c8c}{DATALOG\+\_\+\+FRAME\+\_\+\+SIZE}})}
+
+Nombre maximum d\textquotesingle{}enregistrements possibles \Hypertarget{driver_data_log_8h_a81d129478d16964a07eb88c032759b78}\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_META\_ADDR@{DATALOG\_META\_ADDR}}
+\index{DATALOG\_META\_ADDR@{DATALOG\_META\_ADDR}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DATALOG\_META\_ADDR}{DATALOG\_META\_ADDR}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_a81d129478d16964a07eb88c032759b78} 
+\+\#define DATALOG\+\_\+\+META\+\_\+\+ADDR~0x000000U}
+
+Adresse du bloc de métadonnées \Hypertarget{driver_data_log_8h_a0879797ae6624f6ca324e479427f78ec}\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_USER\_DATA\_SIZE@{DATALOG\_USER\_DATA\_SIZE}}
+\index{DATALOG\_USER\_DATA\_SIZE@{DATALOG\_USER\_DATA\_SIZE}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DATALOG\_USER\_DATA\_SIZE}{DATALOG\_USER\_DATA\_SIZE}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_a0879797ae6624f6ca324e479427f78ec} 
+\+\#define DATALOG\+\_\+\+USER\+\_\+\+DATA\+\_\+\+SIZE~12U}
+
+
+
+Taille en octets de la structure de données de l\textquotesingle{}utilisateur (Payload). 
+
+
+
+\label{driver_data_log_8h_doc-enum-members}
+\Hypertarget{driver_data_log_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5e}\index{driverDataLog.h@{driverDataLog.h}!DataLog\_ReadResult\_t@{DataLog\_ReadResult\_t}}
+\index{DataLog\_ReadResult\_t@{DataLog\_ReadResult\_t}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DataLog\_ReadResult\_t}{DataLog\_ReadResult\_t}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5e} 
+enum \doxymbox{\hyperlink{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5e}{Data\+Log\+\_\+\+Read\+Result\+\_\+t}}}
+
+
+
+Code de retour spécifique à la récupération des enregistrements (Read). 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DATALOG\_READ\_OK@{DATALOG\_READ\_OK}!driverDataLog.h@{driverDataLog.h}}
+\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_READ\_OK@{DATALOG\_READ\_OK}}
+}\Hypertarget{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea84fa0b83581119e4a79834dd4260e06d}\label{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea84fa0b83581119e4a79834dd4260e06d} 
+DATALOG\+\_\+\+READ\+\_\+\+OK&Un enregistrement a été lu et copié dans le buffer utilisateur \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DATALOG\_READ\_PENDING@{DATALOG\_READ\_PENDING}!driverDataLog.h@{driverDataLog.h}}
+\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_READ\_PENDING@{DATALOG\_READ\_PENDING}}
+}\Hypertarget{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea5cd1b03210bab65d4646c8c3a1a5b84d}\label{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea5cd1b03210bab65d4646c8c3a1a5b84d} 
+DATALOG\+\_\+\+READ\+\_\+\+PENDING&Lecture asynchrone en cours, la donnée n\textquotesingle{}est pas encore disponible \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DATALOG\_READ\_EOF@{DATALOG\_READ\_EOF}!driverDataLog.h@{driverDataLog.h}}
+\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_READ\_EOF@{DATALOG\_READ\_EOF}}
+}\Hypertarget{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea597213dec74c0dccfa348ab45dcdaf10}\label{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea597213dec74c0dccfa348ab45dcdaf10} 
+DATALOG\+\_\+\+READ\+\_\+\+EOF&Fin de fichier atteinte (plus de nouveaux enregistrements) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DATALOG\_READ\_ERR\_PARAM@{DATALOG\_READ\_ERR\_PARAM}!driverDataLog.h@{driverDataLog.h}}
+\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_READ\_ERR\_PARAM@{DATALOG\_READ\_ERR\_PARAM}}
+}\Hypertarget{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea4cc133d91388c7b54a4e245a632d5fe1}\label{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea4cc133d91388c7b54a4e245a632d5fe1} 
+DATALOG\+\_\+\+READ\+\_\+\+ERR\+\_\+\+PARAM&Erreur de paramètre (pointeur NULL) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DATALOG\_READ\_ERR\_BUSY@{DATALOG\_READ\_ERR\_BUSY}!driverDataLog.h@{driverDataLog.h}}
+\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_READ\_ERR\_BUSY@{DATALOG\_READ\_ERR\_BUSY}}
+}\Hypertarget{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea949620985a4b6f15db9a4823c0a6715c}\label{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea949620985a4b6f15db9a4823c0a6715c} 
+DATALOG\+\_\+\+READ\+\_\+\+ERR\+\_\+\+BUSY&Refus :\+ Le Datalogger effectue déjà une écriture \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DATALOG\_READ\_ERR\_HW@{DATALOG\_READ\_ERR\_HW}!driverDataLog.h@{driverDataLog.h}}
+\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_READ\_ERR\_HW@{DATALOG\_READ\_ERR\_HW}}
+}\Hypertarget{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5eae80fd2e30cb9d64fa8af98259a442529}\label{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5eae80fd2e30cb9d64fa8af98259a442529} 
+DATALOG\+\_\+\+READ\+\_\+\+ERR\+\_\+\+HW&Erreur matérielle pendant la lecture (ex:\+ FRAM Timeout) \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0b}\index{driverDataLog.h@{driverDataLog.h}!DataLog\_Result\_t@{DataLog\_Result\_t}}
+\index{DataLog\_Result\_t@{DataLog\_Result\_t}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DataLog\_Result\_t}{DataLog\_Result\_t}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0b} 
+enum \doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0b}{Data\+Log\+\_\+\+Result\+\_\+t}}}
+
+
+
+Code de retour immédiat pour les appels de fonctions d\textquotesingle{}écriture/\+configuration. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DATALOG\_OK@{DATALOG\_OK}!driverDataLog.h@{driverDataLog.h}}
+\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_OK@{DATALOG\_OK}}
+}\Hypertarget{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0bae3e3c76b2916f6f4f9af6e7f38fd5725}\label{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0bae3e3c76b2916f6f4f9af6e7f38fd5725} 
+DATALOG\+\_\+\+OK&L\textquotesingle{}opération a été acceptée avec succès \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DATALOG\_ERR\_PARAM@{DATALOG\_ERR\_PARAM}!driverDataLog.h@{driverDataLog.h}}
+\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_ERR\_PARAM@{DATALOG\_ERR\_PARAM}}
+}\Hypertarget{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0ba6d150d597b44f436bbc8fc19065b3994}\label{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0ba6d150d597b44f436bbc8fc19065b3994} 
+DATALOG\+\_\+\+ERR\+\_\+\+PARAM&Erreur de paramètre (ex:\+ pointeur NULL) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DATALOG\_ERR\_BUSY@{DATALOG\_ERR\_BUSY}!driverDataLog.h@{driverDataLog.h}}
+\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_ERR\_BUSY@{DATALOG\_ERR\_BUSY}}
+}\Hypertarget{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0ba04be4fbdf7d8afc73560b9de6dc85cc3}\label{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0ba04be4fbdf7d8afc73560b9de6dc85cc3} 
+DATALOG\+\_\+\+ERR\+\_\+\+BUSY&Le driver est déjà occupé par une transaction \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DATALOG\_ERR\_FRAM@{DATALOG\_ERR\_FRAM}!driverDataLog.h@{driverDataLog.h}}
+\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_ERR\_FRAM@{DATALOG\_ERR\_FRAM}}
+}\Hypertarget{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0ba8eb0629d1dbacb8803d73a8ff1d9038d}\label{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0ba8eb0629d1dbacb8803d73a8ff1d9038d} 
+DATALOG\+\_\+\+ERR\+\_\+\+FRAM&Erreur ou refus de la couche matérielle basse (FRAM) \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0}\index{driverDataLog.h@{driverDataLog.h}!DataLog\_Status\_t@{DataLog\_Status\_t}}
+\index{DataLog\_Status\_t@{DataLog\_Status\_t}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DataLog\_Status\_t}{DataLog\_Status\_t}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0} 
+enum \doxymbox{\hyperlink{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0}{Data\+Log\+\_\+\+Status\+\_\+t}}}
+
+
+
+État opérationnel global du Datalogger. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DATALOG\_STATUS\_UNINIT@{DATALOG\_STATUS\_UNINIT}!driverDataLog.h@{driverDataLog.h}}
+\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_STATUS\_UNINIT@{DATALOG\_STATUS\_UNINIT}}
+}\Hypertarget{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0a3373505407189936e45f4d69796c2ae7}\label{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0a3373505407189936e45f4d69796c2ae7} 
+DATALOG\+\_\+\+STATUS\+\_\+\+UNINIT&Non initialisé ou pointeur invalide \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DATALOG\_STATUS\_INIT\_PENDING@{DATALOG\_STATUS\_INIT\_PENDING}!driverDataLog.h@{driverDataLog.h}}
+\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_STATUS\_INIT\_PENDING@{DATALOG\_STATUS\_INIT\_PENDING}}
+}\Hypertarget{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0a99f928a0bb29999203f714e5da332528}\label{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0a99f928a0bb29999203f714e5da332528} 
+DATALOG\+\_\+\+STATUS\+\_\+\+INIT\+\_\+\+PENDING&En cours de démarrage (chargement des métadonnées) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DATALOG\_STATUS\_READY@{DATALOG\_STATUS\_READY}!driverDataLog.h@{driverDataLog.h}}
+\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_STATUS\_READY@{DATALOG\_STATUS\_READY}}
+}\Hypertarget{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0a9b93d10295d33a3146915121ccd0258d}\label{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0a9b93d10295d33a3146915121ccd0258d} 
+DATALOG\+\_\+\+STATUS\+\_\+\+READY&Prêt à accepter de nouvelles commandes (Idle) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DATALOG\_STATUS\_BUSY@{DATALOG\_STATUS\_BUSY}!driverDataLog.h@{driverDataLog.h}}
+\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_STATUS\_BUSY@{DATALOG\_STATUS\_BUSY}}
+}\Hypertarget{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0a8d8e796b76952b16bbe35431aa88755b}\label{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0a8d8e796b76952b16bbe35431aa88755b} 
+DATALOG\+\_\+\+STATUS\+\_\+\+BUSY&Transaction de lecture ou d\textquotesingle{}écriture en cours (DMA) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DATALOG\_STATUS\_ERROR@{DATALOG\_STATUS\_ERROR}!driverDataLog.h@{driverDataLog.h}}
+\index{driverDataLog.h@{driverDataLog.h}!DATALOG\_STATUS\_ERROR@{DATALOG\_STATUS\_ERROR}}
+}\Hypertarget{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0a48f47685d2bbb1f067ed69d4fe2918f4}\label{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0a48f47685d2bbb1f067ed69d4fe2918f4} 
+DATALOG\+\_\+\+STATUS\+\_\+\+ERROR&Erreur critique matérielle (FRAM HS ou Timeout) \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{driver_data_log_8h_doc-func-members}
+\Hypertarget{driver_data_log_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{driver_data_log_8h_a277efd929ad481b5def8b58cde2fe032}\index{driverDataLog.h@{driverDataLog.h}!DataLog\_Format@{DataLog\_Format}}
+\index{DataLog\_Format@{DataLog\_Format}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DataLog\_Format()}{DataLog\_Format()}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_a277efd929ad481b5def8b58cde2fe032} 
+\doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0b}{Data\+Log\+\_\+\+Result\+\_\+t}} Data\+Log\+\_\+\+Format (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hdl}{}\end{DoxyParamCaption})}
+
+\Hypertarget{driver_data_log_8h_acc471d5e2b5209681f07212ecfd12172}\index{driverDataLog.h@{driverDataLog.h}!DataLog\_GetNewestId@{DataLog\_GetNewestId}}
+\index{DataLog\_GetNewestId@{DataLog\_GetNewestId}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DataLog\_GetNewestId()}{DataLog\_GetNewestId()}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_acc471d5e2b5209681f07212ecfd12172} 
+uint32\+\_\+t Data\+Log\+\_\+\+Get\+Newest\+Id (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hdl}{}\end{DoxyParamCaption})}
+
+
+
+Renvoie l\textquotesingle{}ID du tout dernier enregistrement sauvegardé en mémoire. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hdl} & Pointeur vers le handle du Datalogger. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}ID du record le plus récent (0 si la mémoire est vide ou pointeur NULL). 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{driver_data_log_8h_acc471d5e2b5209681f07212ecfd12172_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_data_log_8h_a37fac1c6c2ee27c686b3af61b60a1a47}\index{driverDataLog.h@{driverDataLog.h}!DataLog\_GetOldestId@{DataLog\_GetOldestId}}
+\index{DataLog\_GetOldestId@{DataLog\_GetOldestId}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DataLog\_GetOldestId()}{DataLog\_GetOldestId()}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_a37fac1c6c2ee27c686b3af61b60a1a47} 
+uint32\+\_\+t Data\+Log\+\_\+\+Get\+Oldest\+Id (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hdl}{}\end{DoxyParamCaption})}
+
+
+
+Renvoie l\textquotesingle{}ID du plus vieil enregistrement encore disponible en mémoire. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hdl} & Pointeur vers le handle du Datalogger. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}ID du plus vieux record (0 si la mémoire est vide ou pointeur NULL). 
+\end{DoxyReturn}
+\Hypertarget{driver_data_log_8h_a50589a5c3eb36319b58963aa993bb0cb}\index{driverDataLog.h@{driverDataLog.h}!DataLog\_GetRecordCount@{DataLog\_GetRecordCount}}
+\index{DataLog\_GetRecordCount@{DataLog\_GetRecordCount}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DataLog\_GetRecordCount()}{DataLog\_GetRecordCount()}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_a50589a5c3eb36319b58963aa993bb0cb} 
+uint32\+\_\+t Data\+Log\+\_\+\+Get\+Record\+Count (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hdl}{}\end{DoxyParamCaption})}
+
+
+
+Renvoie le nombre total d\textquotesingle{}enregistrements valides actuellement en mémoire. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hdl} & Pointeur vers le handle du Datalogger. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le nombre d\textquotesingle{}enregistrements (0 si mémoire vide, jusqu\textquotesingle{}à DATALOG\+\_\+\+MAX\+\_\+\+RECORDS). 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_data_log_8h_a50589a5c3eb36319b58963aa993bb0cb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_data_log_8h_ab0e74db1a5d8e7c03fb0ee315160c327}\index{driverDataLog.h@{driverDataLog.h}!DataLog\_GetStatus@{DataLog\_GetStatus}}
+\index{DataLog\_GetStatus@{DataLog\_GetStatus}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DataLog\_GetStatus()}{DataLog\_GetStatus()}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_ab0e74db1a5d8e7c03fb0ee315160c327} 
+\doxymbox{\hyperlink{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0}{Data\+Log\+\_\+\+Status\+\_\+t}} Data\+Log\+\_\+\+Get\+Status (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hdl}{}\end{DoxyParamCaption})}
+
+
+
+Retourne le statut opérationnel actuel du Datalogger. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hdl} & Pointeur vers le handle du Datalogger. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+DATALOG\+\_\+\+STATUS\+\_\+\+READY, BUSY, ERROR, ou INIT\+\_\+\+PENDING. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{driver_data_log_8h_ab0e74db1a5d8e7c03fb0ee315160c327_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_data_log_8h_a7862ffc2728f00b95c80feb4f3d43cf9}\index{driverDataLog.h@{driverDataLog.h}!DataLog\_Init@{DataLog\_Init}}
+\index{DataLog\_Init@{DataLog\_Init}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DataLog\_Init()}{DataLog\_Init()}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_a7862ffc2728f00b95c80feb4f3d43cf9} 
+\doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0b}{Data\+Log\+\_\+\+Result\+\_\+t}} Data\+Log\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hdl}{, }\item[{\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hfram}{}\end{DoxyParamCaption})}
+
+
+
+Initialise le contexte du Datalogger et lance le chargement des métadonnées. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hdl} & Pointeur vers le handle du Datalogger. \\
+\hline
+{\em hfram} & Pointeur vers le handle du driver FRAM déjà initialisé. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em DATALOG\+\_\+\+OK} & en cas de succès de l\textquotesingle{}initialisation logicielle. \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=301pt]{driver_data_log_8h_a7862ffc2728f00b95c80feb4f3d43cf9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_data_log_8h_a8b4c9a060e5cba8d0afbb76e8f3ac706}\index{driverDataLog.h@{driverDataLog.h}!DataLog\_Process@{DataLog\_Process}}
+\index{DataLog\_Process@{DataLog\_Process}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DataLog\_Process()}{DataLog\_Process()}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_a8b4c9a060e5cba8d0afbb76e8f3ac706} 
+void Data\+Log\+\_\+\+Process (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hdl}{}\end{DoxyParamCaption})}
+
+
+
+Machine d\textquotesingle{}état (FSM) du Datalogger. 
+
+\begin{DoxyNote}{Note}
+Doit être appelée le plus souvent possible dans la boucle principale (main/\+while(1)). 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em hdl} & Pointeur vers le handle du Datalogger. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=283pt]{driver_data_log_8h_a8b4c9a060e5cba8d0afbb76e8f3ac706_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=323pt]{driver_data_log_8h_a8b4c9a060e5cba8d0afbb76e8f3ac706_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_data_log_8h_a1d96a3d82d1a92f0202e19a491461bc1}\index{driverDataLog.h@{driverDataLog.h}!DataLog\_ReadNext@{DataLog\_ReadNext}}
+\index{DataLog\_ReadNext@{DataLog\_ReadNext}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DataLog\_ReadNext()}{DataLog\_ReadNext()}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_a1d96a3d82d1a92f0202e19a491461bc1} 
+\doxymbox{\hyperlink{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5e}{Data\+Log\+\_\+\+Read\+Result\+\_\+t}} Data\+Log\+\_\+\+Read\+Next (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hdl}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+buffer}{, }\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}}]{out\+\_\+record\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Tente de lire l\textquotesingle{}enregistrement pointé par la tête de lecture et avance le curseur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hdl} & Pointeur vers le handle du Datalogger. \\
+\hline
+{\em user\+\_\+buffer} & Buffer où les données utiles seront copiées (doit faire DATALOG\+\_\+\+USER\+\_\+\+DATA\+\_\+\+SIZE). \\
+\hline
+{\em out\+\_\+record\+\_\+id} & Pointeur (optionnel, peut être NULL) pour récupérer l\textquotesingle{}ID de la donnée lue. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+DATALOG\+\_\+\+READ\+\_\+\+OK si réussi, PENDING s\textquotesingle{}il faut attendre, EOF si plus de données à lire. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{driver_data_log_8h_a1d96a3d82d1a92f0202e19a491461bc1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_data_log_8h_a1a10f035c15773735eec26e93720bb5b}\index{driverDataLog.h@{driverDataLog.h}!DataLog\_SeekById@{DataLog\_SeekById}}
+\index{DataLog\_SeekById@{DataLog\_SeekById}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DataLog\_SeekById()}{DataLog\_SeekById()}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_a1a10f035c15773735eec26e93720bb5b} 
+\doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0b}{Data\+Log\+\_\+\+Result\+\_\+t}} Data\+Log\+\_\+\+Seek\+By\+Id (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hdl}{, }\item[{uint32\+\_\+t}]{record\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Positionne la tête de lecture sur un enregistrement spécifique via son ID. 
+
+\begin{DoxyNote}{Note}
+Si l\textquotesingle{}ID demandé a déjà été écrasé (trop vieux), la tête se positionnera automatiquement sur l\textquotesingle{}ID disponible le plus ancien. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em hdl} & Pointeur vers le handle du Datalogger. \\
+\hline
+{\em record\+\_\+id} & L\textquotesingle{}identifiant 32 bits de l\textquotesingle{}enregistrement ciblé. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em DATALOG\+\_\+\+OK} & si accepté, sinon ERR\+\_\+\+BUSY ou ERR\+\_\+\+PARAM. \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{driver_data_log_8h_ae11d8580eac690d4adc8b4057bb697b7}\index{driverDataLog.h@{driverDataLog.h}!DataLog\_SeekOldest@{DataLog\_SeekOldest}}
+\index{DataLog\_SeekOldest@{DataLog\_SeekOldest}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DataLog\_SeekOldest()}{DataLog\_SeekOldest()}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_ae11d8580eac690d4adc8b4057bb697b7} 
+\doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0b}{Data\+Log\+\_\+\+Result\+\_\+t}} Data\+Log\+\_\+\+Seek\+Oldest (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hdl}{}\end{DoxyParamCaption})}
+
+
+
+Positionne la tête de lecture sur le plus vieil enregistrement non écrasé. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hdl} & Pointeur vers le handle du Datalogger. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em DATALOG\+\_\+\+OK} & si accepté, sinon ERR\+\_\+\+BUSY si le Datalogger travaille déjà. \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{driver_data_log_8h_ae11d8580eac690d4adc8b4057bb697b7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_data_log_8h_a3917e73f976143f229542e9f4abe58e6}\index{driverDataLog.h@{driverDataLog.h}!DataLog\_Write@{DataLog\_Write}}
+\index{DataLog\_Write@{DataLog\_Write}!driverDataLog.h@{driverDataLog.h}}
+\doxysubsubsection{\texorpdfstring{DataLog\_Write()}{DataLog\_Write()}}
+{\footnotesize\ttfamily \label{driver_data_log_8h_a3917e73f976143f229542e9f4abe58e6} 
+\doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0b}{Data\+Log\+\_\+\+Result\+\_\+t}} Data\+Log\+\_\+\+Write (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_data_log__t}{Data\+Log\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hdl}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+
+
+Demande l\textquotesingle{}écriture asynchrone d\textquotesingle{}un nouvel enregistrement en mémoire. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hdl} & Pointeur vers le handle du Datalogger. \\
+\hline
+{\em user\+\_\+data} & Pointeur vers la structure de données utilisateur à sauvegarder. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em DATALOG\+\_\+\+OK} & si la transaction est acceptée, sinon ERR\+\_\+\+BUSY ou ERR\+\_\+\+PARAM. \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{driver_data_log_8h_a3917e73f976143f229542e9f4abe58e6_icgraph}
+\end{center}
+\end{figure}

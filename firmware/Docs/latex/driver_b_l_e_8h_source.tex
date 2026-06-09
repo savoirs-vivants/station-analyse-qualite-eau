@@ -1,0 +1,98 @@
+\doxysection{driver\+BLE.\+h}
+\hypertarget{driver_b_l_e_8h_source}{}\label{driver_b_l_e_8h_source}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverBLE.h@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverBLE.h}}
+\doxymbox{\hyperlink{driver_b_l_e_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ driverBLE.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Driver\ non-\/bloquant\ pour\ module\ Bluetooth\ Microchip\ (RN487x/RN4678)}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Mode\ Transparent\ UART}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ DRIVER\_BLE\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ DRIVER\_BLE\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}stm32u0xx\_hal.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{main_8h}{main.h}}"{}}\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Pour\ avoir\ accès\ aux\ \#define\ des\ broches\ (EN\_LS\_BLE\_Pin)}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{/*\ -\/-\/-\/\ Gestion\ du\ Débogage\ -\/-\/-\/\ */}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ BLE\_DEBUG\_ENABLE\ 1\ }\textcolor{comment}{//\ Mettre\ à\ 0\ pour\ désactiver\ les\ logs\ en\ production}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#if\ BLE\_DEBUG\_ENABLE}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ \#include\ <stdio.h>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\ \ \ \ \#define\ BLE\_PRINT(...)\ printf("{}[BLE]\ "{}\ \_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\ \ \ \ \#define\ BLE\_PRINT(...)\ }\textcolor{comment}{//\ Remplace\ par\ du\ vide\ si\ désactivé}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{comment}{/*\ -\/-\/-\/\ Enumérations\ -\/-\/-\/\ */}}
+\DoxyCodeLine{00027\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6adbd207a6313c19a7e4bfbb92922866ba}{BLE\_STATE\_IDLE}},}
+\DoxyCodeLine{00029\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a8fa26fa56e4c869d4658e1e9d544906b}{BLE\_STATE\_START}},}
+\DoxyCodeLine{00030\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a833fc67add8cfb11463aa2cb2ebf0c2f}{BLE\_STATE\_CONFIGURING}},}
+\DoxyCodeLine{00031\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a9de0e937a530b3cfb7486d08e84c5c07}{BLE\_STATE\_CONFIGURING\_WAIT}},}
+\DoxyCodeLine{00032\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a4d8d871f03f3c64cf23d00c70c432cbb}{BLE\_STATE\_WAIT\_CMD}},}
+\DoxyCodeLine{00033\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6ab5be5eef71457e751816fca8f7de192d}{BLE\_STATE\_STREAMING}},}
+\DoxyCodeLine{00034\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6add09d50a13bcf1b43d727660b68b5399}{BLE\_STATE\_STREAMING\_WAIT}},}
+\DoxyCodeLine{00035\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a80659bebfb018d3a85307c14a57ce6bc}{BLE\_STATE\_WAIT\_ACK}},}
+\DoxyCodeLine{00036\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a027434e401758bef0534dcf5778e4d29}{BLE\_STATE\_STOP}},}
+\DoxyCodeLine{00037\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6a70bc9c026782ad74df51abf09aa2891b}{BLE\_STATE\_ERROR}}}
+\DoxyCodeLine{00038\ \}\ \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6}{BLE\_State\_t}};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9ae604c8c149199eef5d9d955892fa2ce7}{BLE\_STATUS\_READY}},}
+\DoxyCodeLine{00042\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9a40dc89b3a7d9731e4cbea4c73d8b8ba5}{BLE\_STATUS\_BUSY}},}
+\DoxyCodeLine{00043\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9ae1d6f218486fe99be9061587a0323f5e}{BLE\_STATUS\_ERROR}},}
+\DoxyCodeLine{00044\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9a0d9db2de80c53539b993037b7077394a}{BLE\_STATUS\_CONNECTED}},}
+\DoxyCodeLine{00045\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9abc0cf7123d07f4bf3943bf13cc1d2554}{BLE\_STATUS\_STREAMING}},}
+\DoxyCodeLine{00046\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9ad0c0389ddfcc0b8180ac771638f95611}{BLE\_STATUS\_CONFIGURING}}}
+\DoxyCodeLine{00047\ \}\ \doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9}{BLE\_Status\_t}};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436af7fe6c49d6a223452e68e5a49d82d2e7}{BLE\_OK}},}
+\DoxyCodeLine{00051\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436abd700217effbeed3a10c5ef91f849361}{BLE\_ERR\_PARAM}},}
+\DoxyCodeLine{00052\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436aaa0c52ac5b1905e8035c78aeed3d1db4}{BLE\_ERR\_HW}},}
+\DoxyCodeLine{00053\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436a31fdb76b15acd9f647cceef1c33934c2}{BLE\_BUSY}}}
+\DoxyCodeLine{00054\ \}\ \doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436}{BLE\_Result\_t}};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{comment}{/*\ -\/-\/-\/\ Structure\ du\ Driver\ -\/-\/-\/\ */}}
+\DoxyCodeLine{00057\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00058\ \ \ \ \ UART\_HandleTypeDef\ *\doxymbox{\hyperlink{struct_b_l_e__t_a1ed7dab212fde0a3a4600d33399c67b6}{huart}};}
+\DoxyCodeLine{00059\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a8ae80233ab9e24ac2c6058954b3566b6}{BLE\_State\_t}}\ \doxymbox{\hyperlink{struct_b_l_e__t_a269faee48e06c9572af255e96e2861e0}{state}};}
+\DoxyCodeLine{00060\ \ \ \ \ \doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9}{BLE\_Status\_t}}\ \doxymbox{\hyperlink{struct_b_l_e__t_ac9c4e0eb026e7a1f33eb67b4f8d888f2}{status}};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ uint32\_t\ \doxymbox{\hyperlink{struct_b_l_e__t_a7a774117bc8f5719b6529890b5b9ecea}{timer\_start}};;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_b_l_e__t_a15791a7d318790d7885cd78e66650b8a}{rx\_flag}};}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_b_l_e__t_a5e11d8e6a56f3df44d344651b25882d2}{tx\_flag}};}
+\DoxyCodeLine{00066\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{struct_b_l_e__t_ae8f2ad0d144bd14d52143af49a070d1e}{rx\_buffer}}[255];\ \textcolor{comment}{//\ TODO\ :\ A\ mettre\ dasn\ un\ define}}
+\DoxyCodeLine{00067\ \ \ \ \ uint16\_t\ \doxymbox{\hyperlink{struct_b_l_e__t_a1c25fa346610a07ae63dd88ecf64cd56}{rx\_size}};}
+\DoxyCodeLine{00068\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{struct_b_l_e__t_a498cfddc77b1406232558e428189431f}{config\_step}};}
+\DoxyCodeLine{00069\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{struct_b_l_e__t_ad7f3b7d0c00bba5352cf56e5ecd54519}{retry\_count}};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{struct_b_l_e__t_a97e5099bb8961a972e097bfdfbf50cff}{tx\_buffer}}[256];\ \textcolor{comment}{//\ Buffer\ de\ données\ à\ envoyer}}
+\DoxyCodeLine{00072\ \}\ \doxymbox{\hyperlink{struct_b_l_e__t}{BLE\_t}};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{comment}{/*\ -\/-\/-\/\ Prototypes\ -\/-\/-\/\ */}}
+\DoxyCodeLine{00075\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_b_l_e_8h_adcc02e9775fb1ca89c4ff9a48fab2f15}{BLE\_Init}}(\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\_t}}\ *hble,\ UART\_HandleTypeDef\ *huart);}
+\DoxyCodeLine{00076\ \doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436}{BLE\_Result\_t}}\ \doxymbox{\hyperlink{driver_b_l_e_8h_a3b49725295cf330ed7d6e10e5450e5c3}{BLE\_Configure}}(\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\_t}}\ *hble);}
+\DoxyCodeLine{00077\ \doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436}{BLE\_Result\_t}}\ \doxymbox{\hyperlink{driver_b_l_e_8h_a8440dde80c9752cd14be912d3dba5e8a}{BLE\_Start}}(\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\_t}}\ *hble);}
+\DoxyCodeLine{00078\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_b_l_e_8h_a29d82dad342f9f8873d0c5e08445b391}{BLE\_Process}}(\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\_t}}\ *hble);}
+\DoxyCodeLine{00079\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_b_l_e_8h_a620ed719c4beb69463563378b72b9c3f}{BLE\_RxCallback}}(\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\_t}}\ *hble);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{comment}{//\ Setters\ \&\ Getters}}
+\DoxyCodeLine{00082\ \doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436}{BLE\_Result\_t}}\ \doxymbox{\hyperlink{driver_b_l_e_8h_a751707830902340a013a0c52f3f922a7}{BLE\_SendChunk}}(\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\_t}}\ *hble,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *chunk);}
+\DoxyCodeLine{00083\ \doxymbox{\hyperlink{driver_b_l_e_8h_a37e620b324f2abc38332289578ecd436}{BLE\_Result\_t}}\ \doxymbox{\hyperlink{driver_b_l_e_8h_a0607798e4e9620ec9f1977d494dd07bb}{BLE\_EndStream}}(\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\_t}}\ *hble);}
+\DoxyCodeLine{00084\ \doxymbox{\hyperlink{driver_b_l_e_8h_a0a5f739506b3b4a7433cf25653dd13d9}{BLE\_Status\_t}}\ \doxymbox{\hyperlink{driver_b_l_e_8h_a15bb69158c0890ecad21435e56606cc0}{BLE\_GetStatus}}(\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\_t}}\ *hble);}
+\DoxyCodeLine{00085\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_b_l_e_8h_a437f086232132d04d711525328efbcad}{BLE\_Sleep}}(\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\_t}}\ *hble);}
+\DoxyCodeLine{00086\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_b_l_e_8h_ab64aed1aa182dd86b71698728ad3cf14}{BLE\_WakeUp}}(\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\_t}}\ *hble);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{comment}{/*\ -\/-\/-\/\ Callbacks\ pour\ les\ interruptions\ -\/-\/-\/\ */}}
+\DoxyCodeLine{00089\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_b_l_e_8h_aeb8061ddfd0086a34b0c490bb3a4cbfb}{BLE\_RxEventCallback}}(\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\_t}}\ *hble,\ uint16\_t\ Size);}
+\DoxyCodeLine{00090\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_b_l_e_8h_a66346fdb01ea454e6a556daf21ce485a}{BLE\_TxCpltCallback}}(\doxymbox{\hyperlink{struct_b_l_e__t}{BLE\_t}}\ *hble);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ DRIVER\_BLE\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

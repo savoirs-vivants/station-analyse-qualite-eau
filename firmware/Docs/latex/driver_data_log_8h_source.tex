@@ -1,0 +1,134 @@
+\doxysection{driver\+Data\+Log.\+h}
+\hypertarget{driver_data_log_8h_source}{}\label{driver_data_log_8h_source}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverDataLog.h@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverDataLog.h}}
+\doxymbox{\hyperlink{driver_data_log_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#ifndef\ INC\_DRIVERDATALOG\_H\_}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ INC\_DRIVERDATALOG\_H\_}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{driver_f_r_a_m_8h}{driverFRAM.h}}"{}}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{comment}{/*\ ==========================================================================}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ *\ CONFIGURATION\ ET\ DIMENSIONNEMENT}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ *\ ==========================================================================\ */}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ DATALOG\_USER\_DATA\_SIZE\ \ \ 12U}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ DATALOG\_MAGIC\ \ \ \ \ \ \ \ \ \ \ \ 0x5A7AU}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ DATALOG\_FRAME\_SIZE\ \ \ \ \ \ \ (4U\ +\ DATALOG\_USER\_DATA\_SIZE)}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{comment}{/*\ -\/-\/-\/\ Cartographie\ Mémoire\ (Memory\ Map)\ -\/-\/-\/\ */}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ DATALOG\_META\_ADDR\ \ \ \ \ \ \ \ 0x000000U\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ DATALOG\_DATA\_START\ \ \ \ \ \ \ 0x000040U\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ DATALOG\_DATA\_END\ \ \ \ \ \ \ \ \ (256U\ *\ 1024U\ -\/\ 1U)\ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ DATALOG\_DATA\_ZONE\_SIZE\ \ \ (DATALOG\_DATA\_END\ -\/\ DATALOG\_DATA\_START\ +\ 1U)\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ DATALOG\_MAX\_RECORDS\ \ \ \ \ \ (DATALOG\_DATA\_ZONE\_SIZE\ /\ DATALOG\_FRAME\_SIZE)\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{comment}{/*\ ==========================================================================}}
+\DoxyCodeLine{00063\ \textcolor{comment}{\ *\ ÉNUMÉRATIONS\ APPLICATIVES}}
+\DoxyCodeLine{00064\ \textcolor{comment}{\ *\ ==========================================================================\ */}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00069\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0bae3e3c76b2916f6f4f9af6e7f38fd5725}{DATALOG\_OK}}\ =\ 0,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0ba6d150d597b44f436bbc8fc19065b3994}{DATALOG\_ERR\_PARAM}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00072\ \ \ \ \ \doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0ba04be4fbdf7d8afc73560b9de6dc85cc3}{DATALOG\_ERR\_BUSY}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0ba8eb0629d1dbacb8803d73a8ff1d9038d}{DATALOG\_ERR\_FRAM}}\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00074\ \}\ \doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0b}{DataLog\_Result\_t}};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00079\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \doxymbox{\hyperlink{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0a3373505407189936e45f4d69796c2ae7}{DATALOG\_STATUS\_UNINIT}}\ =\ 0,\ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \doxymbox{\hyperlink{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0a99f928a0bb29999203f714e5da332528}{DATALOG\_STATUS\_INIT\_PENDING}},}
+\DoxyCodeLine{00082\ \ \ \ \ \doxymbox{\hyperlink{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0a9b93d10295d33a3146915121ccd0258d}{DATALOG\_STATUS\_READY}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ \doxymbox{\hyperlink{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0a8d8e796b76952b16bbe35431aa88755b}{DATALOG\_STATUS\_BUSY}},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \doxymbox{\hyperlink{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0a48f47685d2bbb1f067ed69d4fe2918f4}{DATALOG\_STATUS\_ERROR}}\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00085\ \}\ \doxymbox{\hyperlink{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0}{DataLog\_Status\_t}};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00090\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \doxymbox{\hyperlink{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea84fa0b83581119e4a79834dd4260e06d}{DATALOG\_READ\_OK}}\ =\ 0,\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00092\ \ \ \ \ \doxymbox{\hyperlink{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea5cd1b03210bab65d4646c8c3a1a5b84d}{DATALOG\_READ\_PENDING}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00093\ \ \ \ \ \doxymbox{\hyperlink{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea597213dec74c0dccfa348ab45dcdaf10}{DATALOG\_READ\_EOF}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00094\ \ \ \ \ \doxymbox{\hyperlink{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea4cc133d91388c7b54a4e245a632d5fe1}{DATALOG\_READ\_ERR\_PARAM}},\ \ \ \ \ }
+\DoxyCodeLine{00095\ \ \ \ \ \doxymbox{\hyperlink{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5ea949620985a4b6f15db9a4823c0a6715c}{DATALOG\_READ\_ERR\_BUSY}},\ \ \ \ \ \ }
+\DoxyCodeLine{00096\ \ \ \ \ \doxymbox{\hyperlink{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5eae80fd2e30cb9d64fa8af98259a442529}{DATALOG\_READ\_ERR\_HW}}\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00097\ \}\ \doxymbox{\hyperlink{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5e}{DataLog\_ReadResult\_t}};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{comment}{/*\ ==========================================================================}}
+\DoxyCodeLine{00101\ \textcolor{comment}{\ *\ STRUCTURES\ DE\ DONNÉES}}
+\DoxyCodeLine{00102\ \textcolor{comment}{\ *\ ==========================================================================\ */}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00108\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00109\ \ \ \ \ uint16\_t\ \doxymbox{\hyperlink{struct_data_log___meta__t_a8c61e64b8675498cee79c59d3f8131e2}{magic}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00110\ \ \ \ \ uint16\_t\ \doxymbox{\hyperlink{struct_data_log___meta__t_a5a6ed8c04a3db86066924b1a1bf4dad3}{reserved}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00111\ \ \ \ \ uint32\_t\ \doxymbox{\hyperlink{struct_data_log___meta__t_a2dfc42919a9acb43ebacd8cbe73abae2}{write\_ptr}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00112\ \ \ \ \ uint32\_t\ \doxymbox{\hyperlink{struct_data_log___meta__t_a1fe8f41d0f874ab0b86c9a8e9312699b}{newest\_id}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00113\ \ \ \ \ uint32\_t\ \doxymbox{\hyperlink{struct_data_log___meta__t_a4884a7ccd4130787e66aa141d47478a3}{record\_count}};\ \ \ \ \ \ }
+\DoxyCodeLine{00114\ \ \ \ \ uint32\_t\ \doxymbox{\hyperlink{struct_data_log___meta__t_a603b72c0117082d58af376d6028506a9}{has\_wrapped}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00115\ \}\ \doxymbox{\hyperlink{struct_data_log___meta__t}{DataLog\_Meta\_t}};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00120\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{comment}{/*\ Couche\ matérielle\ */}}
+\DoxyCodeLine{00122\ \ \ \ \ \doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\_t}}\ *\doxymbox{\hyperlink{struct_data_log__t_ab3e2ef661b55912258e3ec2decd93c38}{hfram}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{/*\ État\ courant\ */}}
+\DoxyCodeLine{00125\ \ \ \ \ \doxymbox{\hyperlink{struct_data_log___meta__t}{DataLog\_Meta\_t}}\ \doxymbox{\hyperlink{struct_data_log__t_a3b9b9d14bb12916ac2c093c45b033c8e}{meta}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00126\ \ \ \ \ \doxymbox{\hyperlink{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0}{DataLog\_Status\_t}}\ \doxymbox{\hyperlink{struct_data_log__t_a856f41ca7c9b0b505b9eb08ea44fd4b0}{status}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{comment}{/*\ Machine\ d'état\ (FSM)\ */}}
+\DoxyCodeLine{00129\ \ \ \ \ uint8\_t\ \ \doxymbox{\hyperlink{struct_data_log__t_ab518937fe4d8d318aca524aef0647cde}{fsm\_state}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \doxymbox{\hyperlink{struct_data_log__t_abbe792bb2cf67584b86443440a194f46}{busy}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{comment}{/*\ Paramètres\ de\ la\ tête\ de\ lecture\ */}}
+\DoxyCodeLine{00133\ \ \ \ \ uint32\_t\ \doxymbox{\hyperlink{struct_data_log__t_a439e2e5c347b4d54acc38f9b18bd6214}{read\_ptr}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ uint32\_t\ \doxymbox{\hyperlink{struct_data_log__t_a8470a7ceaf827dd9d09fe57d5c1636f5}{read\_target\_id}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \doxymbox{\hyperlink{struct_data_log__t_a324633314efb0f7b167983bf05cca165}{read\_active}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \doxymbox{\hyperlink{struct_data_log__t_aa52251c02473ce0eed6f713119d3943e}{read\_buffer\_ready}};\ \ \ \ \ }
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{/*\ Buffers\ internes\ DMA\ (Alignement\ mémoire\ strict)\ */}}
+\DoxyCodeLine{00139\ \ \ \ \ uint8\_t\ \ \doxymbox{\hyperlink{struct_data_log__t_a227310cff29a93e77de51df9fd3b568a}{write\_frame}}[\doxymbox{\hyperlink{driver_data_log_8h_a2548e34261126587e67c699be9195c8c}{DATALOG\_FRAME\_SIZE}}];\ }
+\DoxyCodeLine{00140\ \ \ \ \ uint8\_t\ \ \doxymbox{\hyperlink{struct_data_log__t_a9a283c15e101c66c26ea0e4b466396e3}{read\_frame}}[\doxymbox{\hyperlink{driver_data_log_8h_a2548e34261126587e67c699be9195c8c}{DATALOG\_FRAME\_SIZE}}];\ \ }
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{comment}{/*\ Pointeur\ de\ transfert\ */}}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *\doxymbox{\hyperlink{struct_data_log__t_a80c7f644420ebf8e67eaf2bc711cb406}{pending\_src}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00144\ \}\ \doxymbox{\hyperlink{struct_data_log__t}{DataLog\_t}};}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \textcolor{comment}{/*\ ==========================================================================}}
+\DoxyCodeLine{00148\ \textcolor{comment}{\ *\ PROTOTYPES\ DES\ FONCTIONS\ (API\ PUBLIQUE)}}
+\DoxyCodeLine{00149\ \textcolor{comment}{\ *\ ==========================================================================\ */}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00157\ \doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0b}{DataLog\_Result\_t}}\ \doxymbox{\hyperlink{driver_data_log_8h_a7862ffc2728f00b95c80feb4f3d43cf9}{DataLog\_Init}}(\doxymbox{\hyperlink{struct_data_log__t}{DataLog\_t}}\ *hdl,\ \doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\_t}}\ *hfram);}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00164\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_data_log_8h_a8b4c9a060e5cba8d0afbb76e8f3ac706}{DataLog\_Process}}(\doxymbox{\hyperlink{struct_data_log__t}{DataLog\_t}}\ *hdl);}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00171\ \doxymbox{\hyperlink{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0}{DataLog\_Status\_t}}\ \doxymbox{\hyperlink{driver_data_log_8h_ab0e74db1a5d8e7c03fb0ee315160c327}{DataLog\_GetStatus}}(\doxymbox{\hyperlink{struct_data_log__t}{DataLog\_t}}\ *hdl);}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00179\ \doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0b}{DataLog\_Result\_t}}\ \doxymbox{\hyperlink{driver_data_log_8h_a3917e73f976143f229542e9f4abe58e6}{DataLog\_Write}}(\doxymbox{\hyperlink{struct_data_log__t}{DataLog\_t}}\ *hdl,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *user\_data);}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00186\ \doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0b}{DataLog\_Result\_t}}\ \doxymbox{\hyperlink{driver_data_log_8h_ae11d8580eac690d4adc8b4057bb697b7}{DataLog\_SeekOldest}}(\doxymbox{\hyperlink{struct_data_log__t}{DataLog\_t}}\ *hdl);}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00196\ \doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0b}{DataLog\_Result\_t}}\ \doxymbox{\hyperlink{driver_data_log_8h_a1a10f035c15773735eec26e93720bb5b}{DataLog\_SeekById}}(\doxymbox{\hyperlink{struct_data_log__t}{DataLog\_t}}\ *hdl,\ uint32\_t\ record\_id);}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00205\ \doxymbox{\hyperlink{driver_data_log_8h_a72261f47cebf8d846c3bbf68f67b2c5e}{DataLog\_ReadResult\_t}}\ \doxymbox{\hyperlink{driver_data_log_8h_a1d96a3d82d1a92f0202e19a491461bc1}{DataLog\_ReadNext}}(\doxymbox{\hyperlink{struct_data_log__t}{DataLog\_t}}\ *hdl,\ \textcolor{keywordtype}{void}\ *user\_buffer,\ uint32\_t\ *out\_record\_id);}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \doxymbox{\hyperlink{driver_data_log_8h_abdd442bb91aa6791fe99ab1f57273e0b}{DataLog\_Result\_t}}\ \doxymbox{\hyperlink{driver_data_log_8h_a277efd929ad481b5def8b58cde2fe032}{DataLog\_Format}}(\doxymbox{\hyperlink{struct_data_log__t}{DataLog\_t}}\ *hdl);}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ \textcolor{comment}{/*\ ==========================================================================}}
+\DoxyCodeLine{00211\ \textcolor{comment}{\ *\ ACCESSEURS\ (GETTERS)}}
+\DoxyCodeLine{00212\ \textcolor{comment}{\ *\ ==========================================================================\ */}}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00219\ uint32\_t\ \doxymbox{\hyperlink{driver_data_log_8h_acc471d5e2b5209681f07212ecfd12172}{DataLog\_GetNewestId}}(\doxymbox{\hyperlink{struct_data_log__t}{DataLog\_t}}\ *hdl);}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00226\ uint32\_t\ \doxymbox{\hyperlink{driver_data_log_8h_a37fac1c6c2ee27c686b3af61b60a1a47}{DataLog\_GetOldestId}}(\doxymbox{\hyperlink{struct_data_log__t}{DataLog\_t}}\ *hdl);}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00233\ uint32\_t\ \doxymbox{\hyperlink{driver_data_log_8h_a50589a5c3eb36319b58963aa993bb0cb}{DataLog\_GetRecordCount}}(\doxymbox{\hyperlink{struct_data_log__t}{DataLog\_t}}\ *hdl);}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ INC\_DRIVERDATALOG\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

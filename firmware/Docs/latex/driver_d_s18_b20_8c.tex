@@ -1,0 +1,275 @@
+\doxysection{C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Src/\+driver\+DS18\+B20.c File Reference}
+\hypertarget{driver_d_s18_b20_8c}{}\label{driver_d_s18_b20_8c}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/driverDS18B20.c@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/driverDS18B20.c}}
+{\ttfamily \+\#include $<$stdint.\+h$>$}\newline
+{\ttfamily \+\#include "{}usart.\+h"{}}\newline
+{\ttfamily \+\#include "{}main.\+h"{}}\newline
+{\ttfamily \+\#include "{}driver\+DS18\+B20.\+h"{}}\newline
+Include dependency graph for driver\+DS18\+B20.\+c:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_d_s18_b20_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{driver_d_s18_b20_8h_a52d79b2d803d75455e04be95ccaf722d}{DS18\+B20\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_d_s18_b20_8c_a25dc319e326985778fdbefb72d7ddb91}{DS18\+B20\+\_\+\+Init}} (\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18\+B20\+\_\+t}} \texorpdfstring{$\ast$}{*}hds, UART\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}huart)
+\begin{DoxyCompactList}\small\item\em Initialise le contexte du driver DS18\+B20. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_d_s18_b20_8h_a52d79b2d803d75455e04be95ccaf722d}{DS18\+B20\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_d_s18_b20_8c_a3e7a3f0e24c2a71092668359f90f721b}{DS18\+B20\+\_\+\+Start}} (\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18\+B20\+\_\+t}} \texorpdfstring{$\ast$}{*}hds)
+\begin{DoxyCompactList}\small\item\em Lance une nouvelle conversion de température de manière asynchrone. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_d_s18_b20_8h_ad8987e4c5fc3c8a9e493eb702d8ef7b3}{DS18\+B20\+\_\+\+Status\+\_\+t}} \doxymbox{\hyperlink{driver_d_s18_b20_8c_a0a09109776bc6b1183ccf3b543c426b7}{DS18\+B20\+\_\+\+Get\+Status}} (\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18\+B20\+\_\+t}} \texorpdfstring{$\ast$}{*}hds)
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}état macroscopique actuel du driver. \end{DoxyCompactList}\item 
+int16\+\_\+t \doxymbox{\hyperlink{driver_d_s18_b20_8c_a31b6ff86c90f6e63d681ed8e3c70255a}{DS18\+B20\+\_\+\+Get\+Temperature}} (\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18\+B20\+\_\+t}} \texorpdfstring{$\ast$}{*}hds)
+\begin{DoxyCompactList}\small\item\em Récupère la dernière température calculée valide. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{driver_d_s18_b20_8c_aba3ddeeef8eba2153739b35fa5c3919a}{DS18\+B20\+\_\+\+Process}} (\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18\+B20\+\_\+t}} \texorpdfstring{$\ast$}{*}hds)
+\begin{DoxyCompactList}\small\item\em Fait avancer la machine à états. Doit être appelée le plus souvent possible. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{driver_d_s18_b20_8c_af1b0595a21594e4915763bde13accf08}{DS18\+B20\+\_\+\+Rx\+Cplt\+Callback}} (\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18\+B20\+\_\+t}} \texorpdfstring{$\ast$}{*}hds)
+\begin{DoxyCompactList}\small\item\em À appeler dans HAL\+\_\+\+UART\+\_\+\+Rx\+Cplt\+Callback. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{driver_d_s18_b20_8c_a4a060d2b0a06e18ef2b34678f37f3d0f}{DS18\+B20\+\_\+\+Tx\+Cplt\+Callback}} (\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18\+B20\+\_\+t}} \texorpdfstring{$\ast$}{*}hds)
+\begin{DoxyCompactList}\small\item\em À appeler dans HAL\+\_\+\+UART\+\_\+\+Tx\+Cplt\+Callback. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const uint8\+\_\+t \doxymbox{\hyperlink{driver_d_s18_b20_8c_aa1ba0e4ea64d7b19827d5bea8c4bced4}{DS\+\_\+\+CMD\+\_\+\+SKIP\+\_\+\+ROM}} \+[8]\+ = \{0x00, 0x00, 0x\+FF, 0x\+FF, 0x00, 0x00, 0x\+FF, 0x\+FF\}
+\item 
+const uint8\+\_\+t \doxymbox{\hyperlink{driver_d_s18_b20_8c_a6dcdedcda1aefe7fe8856f836703bace}{DS\+\_\+\+CMD\+\_\+\+CONVERT\+\_\+T}} \+[8]\+ = \{0x00, 0x00, 0x\+FF, 0x00, 0x00, 0x00, 0x\+FF, 0x00\}
+\item 
+const uint8\+\_\+t \doxymbox{\hyperlink{driver_d_s18_b20_8c_a60e957574729dd3047d9aa1945c2eb76}{DS\+\_\+\+CMD\+\_\+\+READ\+\_\+\+SCRATCH}} \+[8]\+ = \{0x00, 0x\+FF, 0x\+FF, 0x\+FF, 0x\+FF, 0x\+FF, 0x00, 0x\+FF\}
+\item 
+const uint8\+\_\+t \doxymbox{\hyperlink{driver_d_s18_b20_8c_a9d79839efa1d5a19c878db8cca655d47}{DS\+\_\+\+CMD\+\_\+\+READ}} \+[72]\+
+\item 
+const uint8\+\_\+t \doxymbox{\hyperlink{driver_d_s18_b20_8c_a60a2e31e142697292951766ddd7556ea}{DS\+\_\+\+CMD\+\_\+\+RESET}} \+[1]\+ = \{0x\+F0\}
+\end{DoxyCompactItemize}
+
+
+\label{driver_d_s18_b20_8c_doc-func-members}
+\Hypertarget{driver_d_s18_b20_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{driver_d_s18_b20_8c_a0a09109776bc6b1183ccf3b543c426b7}\index{driverDS18B20.c@{driverDS18B20.c}!DS18B20\_GetStatus@{DS18B20\_GetStatus}}
+\index{DS18B20\_GetStatus@{DS18B20\_GetStatus}!driverDS18B20.c@{driverDS18B20.c}}
+\doxysubsubsection{\texorpdfstring{DS18B20\_GetStatus()}{DS18B20\_GetStatus()}}
+{\footnotesize\ttfamily \label{driver_d_s18_b20_8c_a0a09109776bc6b1183ccf3b543c426b7} 
+\doxymbox{\hyperlink{driver_d_s18_b20_8h_ad8987e4c5fc3c8a9e493eb702d8ef7b3}{DS18\+B20\+\_\+\+Status\+\_\+t}} DS18\+B20\+\_\+\+Get\+Status (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18\+B20\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{dev}{}\end{DoxyParamCaption})}
+
+
+
+Retourne l\textquotesingle{}état macroscopique actuel du driver. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em dev} & Pointeur vers l\textquotesingle{}instance du capteur. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}état (READY, BUSY, ou ERROR). 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{driver_d_s18_b20_8c_a0a09109776bc6b1183ccf3b543c426b7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_d_s18_b20_8c_a31b6ff86c90f6e63d681ed8e3c70255a}\index{driverDS18B20.c@{driverDS18B20.c}!DS18B20\_GetTemperature@{DS18B20\_GetTemperature}}
+\index{DS18B20\_GetTemperature@{DS18B20\_GetTemperature}!driverDS18B20.c@{driverDS18B20.c}}
+\doxysubsubsection{\texorpdfstring{DS18B20\_GetTemperature()}{DS18B20\_GetTemperature()}}
+{\footnotesize\ttfamily \label{driver_d_s18_b20_8c_a31b6ff86c90f6e63d681ed8e3c70255a} 
+int16\+\_\+t DS18\+B20\+\_\+\+Get\+Temperature (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18\+B20\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{dev}{}\end{DoxyParamCaption})}
+
+
+
+Récupère la dernière température calculée valide. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em dev} & Pointeur vers l\textquotesingle{}instance du capteur. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La température brute. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_d_s18_b20_8c_a31b6ff86c90f6e63d681ed8e3c70255a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_d_s18_b20_8c_a25dc319e326985778fdbefb72d7ddb91}\index{driverDS18B20.c@{driverDS18B20.c}!DS18B20\_Init@{DS18B20\_Init}}
+\index{DS18B20\_Init@{DS18B20\_Init}!driverDS18B20.c@{driverDS18B20.c}}
+\doxysubsubsection{\texorpdfstring{DS18B20\_Init()}{DS18B20\_Init()}}
+{\footnotesize\ttfamily \label{driver_d_s18_b20_8c_a25dc319e326985778fdbefb72d7ddb91} 
+\doxymbox{\hyperlink{driver_d_s18_b20_8h_a52d79b2d803d75455e04be95ccaf722d}{DS18\+B20\+\_\+\+Result\+\_\+t}} DS18\+B20\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18\+B20\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{dev}{, }\item[{UART\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{huart}{}\end{DoxyParamCaption})}
+
+
+
+Initialise le contexte du driver DS18\+B20. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in,out}}  & {\em dev} & Pointeur vers la structure du capteur. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em huart} & Pointeur vers le périphérique UART associé. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+DS\+\_\+\+OK si succès, DS\+\_\+\+ERR\+\_\+\+PARAM si pointeur invalide. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{driver_d_s18_b20_8c_a25dc319e326985778fdbefb72d7ddb91_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_d_s18_b20_8c_aba3ddeeef8eba2153739b35fa5c3919a}\index{driverDS18B20.c@{driverDS18B20.c}!DS18B20\_Process@{DS18B20\_Process}}
+\index{DS18B20\_Process@{DS18B20\_Process}!driverDS18B20.c@{driverDS18B20.c}}
+\doxysubsubsection{\texorpdfstring{DS18B20\_Process()}{DS18B20\_Process()}}
+{\footnotesize\ttfamily \label{driver_d_s18_b20_8c_aba3ddeeef8eba2153739b35fa5c3919a} 
+void DS18\+B20\+\_\+\+Process (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18\+B20\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{dev}{}\end{DoxyParamCaption})}
+
+
+
+Fait avancer la machine à états. Doit être appelée le plus souvent possible. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in,out}}  & {\em dev} & Pointeur vers l\textquotesingle{}instance du capteur. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{driver_d_s18_b20_8c_aba3ddeeef8eba2153739b35fa5c3919a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_d_s18_b20_8c_af1b0595a21594e4915763bde13accf08}\index{driverDS18B20.c@{driverDS18B20.c}!DS18B20\_RxCpltCallback@{DS18B20\_RxCpltCallback}}
+\index{DS18B20\_RxCpltCallback@{DS18B20\_RxCpltCallback}!driverDS18B20.c@{driverDS18B20.c}}
+\doxysubsubsection{\texorpdfstring{DS18B20\_RxCpltCallback()}{DS18B20\_RxCpltCallback()}}
+{\footnotesize\ttfamily \label{driver_d_s18_b20_8c_af1b0595a21594e4915763bde13accf08} 
+void DS18\+B20\+\_\+\+Rx\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18\+B20\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hds}{}\end{DoxyParamCaption})}
+
+
+
+À appeler dans HAL\+\_\+\+UART\+\_\+\+Rx\+Cplt\+Callback. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in,out}}  & {\em hds} & Pointeur vers l\textquotesingle{}instance du capteur. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_d_s18_b20_8c_af1b0595a21594e4915763bde13accf08_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_d_s18_b20_8c_a3e7a3f0e24c2a71092668359f90f721b}\index{driverDS18B20.c@{driverDS18B20.c}!DS18B20\_Start@{DS18B20\_Start}}
+\index{DS18B20\_Start@{DS18B20\_Start}!driverDS18B20.c@{driverDS18B20.c}}
+\doxysubsubsection{\texorpdfstring{DS18B20\_Start()}{DS18B20\_Start()}}
+{\footnotesize\ttfamily \label{driver_d_s18_b20_8c_a3e7a3f0e24c2a71092668359f90f721b} 
+\doxymbox{\hyperlink{driver_d_s18_b20_8h_a52d79b2d803d75455e04be95ccaf722d}{DS18\+B20\+\_\+\+Result\+\_\+t}} DS18\+B20\+\_\+\+Start (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18\+B20\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{dev}{}\end{DoxyParamCaption})}
+
+
+
+Lance une nouvelle conversion de température de manière asynchrone. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in,out}}  & {\em dev} & Pointeur vers la structure du capteur. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+DS\+\_\+\+OK si démarré, DS\+\_\+\+ERR\+\_\+\+BUSY si déjà en cours. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Il faut appeler DS18\+B20\+\_\+\+Process régulièrement dans la boucle pour faire avancer la conversion. 
+\end{DoxyNote}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_d_s18_b20_8c_a3e7a3f0e24c2a71092668359f90f721b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_d_s18_b20_8c_a4a060d2b0a06e18ef2b34678f37f3d0f}\index{driverDS18B20.c@{driverDS18B20.c}!DS18B20\_TxCpltCallback@{DS18B20\_TxCpltCallback}}
+\index{DS18B20\_TxCpltCallback@{DS18B20\_TxCpltCallback}!driverDS18B20.c@{driverDS18B20.c}}
+\doxysubsubsection{\texorpdfstring{DS18B20\_TxCpltCallback()}{DS18B20\_TxCpltCallback()}}
+{\footnotesize\ttfamily \label{driver_d_s18_b20_8c_a4a060d2b0a06e18ef2b34678f37f3d0f} 
+void DS18\+B20\+\_\+\+Tx\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18\+B20\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hds}{}\end{DoxyParamCaption})}
+
+
+
+À appeler dans HAL\+\_\+\+UART\+\_\+\+Tx\+Cplt\+Callback. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in,out}}  & {\em hds} & Pointeur vers l\textquotesingle{}instance du capteur. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_d_s18_b20_8c_a4a060d2b0a06e18ef2b34678f37f3d0f_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{driver_d_s18_b20_8c_doc-var-members}
+\Hypertarget{driver_d_s18_b20_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{driver_d_s18_b20_8c_a6dcdedcda1aefe7fe8856f836703bace}\index{driverDS18B20.c@{driverDS18B20.c}!DS\_CMD\_CONVERT\_T@{DS\_CMD\_CONVERT\_T}}
+\index{DS\_CMD\_CONVERT\_T@{DS\_CMD\_CONVERT\_T}!driverDS18B20.c@{driverDS18B20.c}}
+\doxysubsubsection{\texorpdfstring{DS\_CMD\_CONVERT\_T}{DS\_CMD\_CONVERT\_T}}
+{\footnotesize\ttfamily \label{driver_d_s18_b20_8c_a6dcdedcda1aefe7fe8856f836703bace} 
+const uint8\+\_\+t DS\+\_\+\+CMD\+\_\+\+CONVERT\+\_\+T\+[8]\+ = \{0x00, 0x00, 0x\+FF, 0x00, 0x00, 0x00, 0x\+FF, 0x00\}}
+
+\Hypertarget{driver_d_s18_b20_8c_a9d79839efa1d5a19c878db8cca655d47}\index{driverDS18B20.c@{driverDS18B20.c}!DS\_CMD\_READ@{DS\_CMD\_READ}}
+\index{DS\_CMD\_READ@{DS\_CMD\_READ}!driverDS18B20.c@{driverDS18B20.c}}
+\doxysubsubsection{\texorpdfstring{DS\_CMD\_READ}{DS\_CMD\_READ}}
+{\footnotesize\ttfamily \label{driver_d_s18_b20_8c_a9d79839efa1d5a19c878db8cca655d47} 
+const uint8\+\_\+t DS\+\_\+\+CMD\+\_\+\+READ\+[72]\+}
+
+{\bfseries Initial value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,}
+\DoxyCodeLine{\ \ \ \ \ \ \ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,}
+\DoxyCodeLine{\ \ \ \ \ \ \ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,}
+\DoxyCodeLine{\ \ \ \ \ \ \ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,}
+\DoxyCodeLine{\ \ \ \ \ \ \ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,}
+\DoxyCodeLine{\ \ \ \ \ \ \ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,}
+\DoxyCodeLine{\ \ \ \ \ \ \ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,}
+\DoxyCodeLine{\ \ \ \ \ \ \ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,}
+\DoxyCodeLine{\ \ \ \ \ \ \ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF,\ 0xFF\}}
+
+\end{DoxyCode}
+\Hypertarget{driver_d_s18_b20_8c_a60e957574729dd3047d9aa1945c2eb76}\index{driverDS18B20.c@{driverDS18B20.c}!DS\_CMD\_READ\_SCRATCH@{DS\_CMD\_READ\_SCRATCH}}
+\index{DS\_CMD\_READ\_SCRATCH@{DS\_CMD\_READ\_SCRATCH}!driverDS18B20.c@{driverDS18B20.c}}
+\doxysubsubsection{\texorpdfstring{DS\_CMD\_READ\_SCRATCH}{DS\_CMD\_READ\_SCRATCH}}
+{\footnotesize\ttfamily \label{driver_d_s18_b20_8c_a60e957574729dd3047d9aa1945c2eb76} 
+const uint8\+\_\+t DS\+\_\+\+CMD\+\_\+\+READ\+\_\+\+SCRATCH\+[8]\+ = \{0x00, 0x\+FF, 0x\+FF, 0x\+FF, 0x\+FF, 0x\+FF, 0x00, 0x\+FF\}}
+
+\Hypertarget{driver_d_s18_b20_8c_a60a2e31e142697292951766ddd7556ea}\index{driverDS18B20.c@{driverDS18B20.c}!DS\_CMD\_RESET@{DS\_CMD\_RESET}}
+\index{DS\_CMD\_RESET@{DS\_CMD\_RESET}!driverDS18B20.c@{driverDS18B20.c}}
+\doxysubsubsection{\texorpdfstring{DS\_CMD\_RESET}{DS\_CMD\_RESET}}
+{\footnotesize\ttfamily \label{driver_d_s18_b20_8c_a60a2e31e142697292951766ddd7556ea} 
+const uint8\+\_\+t DS\+\_\+\+CMD\+\_\+\+RESET\+[1]\+ = \{0x\+F0\}}
+
+\Hypertarget{driver_d_s18_b20_8c_aa1ba0e4ea64d7b19827d5bea8c4bced4}\index{driverDS18B20.c@{driverDS18B20.c}!DS\_CMD\_SKIP\_ROM@{DS\_CMD\_SKIP\_ROM}}
+\index{DS\_CMD\_SKIP\_ROM@{DS\_CMD\_SKIP\_ROM}!driverDS18B20.c@{driverDS18B20.c}}
+\doxysubsubsection{\texorpdfstring{DS\_CMD\_SKIP\_ROM}{DS\_CMD\_SKIP\_ROM}}
+{\footnotesize\ttfamily \label{driver_d_s18_b20_8c_aa1ba0e4ea64d7b19827d5bea8c4bced4} 
+const uint8\+\_\+t DS\+\_\+\+CMD\+\_\+\+SKIP\+\_\+\+ROM\+[8]\+ = \{0x00, 0x00, 0x\+FF, 0x\+FF, 0x00, 0x00, 0x\+FF, 0x\+FF\}}
+

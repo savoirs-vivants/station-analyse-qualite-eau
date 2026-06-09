@@ -1,0 +1,133 @@
+\doxysection{Data\+Log\+\_\+t Struct Reference}
+\hypertarget{struct_data_log__t}{}\label{struct_data_log__t}\index{DataLog\_t@{DataLog\_t}}
+
+
+Contexte d\textquotesingle{}exécution global du Datalogger.  
+
+
+
+
+{\ttfamily \+\#include $<$driver\+Data\+Log.\+h$>$}
+
+
+
+Collaboration diagram for Data\+Log\+\_\+t:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{struct_data_log__t__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{struct_data_log__t_ab3e2ef661b55912258e3ec2decd93c38}{hfram}}
+\item 
+\doxymbox{\hyperlink{struct_data_log___meta__t}{Data\+Log\+\_\+\+Meta\+\_\+t}} \doxymbox{\hyperlink{struct_data_log__t_a3b9b9d14bb12916ac2c093c45b033c8e}{meta}}
+\item 
+\doxymbox{\hyperlink{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0}{Data\+Log\+\_\+\+Status\+\_\+t}} \doxymbox{\hyperlink{struct_data_log__t_a856f41ca7c9b0b505b9eb08ea44fd4b0}{status}}
+\item 
+uint8\+\_\+t \doxymbox{\hyperlink{struct_data_log__t_ab518937fe4d8d318aca524aef0647cde}{fsm\+\_\+state}}
+\item 
+bool \doxymbox{\hyperlink{struct_data_log__t_abbe792bb2cf67584b86443440a194f46}{busy}}
+\item 
+uint32\+\_\+t \doxymbox{\hyperlink{struct_data_log__t_a439e2e5c347b4d54acc38f9b18bd6214}{read\+\_\+ptr}}
+\item 
+uint32\+\_\+t \doxymbox{\hyperlink{struct_data_log__t_a8470a7ceaf827dd9d09fe57d5c1636f5}{read\+\_\+target\+\_\+id}}
+\item 
+bool \doxymbox{\hyperlink{struct_data_log__t_a324633314efb0f7b167983bf05cca165}{read\+\_\+active}}
+\item 
+bool \doxymbox{\hyperlink{struct_data_log__t_aa52251c02473ce0eed6f713119d3943e}{read\+\_\+buffer\+\_\+ready}}
+\item 
+uint8\+\_\+t \doxymbox{\hyperlink{struct_data_log__t_a227310cff29a93e77de51df9fd3b568a}{write\+\_\+frame}} \+[\doxymbox{\hyperlink{driver_data_log_8h_a2548e34261126587e67c699be9195c8c}{DATALOG\+\_\+\+FRAME\+\_\+\+SIZE}}]\+
+\item 
+uint8\+\_\+t \doxymbox{\hyperlink{struct_data_log__t_a9a283c15e101c66c26ea0e4b466396e3}{read\+\_\+frame}} \+[\doxymbox{\hyperlink{driver_data_log_8h_a2548e34261126587e67c699be9195c8c}{DATALOG\+\_\+\+FRAME\+\_\+\+SIZE}}]\+
+\item 
+const void \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{struct_data_log__t_a80c7f644420ebf8e67eaf2bc711cb406}{pending\+\_\+src}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contexte d\textquotesingle{}exécution global du Datalogger. 
+
+\label{struct_data_log__t_doc-variable-members}
+\Hypertarget{struct_data_log__t_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{struct_data_log__t_abbe792bb2cf67584b86443440a194f46}\index{DataLog\_t@{DataLog\_t}!busy@{busy}}
+\index{busy@{busy}!DataLog\_t@{DataLog\_t}}
+\doxysubsubsection{\texorpdfstring{busy}{busy}}
+{\footnotesize\ttfamily \label{struct_data_log__t_abbe792bb2cf67584b86443440a194f46} 
+bool busy}
+
+Drapeau interne d\textquotesingle{}occupation \Hypertarget{struct_data_log__t_ab518937fe4d8d318aca524aef0647cde}\index{DataLog\_t@{DataLog\_t}!fsm\_state@{fsm\_state}}
+\index{fsm\_state@{fsm\_state}!DataLog\_t@{DataLog\_t}}
+\doxysubsubsection{\texorpdfstring{fsm\_state}{fsm\_state}}
+{\footnotesize\ttfamily \label{struct_data_log__t_ab518937fe4d8d318aca524aef0647cde} 
+uint8\+\_\+t fsm\+\_\+state}
+
+État interne du processus asynchrone \Hypertarget{struct_data_log__t_ab3e2ef661b55912258e3ec2decd93c38}\index{DataLog\_t@{DataLog\_t}!hfram@{hfram}}
+\index{hfram@{hfram}!DataLog\_t@{DataLog\_t}}
+\doxysubsubsection{\texorpdfstring{hfram}{hfram}}
+{\footnotesize\ttfamily \label{struct_data_log__t_ab3e2ef661b55912258e3ec2decd93c38} 
+\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}}\texorpdfstring{$\ast$}{*} hfram}
+
+Handle du driver matériel bas niveau (FRAM) \Hypertarget{struct_data_log__t_a3b9b9d14bb12916ac2c093c45b033c8e}\index{DataLog\_t@{DataLog\_t}!meta@{meta}}
+\index{meta@{meta}!DataLog\_t@{DataLog\_t}}
+\doxysubsubsection{\texorpdfstring{meta}{meta}}
+{\footnotesize\ttfamily \label{struct_data_log__t_a3b9b9d14bb12916ac2c093c45b033c8e} 
+\doxymbox{\hyperlink{struct_data_log___meta__t}{Data\+Log\+\_\+\+Meta\+\_\+t}} meta}
+
+Copie en RAM des métadonnées persistantes \Hypertarget{struct_data_log__t_a80c7f644420ebf8e67eaf2bc711cb406}\index{DataLog\_t@{DataLog\_t}!pending\_src@{pending\_src}}
+\index{pending\_src@{pending\_src}!DataLog\_t@{DataLog\_t}}
+\doxysubsubsection{\texorpdfstring{pending\_src}{pending\_src}}
+{\footnotesize\ttfamily \label{struct_data_log__t_a80c7f644420ebf8e67eaf2bc711cb406} 
+const void\texorpdfstring{$\ast$}{*} pending\+\_\+src}
+
+Pointeur vers la source des données utilisateur à écrire \Hypertarget{struct_data_log__t_a324633314efb0f7b167983bf05cca165}\index{DataLog\_t@{DataLog\_t}!read\_active@{read\_active}}
+\index{read\_active@{read\_active}!DataLog\_t@{DataLog\_t}}
+\doxysubsubsection{\texorpdfstring{read\_active}{read\_active}}
+{\footnotesize\ttfamily \label{struct_data_log__t_a324633314efb0f7b167983bf05cca165} 
+bool read\+\_\+active}
+
+Indique si une session de lecture est en cours \Hypertarget{struct_data_log__t_aa52251c02473ce0eed6f713119d3943e}\index{DataLog\_t@{DataLog\_t}!read\_buffer\_ready@{read\_buffer\_ready}}
+\index{read\_buffer\_ready@{read\_buffer\_ready}!DataLog\_t@{DataLog\_t}}
+\doxysubsubsection{\texorpdfstring{read\_buffer\_ready}{read\_buffer\_ready}}
+{\footnotesize\ttfamily \label{struct_data_log__t_aa52251c02473ce0eed6f713119d3943e} 
+bool read\+\_\+buffer\+\_\+ready}
+
+Indique qu\textquotesingle{}un record a été rapatrié en RAM par la FRAM \Hypertarget{struct_data_log__t_a9a283c15e101c66c26ea0e4b466396e3}\index{DataLog\_t@{DataLog\_t}!read\_frame@{read\_frame}}
+\index{read\_frame@{read\_frame}!DataLog\_t@{DataLog\_t}}
+\doxysubsubsection{\texorpdfstring{read\_frame}{read\_frame}}
+{\footnotesize\ttfamily \label{struct_data_log__t_a9a283c15e101c66c26ea0e4b466396e3} 
+uint8\+\_\+t read\+\_\+frame\+[\doxymbox{\hyperlink{driver_data_log_8h_a2548e34261126587e67c699be9195c8c}{DATALOG\+\_\+\+FRAME\+\_\+\+SIZE}}]\+}
+
+Buffer de réception pour la lecture (ID + Payload) \Hypertarget{struct_data_log__t_a439e2e5c347b4d54acc38f9b18bd6214}\index{DataLog\_t@{DataLog\_t}!read\_ptr@{read\_ptr}}
+\index{read\_ptr@{read\_ptr}!DataLog\_t@{DataLog\_t}}
+\doxysubsubsection{\texorpdfstring{read\_ptr}{read\_ptr}}
+{\footnotesize\ttfamily \label{struct_data_log__t_a439e2e5c347b4d54acc38f9b18bd6214} 
+uint32\+\_\+t read\+\_\+ptr}
+
+Adresse physique courante de la tête de lecture \Hypertarget{struct_data_log__t_a8470a7ceaf827dd9d09fe57d5c1636f5}\index{DataLog\_t@{DataLog\_t}!read\_target\_id@{read\_target\_id}}
+\index{read\_target\_id@{read\_target\_id}!DataLog\_t@{DataLog\_t}}
+\doxysubsubsection{\texorpdfstring{read\_target\_id}{read\_target\_id}}
+{\footnotesize\ttfamily \label{struct_data_log__t_a8470a7ceaf827dd9d09fe57d5c1636f5} 
+uint32\+\_\+t read\+\_\+target\+\_\+id}
+
+ID du record ciblé par la lecture courante \Hypertarget{struct_data_log__t_a856f41ca7c9b0b505b9eb08ea44fd4b0}\index{DataLog\_t@{DataLog\_t}!status@{status}}
+\index{status@{status}!DataLog\_t@{DataLog\_t}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily \label{struct_data_log__t_a856f41ca7c9b0b505b9eb08ea44fd4b0} 
+\doxymbox{\hyperlink{driver_data_log_8h_a74f2dcdebec563eea6f53aaece8a54e0}{Data\+Log\+\_\+\+Status\+\_\+t}} status}
+
+Statut opérationnel public du Datalogger \Hypertarget{struct_data_log__t_a227310cff29a93e77de51df9fd3b568a}\index{DataLog\_t@{DataLog\_t}!write\_frame@{write\_frame}}
+\index{write\_frame@{write\_frame}!DataLog\_t@{DataLog\_t}}
+\doxysubsubsection{\texorpdfstring{write\_frame}{write\_frame}}
+{\footnotesize\ttfamily \label{struct_data_log__t_a227310cff29a93e77de51df9fd3b568a} 
+uint8\+\_\+t write\+\_\+frame\+[\doxymbox{\hyperlink{driver_data_log_8h_a2548e34261126587e67c699be9195c8c}{DATALOG\+\_\+\+FRAME\+\_\+\+SIZE}}]\+}
+
+Buffer d\textquotesingle{}assemblage pour l\textquotesingle{}écriture (ID + Payload) 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Inc/\+\doxymbox{\hyperlink{driver_data_log_8h}{driver\+Data\+Log.\+h}}\end{DoxyCompactItemize}

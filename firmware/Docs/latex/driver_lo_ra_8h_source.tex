@@ -1,0 +1,51 @@
+\doxysection{driver\+Lo\+Ra.\+h}
+\hypertarget{driver_lo_ra_8h_source}{}\label{driver_lo_ra_8h_source}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverLoRa.h@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverLoRa.h}}
+\doxymbox{\hyperlink{driver_lo_ra_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DRIVER\_LORA\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DRIVER\_LORA\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}stm32u0xx\_hal.h"{}}\ \textcolor{comment}{//\ Seul\ include\ nécessaire\ pour\ connaître\ UART\_HandleTypeDef}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ LORA\_RX\_BUFFER\_SIZE\ 128}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ LORA\_CMD\_TIMEOUT\_MS\ 2000}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_8h_a748d6f3893526134d6e8da9ae7dffccfa7c2854c531798ae7e70e75d381ec962e}{LORA\_STATE\_IDLE}},}
+\DoxyCodeLine{00013\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_8h_a748d6f3893526134d6e8da9ae7dffccfabfcca4d25d0d15e2ab8203407952ca45}{LORA\_STATE\_TX}},}
+\DoxyCodeLine{00014\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_8h_a748d6f3893526134d6e8da9ae7dffccface8cc8238dc3b92c006188506c3ef92e}{LORA\_STATE\_RX\_WAIT}},}
+\DoxyCodeLine{00015\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_8h_a748d6f3893526134d6e8da9ae7dffccfad6de3459c6fb0070c8c3e395afb6bfeb}{LORA\_STATE\_ANALYSIS}},}
+\DoxyCodeLine{00016\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_8h_a748d6f3893526134d6e8da9ae7dffccfa02244ecf42f068587a56311d534a8fff}{LORA\_STATE\_OK}},}
+\DoxyCodeLine{00017\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_8h_a748d6f3893526134d6e8da9ae7dffccfa209d63225a6a05c8db3066f785e42f26}{LORA\_STATE\_ERROR}},}
+\DoxyCodeLine{00018\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_8h_a748d6f3893526134d6e8da9ae7dffccfa91443b321379280b47af68c7e5fe05db}{LORA\_STATE\_TIMEOUT}}}
+\DoxyCodeLine{00019\ \}\ \doxymbox{\hyperlink{driver_lo_ra_8h_a748d6f3893526134d6e8da9ae7dffccf}{LoRa\_State\_t}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00022\ \ \ \ \ UART\_HandleTypeDef\ *\doxymbox{\hyperlink{struct_lo_ra__t_a1ed7dab212fde0a3a4600d33399c67b6}{huart}};}
+\DoxyCodeLine{00023\ \ \ \ \ \doxymbox{\hyperlink{driver_lo_ra_8h_a748d6f3893526134d6e8da9ae7dffccf}{LoRa\_State\_t}}\ \doxymbox{\hyperlink{struct_lo_ra__t_ac64ae6822627b36d3c6f29e3a05df1fd}{state}};}
+\DoxyCodeLine{00024\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{struct_lo_ra__t_ac264247c65eed13bdaa98a71ffae3725}{rx\_buffer}}[\doxymbox{\hyperlink{driver_lo_ra_8h_a59295f088dce2dcf4a275baceaf92ff3}{LORA\_RX\_BUFFER\_SIZE}}];}
+\DoxyCodeLine{00025\ \ \ \ \ uint16\_t\ \doxymbox{\hyperlink{struct_lo_ra__t_a9ce595b3296a1dd2cfd6e8bf3f9360d1}{rx\_length}};}
+\DoxyCodeLine{00026\ \ \ \ \ uint32\_t\ \doxymbox{\hyperlink{struct_lo_ra__t_aaffa55a39c7af7fbb0e4b95bee856e8f}{cmd\_start\_time}};}
+\DoxyCodeLine{00027\ \ \ \ \ uint32\_t\ \doxymbox{\hyperlink{struct_lo_ra__t_af79d017ef11fe10fb72600f3c4ceb1dd}{current\_timeout\_ms}};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ NOUVEAU\ :\ Drapeaux\ d'événements\ (levés\ par\ les\ IT)\ -\/-\/-\/}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_lo_ra__t_a366115ed21b61b5d0ec5cf197b956ca6}{event\_tx\_complete}};}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_lo_ra__t_a498206a6facd5353570c2edbbf89aca7}{event\_rx\_complete}};}
+\DoxyCodeLine{00032\ \}\ \doxymbox{\hyperlink{struct_lo_ra__t}{LoRa\_t}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ -\/-\/-\/\ Fonctions\ publiques\ (qui\ prennent\ toutes\ le\ Handle\ en\ paramètre)\ -\/-\/-\/}}
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_lo_ra_8h_acc6e112f969f4de0fc933ec56e5d3e97}{LoRa\_Init}}(\doxymbox{\hyperlink{struct_lo_ra__t}{LoRa\_t}}\ *hlora,\ UART\_HandleTypeDef\ *huart);}
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{driver_lo_ra_8h_a86814495750c7a5943708bc8f1a4fcb1}{LoRa\_SendCmdAsync}}(\doxymbox{\hyperlink{struct_lo_ra__t}{LoRa\_t}}\ *hlora,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *cmd,\ uint32\_t\ timeout\_ms);}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_lo_ra_8h_a2b7bd71bb59fd9e2b701fb4e79c172c1}{LoRa\_ResetState}}(\doxymbox{\hyperlink{struct_lo_ra__t}{LoRa\_t}}\ *hlora);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_lo_ra_8h_a76f62b7224342951906abb96be57b714}{LoRa\_Process}}(\doxymbox{\hyperlink{struct_lo_ra__t}{LoRa\_t}}\ *hlora);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ Fonctions\ à\ appeler\ dans\ les\ callbacks\ du\ main.c}}
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_lo_ra_8h_a025a514dde32fa4674e7ebf080cdb746}{LoRa\_TxCallback}}(\doxymbox{\hyperlink{struct_lo_ra__t}{LoRa\_t}}\ *hlora);}
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_lo_ra_8h_a5e4dd9b31123ad44ede128667af9bbc8}{LoRa\_RxEventCallback}}(\doxymbox{\hyperlink{struct_lo_ra__t}{LoRa\_t}}\ *hlora,\ uint16\_t\ Size);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ DRIVER\_LORA\_H}}
+
+\end{DoxyCode}

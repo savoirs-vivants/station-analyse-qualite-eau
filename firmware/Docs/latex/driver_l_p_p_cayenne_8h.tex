@@ -1,0 +1,354 @@
+\doxysection{C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Inc/\+driver\+LPPCayenne.h File Reference}
+\hypertarget{driver_l_p_p_cayenne_8h}{}\label{driver_l_p_p_cayenne_8h}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverLPPCayenne.h@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverLPPCayenne.h}}
+
+
+Encodeur de payload au format Cayenne LPP pour Lo\+Ra\+WAN.  
+
+
+{\ttfamily \+\#include $<$stdint.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \+\#include $<$stddef.\+h$>$}\newline
+Include dependency graph for driver\+LPPCayenne.\+h:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{driver_l_p_p_cayenne_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{driver_l_p_p_cayenne_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_l_p_p___payload__t}{LPP\+\_\+\+Payload\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Structure de stockage d\textquotesingle{}une trame Cayenne LPP. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_add8e65127ad79edf282811d375da0161}{LPP\+\_\+\+MAX\+\_\+\+PAYLOAD\+\_\+\+SIZE}}~51U
+\begin{DoxyCompactList}\small\item\em Taille maximale du buffer binaire. (Souvent 51 octets en Lo\+Ra\+WAN SF12). \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a4e85a461f7c4b2371c234201bd25c1d0}{LPP\+\_\+\+TYPE\+\_\+\+DIGITAL\+\_\+\+INPUT}}~0x00
+\item 
+\+\#define \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7d7d73b6fff4f62436158ffa3014800d}{LPP\+\_\+\+TYPE\+\_\+\+DIGITAL\+\_\+\+OUTPUT}}~0x01
+\item 
+\+\#define \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a539f1961b3702fedfee11d10983bcadb}{LPP\+\_\+\+TYPE\+\_\+\+ANALOG\+\_\+\+INPUT}}~0x02
+\item 
+\+\#define \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a200aa80c550e0d6c31cf30756247d66b}{LPP\+\_\+\+TYPE\+\_\+\+ANALOG\+\_\+\+OUTPUT}}~0x03
+\item 
+\+\#define \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_abaa644716e50a4e39715843d2f98b70c}{LPP\+\_\+\+TYPE\+\_\+\+ILLUMINANCE}}~0x65
+\item 
+\+\#define \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_ab0830d7d2e7a142379aa7db86b91a728}{LPP\+\_\+\+TYPE\+\_\+\+PRESENCE}}~0x66
+\item 
+\+\#define \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a34f84ff8ddf4ac4654072de52104058a}{LPP\+\_\+\+TYPE\+\_\+\+TEMPERATURE}}~0x67  /\+\texorpdfstring{$\ast$}{*} 103 en décimal \texorpdfstring{$\ast$}{*}/\+
+\item 
+\+\#define \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a062bb0f6db340b1f66d928f11bab7a28}{LPP\+\_\+\+TYPE\+\_\+\+HUMIDITY}}~0x68  /\+\texorpdfstring{$\ast$}{*} 104 en décimal \texorpdfstring{$\ast$}{*}/\+
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7e}{LPP\+\_\+\+Result\+\_\+t}} \{ \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7ea0864bf4359d0fb33cf11b59fe3ddffd0}{LPP\+\_\+\+OK}} = 0
+, \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7eaf371ad4a3874c42ece9855e8d7717446}{LPP\+\_\+\+ERR\+\_\+\+PARAM}}
+, \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7ea7bb77756bdd8a53be7020db46f2e115f}{LPP\+\_\+\+ERR\+\_\+\+SIZE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Codes de retour de l\textquotesingle{}API LPP. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7e}{LPP\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_ab0a2ce9b51da855f59afc377b2e89fda}{LPP\+\_\+\+Init}} (\doxymbox{\hyperlink{struct_l_p_p___payload__t}{LPP\+\_\+\+Payload\+\_\+t}} \texorpdfstring{$\ast$}{*}payload)
+\begin{DoxyCompactList}\small\item\em Initialise ou réinitialise un payload LPP (remet le curseur à zéro). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7e}{LPP\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a6c42bfc5a0a176ebf449a4566a95f543}{LPP\+\_\+\+Add\+Temperature}} (\doxymbox{\hyperlink{struct_l_p_p___payload__t}{LPP\+\_\+\+Payload\+\_\+t}} \texorpdfstring{$\ast$}{*}payload, uint8\+\_\+t channel, float celsius)
+\begin{DoxyCompactList}\small\item\em Ajoute une mesure de température (Résolution:\+ 0.\+1°C). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7e}{LPP\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a6be2974801ab57dd38f90abf31a20d3c}{LPP\+\_\+\+Add\+Analog\+Input}} (\doxymbox{\hyperlink{struct_l_p_p___payload__t}{LPP\+\_\+\+Payload\+\_\+t}} \texorpdfstring{$\ast$}{*}payload, uint8\+\_\+t channel, float value)
+\begin{DoxyCompactList}\small\item\em Ajoute une mesure analogique générique (Résolution:\+ 0.\+01). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7e}{LPP\+\_\+\+Result\+\_\+t}} \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a96bbc62a32a704c3ad8ca9ec841521d8}{LPP\+\_\+\+Add\+Humidity}} (\doxymbox{\hyperlink{struct_l_p_p___payload__t}{LPP\+\_\+\+Payload\+\_\+t}} \texorpdfstring{$\ast$}{*}payload, uint8\+\_\+t channel, float rh\+\_\+percentage)
+\begin{DoxyCompactList}\small\item\em Ajoute une mesure d\textquotesingle{}humidité relative (Résolution:\+ 0.\+5\%). \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a3e65db4a7169a0447b7fe07662703b13}{LPP\+\_\+\+Get\+ATCommand}} (\doxymbox{\hyperlink{struct_l_p_p___payload__t}{LPP\+\_\+\+Payload\+\_\+t}} \texorpdfstring{$\ast$}{*}payload, char \texorpdfstring{$\ast$}{*}at\+\_\+cmd\+\_\+buffer, size\+\_\+t max\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Formate le payload binaire en une commande AT Hexadécimale prête à envoyer. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_aae7eb5e5898204de0ed8ba27da8873cc}{LPP\+\_\+\+Get\+Payload\+Hex}} (\doxymbox{\hyperlink{struct_l_p_p___payload__t}{LPP\+\_\+\+Payload\+\_\+t}} \texorpdfstring{$\ast$}{*}payload, char \texorpdfstring{$\ast$}{*}hex\+\_\+buffer, size\+\_\+t max\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Convertit le payload binaire en une simple chaîne Hexadécimale brute. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Encodeur de payload au format Cayenne LPP pour Lo\+Ra\+WAN. 
+
+\begin{DoxyAuthor}{Author}
+\+[Ton Nom/\+\+Projet]\+
+\end{DoxyAuthor}
+Ce module permet de construire facilement une trame binaire compatible avec la norme Cayenne Low Power Payload. Il intègre des sécurités contre le dépassement de buffer et l\textquotesingle{}overflow mathématique des capteurs. 
+
+\label{driver_l_p_p_cayenne_8h_doc-define-members}
+\Hypertarget{driver_l_p_p_cayenne_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{driver_l_p_p_cayenne_8h_add8e65127ad79edf282811d375da0161}\index{driverLPPCayenne.h@{driverLPPCayenne.h}!LPP\_MAX\_PAYLOAD\_SIZE@{LPP\_MAX\_PAYLOAD\_SIZE}}
+\index{LPP\_MAX\_PAYLOAD\_SIZE@{LPP\_MAX\_PAYLOAD\_SIZE}!driverLPPCayenne.h@{driverLPPCayenne.h}}
+\doxysubsubsection{\texorpdfstring{LPP\_MAX\_PAYLOAD\_SIZE}{LPP\_MAX\_PAYLOAD\_SIZE}}
+{\footnotesize\ttfamily \label{driver_l_p_p_cayenne_8h_add8e65127ad79edf282811d375da0161} 
+\+\#define LPP\+\_\+\+MAX\+\_\+\+PAYLOAD\+\_\+\+SIZE~51U}
+
+
+
+Taille maximale du buffer binaire. (Souvent 51 octets en Lo\+Ra\+WAN SF12). 
+
+\Hypertarget{driver_l_p_p_cayenne_8h_a539f1961b3702fedfee11d10983bcadb}\index{driverLPPCayenne.h@{driverLPPCayenne.h}!LPP\_TYPE\_ANALOG\_INPUT@{LPP\_TYPE\_ANALOG\_INPUT}}
+\index{LPP\_TYPE\_ANALOG\_INPUT@{LPP\_TYPE\_ANALOG\_INPUT}!driverLPPCayenne.h@{driverLPPCayenne.h}}
+\doxysubsubsection{\texorpdfstring{LPP\_TYPE\_ANALOG\_INPUT}{LPP\_TYPE\_ANALOG\_INPUT}}
+{\footnotesize\ttfamily \label{driver_l_p_p_cayenne_8h_a539f1961b3702fedfee11d10983bcadb} 
+\+\#define LPP\+\_\+\+TYPE\+\_\+\+ANALOG\+\_\+\+INPUT~0x02}
+
+\Hypertarget{driver_l_p_p_cayenne_8h_a200aa80c550e0d6c31cf30756247d66b}\index{driverLPPCayenne.h@{driverLPPCayenne.h}!LPP\_TYPE\_ANALOG\_OUTPUT@{LPP\_TYPE\_ANALOG\_OUTPUT}}
+\index{LPP\_TYPE\_ANALOG\_OUTPUT@{LPP\_TYPE\_ANALOG\_OUTPUT}!driverLPPCayenne.h@{driverLPPCayenne.h}}
+\doxysubsubsection{\texorpdfstring{LPP\_TYPE\_ANALOG\_OUTPUT}{LPP\_TYPE\_ANALOG\_OUTPUT}}
+{\footnotesize\ttfamily \label{driver_l_p_p_cayenne_8h_a200aa80c550e0d6c31cf30756247d66b} 
+\+\#define LPP\+\_\+\+TYPE\+\_\+\+ANALOG\+\_\+\+OUTPUT~0x03}
+
+\Hypertarget{driver_l_p_p_cayenne_8h_a4e85a461f7c4b2371c234201bd25c1d0}\index{driverLPPCayenne.h@{driverLPPCayenne.h}!LPP\_TYPE\_DIGITAL\_INPUT@{LPP\_TYPE\_DIGITAL\_INPUT}}
+\index{LPP\_TYPE\_DIGITAL\_INPUT@{LPP\_TYPE\_DIGITAL\_INPUT}!driverLPPCayenne.h@{driverLPPCayenne.h}}
+\doxysubsubsection{\texorpdfstring{LPP\_TYPE\_DIGITAL\_INPUT}{LPP\_TYPE\_DIGITAL\_INPUT}}
+{\footnotesize\ttfamily \label{driver_l_p_p_cayenne_8h_a4e85a461f7c4b2371c234201bd25c1d0} 
+\+\#define LPP\+\_\+\+TYPE\+\_\+\+DIGITAL\+\_\+\+INPUT~0x00}
+
+\Hypertarget{driver_l_p_p_cayenne_8h_a7d7d73b6fff4f62436158ffa3014800d}\index{driverLPPCayenne.h@{driverLPPCayenne.h}!LPP\_TYPE\_DIGITAL\_OUTPUT@{LPP\_TYPE\_DIGITAL\_OUTPUT}}
+\index{LPP\_TYPE\_DIGITAL\_OUTPUT@{LPP\_TYPE\_DIGITAL\_OUTPUT}!driverLPPCayenne.h@{driverLPPCayenne.h}}
+\doxysubsubsection{\texorpdfstring{LPP\_TYPE\_DIGITAL\_OUTPUT}{LPP\_TYPE\_DIGITAL\_OUTPUT}}
+{\footnotesize\ttfamily \label{driver_l_p_p_cayenne_8h_a7d7d73b6fff4f62436158ffa3014800d} 
+\+\#define LPP\+\_\+\+TYPE\+\_\+\+DIGITAL\+\_\+\+OUTPUT~0x01}
+
+\Hypertarget{driver_l_p_p_cayenne_8h_a062bb0f6db340b1f66d928f11bab7a28}\index{driverLPPCayenne.h@{driverLPPCayenne.h}!LPP\_TYPE\_HUMIDITY@{LPP\_TYPE\_HUMIDITY}}
+\index{LPP\_TYPE\_HUMIDITY@{LPP\_TYPE\_HUMIDITY}!driverLPPCayenne.h@{driverLPPCayenne.h}}
+\doxysubsubsection{\texorpdfstring{LPP\_TYPE\_HUMIDITY}{LPP\_TYPE\_HUMIDITY}}
+{\footnotesize\ttfamily \label{driver_l_p_p_cayenne_8h_a062bb0f6db340b1f66d928f11bab7a28} 
+\+\#define LPP\+\_\+\+TYPE\+\_\+\+HUMIDITY~0x68  /\+\texorpdfstring{$\ast$}{*} 104 en décimal \texorpdfstring{$\ast$}{*}/\+}
+
+\Hypertarget{driver_l_p_p_cayenne_8h_abaa644716e50a4e39715843d2f98b70c}\index{driverLPPCayenne.h@{driverLPPCayenne.h}!LPP\_TYPE\_ILLUMINANCE@{LPP\_TYPE\_ILLUMINANCE}}
+\index{LPP\_TYPE\_ILLUMINANCE@{LPP\_TYPE\_ILLUMINANCE}!driverLPPCayenne.h@{driverLPPCayenne.h}}
+\doxysubsubsection{\texorpdfstring{LPP\_TYPE\_ILLUMINANCE}{LPP\_TYPE\_ILLUMINANCE}}
+{\footnotesize\ttfamily \label{driver_l_p_p_cayenne_8h_abaa644716e50a4e39715843d2f98b70c} 
+\+\#define LPP\+\_\+\+TYPE\+\_\+\+ILLUMINANCE~0x65}
+
+\Hypertarget{driver_l_p_p_cayenne_8h_ab0830d7d2e7a142379aa7db86b91a728}\index{driverLPPCayenne.h@{driverLPPCayenne.h}!LPP\_TYPE\_PRESENCE@{LPP\_TYPE\_PRESENCE}}
+\index{LPP\_TYPE\_PRESENCE@{LPP\_TYPE\_PRESENCE}!driverLPPCayenne.h@{driverLPPCayenne.h}}
+\doxysubsubsection{\texorpdfstring{LPP\_TYPE\_PRESENCE}{LPP\_TYPE\_PRESENCE}}
+{\footnotesize\ttfamily \label{driver_l_p_p_cayenne_8h_ab0830d7d2e7a142379aa7db86b91a728} 
+\+\#define LPP\+\_\+\+TYPE\+\_\+\+PRESENCE~0x66}
+
+\Hypertarget{driver_l_p_p_cayenne_8h_a34f84ff8ddf4ac4654072de52104058a}\index{driverLPPCayenne.h@{driverLPPCayenne.h}!LPP\_TYPE\_TEMPERATURE@{LPP\_TYPE\_TEMPERATURE}}
+\index{LPP\_TYPE\_TEMPERATURE@{LPP\_TYPE\_TEMPERATURE}!driverLPPCayenne.h@{driverLPPCayenne.h}}
+\doxysubsubsection{\texorpdfstring{LPP\_TYPE\_TEMPERATURE}{LPP\_TYPE\_TEMPERATURE}}
+{\footnotesize\ttfamily \label{driver_l_p_p_cayenne_8h_a34f84ff8ddf4ac4654072de52104058a} 
+\+\#define LPP\+\_\+\+TYPE\+\_\+\+TEMPERATURE~0x67  /\+\texorpdfstring{$\ast$}{*} 103 en décimal \texorpdfstring{$\ast$}{*}/\+}
+
+
+
+\label{driver_l_p_p_cayenne_8h_doc-enum-members}
+\Hypertarget{driver_l_p_p_cayenne_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7e}\index{driverLPPCayenne.h@{driverLPPCayenne.h}!LPP\_Result\_t@{LPP\_Result\_t}}
+\index{LPP\_Result\_t@{LPP\_Result\_t}!driverLPPCayenne.h@{driverLPPCayenne.h}}
+\doxysubsubsection{\texorpdfstring{LPP\_Result\_t}{LPP\_Result\_t}}
+{\footnotesize\ttfamily \label{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7e} 
+enum \doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7e}{LPP\+\_\+\+Result\+\_\+t}}}
+
+
+
+Codes de retour de l\textquotesingle{}API LPP. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LPP\_OK@{LPP\_OK}!driverLPPCayenne.h@{driverLPPCayenne.h}}
+\index{driverLPPCayenne.h@{driverLPPCayenne.h}!LPP\_OK@{LPP\_OK}}
+}\Hypertarget{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7ea0864bf4359d0fb33cf11b59fe3ddffd0}\label{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7ea0864bf4359d0fb33cf11b59fe3ddffd0} 
+LPP\+\_\+\+OK&Ajout réussi dans le payload \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LPP\_ERR\_PARAM@{LPP\_ERR\_PARAM}!driverLPPCayenne.h@{driverLPPCayenne.h}}
+\index{driverLPPCayenne.h@{driverLPPCayenne.h}!LPP\_ERR\_PARAM@{LPP\_ERR\_PARAM}}
+}\Hypertarget{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7eaf371ad4a3874c42ece9855e8d7717446}\label{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7eaf371ad4a3874c42ece9855e8d7717446} 
+LPP\+\_\+\+ERR\+\_\+\+PARAM&Erreur de paramètre (pointeur NULL) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LPP\_ERR\_SIZE@{LPP\_ERR\_SIZE}!driverLPPCayenne.h@{driverLPPCayenne.h}}
+\index{driverLPPCayenne.h@{driverLPPCayenne.h}!LPP\_ERR\_SIZE@{LPP\_ERR\_SIZE}}
+}\Hypertarget{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7ea7bb77756bdd8a53be7020db46f2e115f}\label{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7ea7bb77756bdd8a53be7020db46f2e115f} 
+LPP\+\_\+\+ERR\+\_\+\+SIZE&Espace insuffisant dans le buffer (Overflow) \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{driver_l_p_p_cayenne_8h_doc-func-members}
+\Hypertarget{driver_l_p_p_cayenne_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{driver_l_p_p_cayenne_8h_a6be2974801ab57dd38f90abf31a20d3c}\index{driverLPPCayenne.h@{driverLPPCayenne.h}!LPP\_AddAnalogInput@{LPP\_AddAnalogInput}}
+\index{LPP\_AddAnalogInput@{LPP\_AddAnalogInput}!driverLPPCayenne.h@{driverLPPCayenne.h}}
+\doxysubsubsection{\texorpdfstring{LPP\_AddAnalogInput()}{LPP\_AddAnalogInput()}}
+{\footnotesize\ttfamily \label{driver_l_p_p_cayenne_8h_a6be2974801ab57dd38f90abf31a20d3c} 
+\doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7e}{LPP\+\_\+\+Result\+\_\+t}} LPP\+\_\+\+Add\+Analog\+Input (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_l_p_p___payload__t}{LPP\+\_\+\+Payload\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{payload}{, }\item[{uint8\+\_\+t}]{channel}{, }\item[{float}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Ajoute une mesure analogique générique (Résolution:\+ 0.\+01). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em payload} & Pointeur vers la structure LPP. \\
+\hline
+{\em channel} & Numéro du canal de la donnée (ex:\+ 2). \\
+\hline
+{\em value} & Valeur brute du capteur. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em LPP\+\_\+\+OK,LPP\+\_\+\+ERR\+\_\+\+PARAM,ou} & LPP\+\_\+\+ERR\+\_\+\+SIZE. \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{driver_l_p_p_cayenne_8h_a6be2974801ab57dd38f90abf31a20d3c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_l_p_p_cayenne_8h_a96bbc62a32a704c3ad8ca9ec841521d8}\index{driverLPPCayenne.h@{driverLPPCayenne.h}!LPP\_AddHumidity@{LPP\_AddHumidity}}
+\index{LPP\_AddHumidity@{LPP\_AddHumidity}!driverLPPCayenne.h@{driverLPPCayenne.h}}
+\doxysubsubsection{\texorpdfstring{LPP\_AddHumidity()}{LPP\_AddHumidity()}}
+{\footnotesize\ttfamily \label{driver_l_p_p_cayenne_8h_a96bbc62a32a704c3ad8ca9ec841521d8} 
+\doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7e}{LPP\+\_\+\+Result\+\_\+t}} LPP\+\_\+\+Add\+Humidity (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_l_p_p___payload__t}{LPP\+\_\+\+Payload\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{payload}{, }\item[{uint8\+\_\+t}]{channel}{, }\item[{float}]{rh\+\_\+percentage}{}\end{DoxyParamCaption})}
+
+
+
+Ajoute une mesure d\textquotesingle{}humidité relative (Résolution:\+ 0.\+5\%). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em payload} & Pointeur vers la structure LPP. \\
+\hline
+{\em channel} & Numéro du canal de la donnée (ex:\+ 3). \\
+\hline
+{\em rh\+\_\+percentage} & Humidité en pourcentage (0.\+0 à 100.\+0). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em LPP\+\_\+\+OK,LPP\+\_\+\+ERR\+\_\+\+PARAM,ou} & LPP\+\_\+\+ERR\+\_\+\+SIZE. \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{driver_l_p_p_cayenne_8h_a6c42bfc5a0a176ebf449a4566a95f543}\index{driverLPPCayenne.h@{driverLPPCayenne.h}!LPP\_AddTemperature@{LPP\_AddTemperature}}
+\index{LPP\_AddTemperature@{LPP\_AddTemperature}!driverLPPCayenne.h@{driverLPPCayenne.h}}
+\doxysubsubsection{\texorpdfstring{LPP\_AddTemperature()}{LPP\_AddTemperature()}}
+{\footnotesize\ttfamily \label{driver_l_p_p_cayenne_8h_a6c42bfc5a0a176ebf449a4566a95f543} 
+\doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7e}{LPP\+\_\+\+Result\+\_\+t}} LPP\+\_\+\+Add\+Temperature (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_l_p_p___payload__t}{LPP\+\_\+\+Payload\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{payload}{, }\item[{uint8\+\_\+t}]{channel}{, }\item[{float}]{celsius}{}\end{DoxyParamCaption})}
+
+
+
+Ajoute une mesure de température (Résolution:\+ 0.\+1°C). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em payload} & Pointeur vers la structure LPP. \\
+\hline
+{\em channel} & Numéro du canal de la donnée (ex:\+ 1). \\
+\hline
+{\em celsius} & Valeur de la température en degrés Celsius. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em LPP\+\_\+\+OK,LPP\+\_\+\+ERR\+\_\+\+PARAM,ou} & LPP\+\_\+\+ERR\+\_\+\+SIZE. \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{driver_l_p_p_cayenne_8h_a6c42bfc5a0a176ebf449a4566a95f543_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_l_p_p_cayenne_8h_a3e65db4a7169a0447b7fe07662703b13}\index{driverLPPCayenne.h@{driverLPPCayenne.h}!LPP\_GetATCommand@{LPP\_GetATCommand}}
+\index{LPP\_GetATCommand@{LPP\_GetATCommand}!driverLPPCayenne.h@{driverLPPCayenne.h}}
+\doxysubsubsection{\texorpdfstring{LPP\_GetATCommand()}{LPP\_GetATCommand()}}
+{\footnotesize\ttfamily \label{driver_l_p_p_cayenne_8h_a3e65db4a7169a0447b7fe07662703b13} 
+int LPP\+\_\+\+Get\+ATCommand (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_l_p_p___payload__t}{LPP\+\_\+\+Payload\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{payload}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{at\+\_\+cmd\+\_\+buffer}{, }\item[{size\+\_\+t}]{max\+\_\+len}{}\end{DoxyParamCaption})}
+
+
+
+Formate le payload binaire en une commande AT Hexadécimale prête à envoyer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em payload} & Pointeur vers la structure LPP. \\
+\hline
+{\em at\+\_\+cmd\+\_\+buffer} & Buffer de destination pour la chaîne de caractères. \\
+\hline
+{\em max\+\_\+len} & Taille maximale allouée pour le buffer de destination. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La longueur de la chaîne générée (sans le \textbackslash{}0), ou -\/1 en cas d\textquotesingle{}erreur. 
+\end{DoxyReturn}
+\Hypertarget{driver_l_p_p_cayenne_8h_aae7eb5e5898204de0ed8ba27da8873cc}\index{driverLPPCayenne.h@{driverLPPCayenne.h}!LPP\_GetPayloadHex@{LPP\_GetPayloadHex}}
+\index{LPP\_GetPayloadHex@{LPP\_GetPayloadHex}!driverLPPCayenne.h@{driverLPPCayenne.h}}
+\doxysubsubsection{\texorpdfstring{LPP\_GetPayloadHex()}{LPP\_GetPayloadHex()}}
+{\footnotesize\ttfamily \label{driver_l_p_p_cayenne_8h_aae7eb5e5898204de0ed8ba27da8873cc} 
+int LPP\+\_\+\+Get\+Payload\+Hex (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_l_p_p___payload__t}{LPP\+\_\+\+Payload\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{payload}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{hex\+\_\+buffer}{, }\item[{size\+\_\+t}]{max\+\_\+len}{}\end{DoxyParamCaption})}
+
+
+
+Convertit le payload binaire en une simple chaîne Hexadécimale brute. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em payload} & Pointeur vers la structure LPP. \\
+\hline
+{\em hex\+\_\+buffer} & Buffer de destination pour la chaîne de caractères. \\
+\hline
+{\em max\+\_\+len} & Taille maximale allouée pour le buffer de destination. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La longueur de la chaîne générée (sans le \textbackslash{}0), ou -\/1 en cas d\textquotesingle{}erreur. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{driver_l_p_p_cayenne_8h_aae7eb5e5898204de0ed8ba27da8873cc_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{driver_l_p_p_cayenne_8h_ab0a2ce9b51da855f59afc377b2e89fda}\index{driverLPPCayenne.h@{driverLPPCayenne.h}!LPP\_Init@{LPP\_Init}}
+\index{LPP\_Init@{LPP\_Init}!driverLPPCayenne.h@{driverLPPCayenne.h}}
+\doxysubsubsection{\texorpdfstring{LPP\_Init()}{LPP\_Init()}}
+{\footnotesize\ttfamily \label{driver_l_p_p_cayenne_8h_ab0a2ce9b51da855f59afc377b2e89fda} 
+\doxymbox{\hyperlink{driver_l_p_p_cayenne_8h_a7ee571ec461461c6d1a471e5ab582d7e}{LPP\+\_\+\+Result\+\_\+t}} LPP\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_l_p_p___payload__t}{LPP\+\_\+\+Payload\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{payload}{}\end{DoxyParamCaption})}
+
+
+
+Initialise ou réinitialise un payload LPP (remet le curseur à zéro). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em payload} & Pointeur vers la structure LPP. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em LPP\+\_\+\+OK} & si succès, LPP\+\_\+\+ERR\+\_\+\+PARAM si pointeur NULL. \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=283pt]{driver_l_p_p_cayenne_8h_ab0a2ce9b51da855f59afc377b2e89fda_icgraph}
+\end{center}
+\end{figure}

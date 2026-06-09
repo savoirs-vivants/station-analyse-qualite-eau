@@ -1,0 +1,146 @@
+\doxysection{driver\+DS18\+B20.\+h}
+\hypertarget{driver_d_s18_b20_8h_source}{}\label{driver_d_s18_b20_8h_source}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverDS18B20.h@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/driverDS18B20.h}}
+\doxymbox{\hyperlink{driver_d_s18_b20_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ INC\_DRIVERDS18B20\_H\_}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ INC\_DRIVERDS18B20\_H\_}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00011\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{/*\ ====================================================================\ */}}
+\DoxyCodeLine{00015\ \textcolor{comment}{/*\ INCLUSIONS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00016\ \textcolor{comment}{/*\ ====================================================================\ */}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{usart_8h}{usart.h}}"{}}\ \textcolor{comment}{//\ Indispensable\ pour\ ton\ projet\ (contient\ UART\_HandleTypeDef)}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{/*\ ====================================================================\ */}}
+\DoxyCodeLine{00022\ \textcolor{comment}{/*\ CONFIGURATION\ UTILISATEUR\ ET\ MACROS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00023\ \textcolor{comment}{/*\ ====================================================================\ */}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ LPUART\_CLOCK\_FREQ\ \ \ 16000000ULL}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ LPUART\_BRR\_115200\ \ \ ((256ULL\ *\ LPUART\_CLOCK\_FREQ\ +\ (115200\ /\ 2))\ /\ 115200)}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ LPUART\_BRR\_9600\ \ \ \ \ ((256ULL\ *\ LPUART\_CLOCK\_FREQ\ +\ (9600\ /\ 2))\ /\ 9600)}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ DS18B20\_TIMEOUT\_MS\ \ 10}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ DS18B20\_MAX\_RETRIES\ 3}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ DS18B20\_RETRY\_BREAK\ 2000}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ DS18B20\_CONVERSION\_TIME\ 760}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ DS1Wire\_BIT\_1\_THRESHOLD\ 0xFC}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ DEBUG\_DS18B20\ 1}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#if\ DEBUG\_DS18B20\ ==\ 1}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\ \ \ \ \#define\ DS\_LOG(msg,\ ...)\ printf("{}[DS18B20]\ "{}\ msg\ "{}\(\backslash\)r\(\backslash\)n"{},\ \#\#\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\ \ \ \ \#define\ DS\_LOG(msg,\ ...)\ }\textcolor{comment}{//\ Rien,\ le\ vide\ absolu}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{comment}{/*\ ====================================================================\ */}}
+\DoxyCodeLine{00052\ \textcolor{comment}{/*\ ÉNUMÉRATIONS\ (TYPES\ PUBLICS\ ET\ PRIVÉS)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00053\ \textcolor{comment}{/*\ ====================================================================\ */}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ DS\_STATE\_IDLE,}
+\DoxyCodeLine{00059\ \ \ \ \ DS\_STATE\_START\_RESET,}
+\DoxyCodeLine{00060\ \ \ \ \ DS\_STATE\_WAIT\_RESET\_RX,}
+\DoxyCodeLine{00061\ \ \ \ \ DS\_STATE\_SEND\_SKIP\_ROM,}
+\DoxyCodeLine{00062\ \ \ \ \ DS\_STATE\_WAIT\_SKIP\_ROM\_RX,}
+\DoxyCodeLine{00063\ \ \ \ \ DS\_STATE\_SEND\_CONVERT,}
+\DoxyCodeLine{00064\ \ \ \ \ DS\_STATE\_WAIT\_SEND\_CONVERT\_TX,}
+\DoxyCodeLine{00065\ \ \ \ \ DS\_STATE\_WAIT\_CONVERSION,}
+\DoxyCodeLine{00066\ \ \ \ \ DS\_STATE\_SEND\_READ\_SCRATCHPAD,}
+\DoxyCodeLine{00067\ \ \ \ \ DS\_STATE\_WAIT\_READ\_SCRATCHPAD\_TX,}
+\DoxyCodeLine{00068\ \ \ \ \ DS\_STATE\_READ\_DATA,}
+\DoxyCodeLine{00069\ \ \ \ \ DS\_STATE\_WAIT\_READ\_DATA,}
+\DoxyCodeLine{00070\ \ \ \ \ DS\_STATE\_DECODE\_TEMP,}
+\DoxyCodeLine{00071\ \ \ \ \ DS\_STATE\_WAIT\_RETRY,}
+\DoxyCodeLine{00072\ \ \ \ \ DS\_STATE\_ERROR}
+\DoxyCodeLine{00073\ \}\ DS18B20\_State\_t;}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \doxymbox{\hyperlink{driver_d_s18_b20_8h_a22fb12f0b7965f3701edce584fce8b1ea67ddc0914876b4c96e27d6ec01bd0ab6}{DS\_ERROR\_NONE}}\ =\ 0,}
+\DoxyCodeLine{00079\ \ \ \ \ \doxymbox{\hyperlink{driver_d_s18_b20_8h_a22fb12f0b7965f3701edce584fce8b1ea89ca058e8f1c237836d6bb98e559d215}{DS\_ERROR\_UART\_TIMEOUT}},\ \ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \doxymbox{\hyperlink{driver_d_s18_b20_8h_a22fb12f0b7965f3701edce584fce8b1ea95b923162b43338d6703ca335740cbc9}{DS\_ERROR\_NO\_PRESENCE}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \doxymbox{\hyperlink{driver_d_s18_b20_8h_a22fb12f0b7965f3701edce584fce8b1ea00670a34f9449cc8fdef2c47b63106cb}{DS\_ERROR\_UART\_CONFIG}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ \doxymbox{\hyperlink{driver_d_s18_b20_8h_a22fb12f0b7965f3701edce584fce8b1ea681258379ca4e1ce8e479c46b8813f41}{DS\_ERROR\_DMA\_INIT}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ \doxymbox{\hyperlink{driver_d_s18_b20_8h_a22fb12f0b7965f3701edce584fce8b1eae690803db5161970df03ce8b0a44c734}{DS\_ERROR\_CRC}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00084\ \}\ \doxymbox{\hyperlink{driver_d_s18_b20_8h_a22fb12f0b7965f3701edce584fce8b1e}{DS18B20\_Error\_t}};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00087\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \doxymbox{\hyperlink{driver_d_s18_b20_8h_ad8987e4c5fc3c8a9e493eb702d8ef7b3a47c4522d5d6efa2eee93679150aa35a3}{DS\_STATUS\_READY}},\ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \doxymbox{\hyperlink{driver_d_s18_b20_8h_ad8987e4c5fc3c8a9e493eb702d8ef7b3a0e3ea88ee09ee14d8a30c11172def0ce}{DS\_STATUS\_BUSY}},\ \ \ \ }
+\DoxyCodeLine{00090\ \ \ \ \ \doxymbox{\hyperlink{driver_d_s18_b20_8h_ad8987e4c5fc3c8a9e493eb702d8ef7b3a3a6c9952ebe9cc09eebfa1991c5e9dc0}{DS\_STATUS\_ERROR}}\ \ \ \ }
+\DoxyCodeLine{00091\ \}\ \doxymbox{\hyperlink{driver_d_s18_b20_8h_ad8987e4c5fc3c8a9e493eb702d8ef7b3}{DS18B20\_Status\_t}};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00094\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \doxymbox{\hyperlink{driver_d_s18_b20_8h_a52d79b2d803d75455e04be95ccaf722da4930ba6686271811bfc96ff2e55690d0}{DS\_OK}}\ =\ 0,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00096\ \ \ \ \ \doxymbox{\hyperlink{driver_d_s18_b20_8h_a52d79b2d803d75455e04be95ccaf722da1de5d722528339e94970d726b2956a2d}{DS\_ERR\_PARAM}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00097\ \ \ \ \ \doxymbox{\hyperlink{driver_d_s18_b20_8h_a52d79b2d803d75455e04be95ccaf722daa6afc205ff8440508d53024f82e4fb8c}{DS\_ERR\_BUSY}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00098\ \ \ \ \ \doxymbox{\hyperlink{driver_d_s18_b20_8h_a52d79b2d803d75455e04be95ccaf722da47f0b3cf5c2165dd7fde5c01631226e6}{DS\_ERR\_HW\_LOCKED}},\ \ \ \ \ \ }
+\DoxyCodeLine{00099\ \ \ \ \ \doxymbox{\hyperlink{driver_d_s18_b20_8h_a52d79b2d803d75455e04be95ccaf722da4f2917b60c72e963fefc13336216987b}{DS\_ERR\_CONFIG}}\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00100\ \}\ \doxymbox{\hyperlink{driver_d_s18_b20_8h_a52d79b2d803d75455e04be95ccaf722d}{DS18B20\_Result\_t}};}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{comment}{/*\ ====================================================================\ */}}
+\DoxyCodeLine{00104\ \textcolor{comment}{/*\ STRUCTURE\ DE\ CONTEXTE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00105\ \textcolor{comment}{/*\ ====================================================================\ */}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00111\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00112\ \ \ \ \ DS18B20\_State\_t\ \doxymbox{\hyperlink{struct_d_s18_b20__t_ae4a0eb7c64c958b9351cc97f1d8b1a61}{state}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00113\ \ \ \ \ UART\_HandleTypeDef*\ \doxymbox{\hyperlink{struct_d_s18_b20__t_a1ed7dab212fde0a3a4600d33399c67b6}{huart}};\ \ \ \ }
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{struct_d_s18_b20__t_aa5a5b3af2fe89c7fac506d6178977e85}{rx\_buffer}}[72];\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_d_s18_b20__t_a14626043aed6110137a1d27789b2e10c}{tx\_done}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_d_s18_b20__t_af0efe2d6a6545162f322927e1a24a317}{rx\_done}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00119\ \ \ \ \ uint32\_t\ \doxymbox{\hyperlink{struct_d_s18_b20__t_a7a774117bc8f5719b6529890b5b9ecea}{timer\_start}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ int16\_t\ \doxymbox{\hyperlink{struct_d_s18_b20__t_a4af92569ea830250443045233c9bf5fb}{temperature}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_d_s18_b20__t_a4f30d4fe4e11a8c0f323d0206b036a29}{temperature\_conversion\_done}};\ }
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_d_s18_b20__t_a660b4560eba1ac37ba26cf8e27416b4b}{already\_converted}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00125\ \ \ \ \ \doxymbox{\hyperlink{driver_d_s18_b20_8h_a22fb12f0b7965f3701edce584fce8b1e}{DS18B20\_Error\_t}}\ \doxymbox{\hyperlink{struct_d_s18_b20__t_acabd47c11d62e836f57f92e8f9918c00}{error\_code}};\ \ \ }
+\DoxyCodeLine{00126\ \ \ \ \ \doxymbox{\hyperlink{driver_d_s18_b20_8h_a22fb12f0b7965f3701edce584fce8b1e}{DS18B20\_Error\_t}}\ \doxymbox{\hyperlink{struct_d_s18_b20__t_a4a2628b84eb22599e33cc801f2befad5}{last\_error}};\ \ \ }
+\DoxyCodeLine{00127\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{struct_d_s18_b20__t_ad7f3b7d0c00bba5352cf56e5ecd54519}{retry\_count}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00128\ \}\ \doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18B20\_t}};}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \textcolor{comment}{/*\ ====================================================================\ */}}
+\DoxyCodeLine{00132\ \textcolor{comment}{/*\ PROTOTYPES\ DES\ FONCTIONS\ PUBLIQUES\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00133\ \textcolor{comment}{/*\ ====================================================================\ */}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00141\ \doxymbox{\hyperlink{driver_d_s18_b20_8h_a52d79b2d803d75455e04be95ccaf722d}{DS18B20\_Result\_t}}\ \doxymbox{\hyperlink{driver_d_s18_b20_8h_a8d5a65b5673acae36f913eac20bdb62c}{DS18B20\_Init}}(\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18B20\_t}}\ *dev,\ UART\_HandleTypeDef\ *huart);}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00149\ \doxymbox{\hyperlink{driver_d_s18_b20_8h_a52d79b2d803d75455e04be95ccaf722d}{DS18B20\_Result\_t}}\ \doxymbox{\hyperlink{driver_d_s18_b20_8h_abd6151bc9564e692b88133cb2cb00701}{DS18B20\_Start}}(\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18B20\_t}}\ *dev);}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00156\ \doxymbox{\hyperlink{driver_d_s18_b20_8h_ad8987e4c5fc3c8a9e493eb702d8ef7b3}{DS18B20\_Status\_t}}\ \doxymbox{\hyperlink{driver_d_s18_b20_8h_a776c5254e944e5ef67b3b37a0109b46e}{DS18B20\_GetStatus}}(\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18B20\_t}}\ *dev);}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00163\ int16\_t\ \doxymbox{\hyperlink{driver_d_s18_b20_8h_af3e17e9f9e6326bb29f2a8b7043ca3a0}{DS18B20\_GetTemperature}}(\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18B20\_t}}\ *dev);}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00169\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_d_s18_b20_8h_aeaeb1db44c712bec0e91a5ef9a746a8b}{DS18B20\_Process}}(\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18B20\_t}}\ *dev);}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \textcolor{comment}{/*\ ====================================================================\ */}}
+\DoxyCodeLine{00173\ \textcolor{comment}{/*\ CALLBACKS\ MATÉRIELS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00174\ \textcolor{comment}{/*\ ====================================================================\ */}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00180\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_d_s18_b20_8h_af1b0595a21594e4915763bde13accf08}{DS18B20\_RxCpltCallback}}(\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18B20\_t}}\ *hds);}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00186\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{driver_d_s18_b20_8h_a4a060d2b0a06e18ef2b34678f37f3d0f}{DS18B20\_TxCpltCallback}}(\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18B20\_t}}\ *hds);}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00189\ \}}
+\DoxyCodeLine{00190\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ INC\_DRIVERDS18B20\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

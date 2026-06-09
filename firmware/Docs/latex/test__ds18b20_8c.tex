@@ -1,0 +1,68 @@
+\doxysection{C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Src/\+test\+\_\+ds18b20.c File Reference}
+\hypertarget{test__ds18b20_8c}{}\label{test__ds18b20_8c}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/test\_ds18b20.c@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/test\_ds18b20.c}}
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include "{}test\+\_\+ds18b20.\+h"{}}\newline
+{\ttfamily \+\#include "{}driver\+DS18\+B20.\+h"{}}\newline
+{\ttfamily \+\#include "{}main.\+h"{}}\newline
+{\ttfamily \+\#include "{}stm32u0xx.\+h"{}}\newline
+{\ttfamily \+\#include "{}usart.\+h"{}}\newline
+Include dependency graph for test\+\_\+ds18b20.\+c:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__ds18b20_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{test__ds18b20_8c_a2ddacbe405fe687f6fb48cdcbebf2f3b}{EXPECT}}(cond,  msg)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{test__ds18b20_8c_a3b53a1ac5f4c7371f692d110e37484cd}{Test\+DS18\+B20\+\_\+\+Run\+All}} (\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18\+B20\+\_\+t}} \texorpdfstring{$\ast$}{*}hds)
+\end{DoxyCompactItemize}
+
+
+\label{test__ds18b20_8c_doc-define-members}
+\Hypertarget{test__ds18b20_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{test__ds18b20_8c_a2ddacbe405fe687f6fb48cdcbebf2f3b}\index{test\_ds18b20.c@{test\_ds18b20.c}!EXPECT@{EXPECT}}
+\index{EXPECT@{EXPECT}!test\_ds18b20.c@{test\_ds18b20.c}}
+\doxysubsubsection{\texorpdfstring{EXPECT}{EXPECT}}
+{\footnotesize\ttfamily \label{test__ds18b20_8c_a2ddacbe405fe687f6fb48cdcbebf2f3b} 
+\+\#define EXPECT(\begin{DoxyParamCaption}\item[{}]{cond}{, }\item[{}]{msg}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ if\ (!(cond))\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ [FAIL]\ \%s\ (ligne\ \%d)\(\backslash\)r\(\backslash\)n"{}},\ msg,\ \_\_LINE\_\_);\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ [\ OK\ ]\ \%s\(\backslash\)r\(\backslash\)n"{}},\ msg);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+Macro d\textquotesingle{}assertion simple. 
+
+\label{test__ds18b20_8c_doc-func-members}
+\Hypertarget{test__ds18b20_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{test__ds18b20_8c_a3b53a1ac5f4c7371f692d110e37484cd}\index{test\_ds18b20.c@{test\_ds18b20.c}!TestDS18B20\_RunAll@{TestDS18B20\_RunAll}}
+\index{TestDS18B20\_RunAll@{TestDS18B20\_RunAll}!test\_ds18b20.c@{test\_ds18b20.c}}
+\doxysubsubsection{\texorpdfstring{TestDS18B20\_RunAll()}{TestDS18B20\_RunAll()}}
+{\footnotesize\ttfamily \label{test__ds18b20_8c_a3b53a1ac5f4c7371f692d110e37484cd} 
+bool Test\+DS18\+B20\+\_\+\+Run\+All (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_d_s18_b20__t}{DS18\+B20\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hds}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{test__ds18b20_8c_a3b53a1ac5f4c7371f692d110e37484cd_icgraph}
+\end{center}
+\end{figure}

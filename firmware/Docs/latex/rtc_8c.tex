@@ -1,0 +1,100 @@
+\doxysection{C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Src/\+rtc.c File Reference}
+\hypertarget{rtc_8c}{}\label{rtc_8c}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/rtc.c@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/rtc.c}}
+
+
+This file provides code for the configuration of the RTC instances.  
+
+
+{\ttfamily \+\#include "{}rtc.\+h"{}}\newline
+Include dependency graph for rtc.\+c:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{rtc_8c_abf4accd1ce479030808e546f3d4642c9}{MX\+\_\+\+RTC\+\_\+\+Init}} (void)
+\item 
+void \doxymbox{\hyperlink{rtc_8c_a453bd7b485bdb49c54872947f546655c}{HAL\+\_\+\+RTC\+\_\+\+Msp\+Init}} (RTC\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}rtc\+Handle)
+\item 
+void \doxymbox{\hyperlink{rtc_8c_a17b728569834d5a73fb8713b6a41806f}{HAL\+\_\+\+RTC\+\_\+\+Msp\+De\+Init}} (RTC\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}rtc\+Handle)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+RTC\+\_\+\+Handle\+Type\+Def \doxymbox{\hyperlink{rtc_8c_aa0c7fca836406ade332e1e3f1039d8ab}{hrtc}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file provides code for the configuration of the RTC instances. 
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+Copyright (c) 2026 STMicroelectronics. All rights reserved.
+
+This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-\/\+IS. 
+
+\label{rtc_8c_doc-func-members}
+\Hypertarget{rtc_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{rtc_8c_a17b728569834d5a73fb8713b6a41806f}\index{rtc.c@{rtc.c}!HAL\_RTC\_MspDeInit@{HAL\_RTC\_MspDeInit}}
+\index{HAL\_RTC\_MspDeInit@{HAL\_RTC\_MspDeInit}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_RTC\_MspDeInit()}{HAL\_RTC\_MspDeInit()}}
+{\footnotesize\ttfamily \label{rtc_8c_a17b728569834d5a73fb8713b6a41806f} 
+void HAL\+\_\+\+RTC\+\_\+\+Msp\+De\+Init (\begin{DoxyParamCaption}\item[{RTC\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{rtc\+Handle}{}\end{DoxyParamCaption})}
+
+\Hypertarget{rtc_8c_a453bd7b485bdb49c54872947f546655c}\index{rtc.c@{rtc.c}!HAL\_RTC\_MspInit@{HAL\_RTC\_MspInit}}
+\index{HAL\_RTC\_MspInit@{HAL\_RTC\_MspInit}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_RTC\_MspInit()}{HAL\_RTC\_MspInit()}}
+{\footnotesize\ttfamily \label{rtc_8c_a453bd7b485bdb49c54872947f546655c} 
+void HAL\+\_\+\+RTC\+\_\+\+Msp\+Init (\begin{DoxyParamCaption}\item[{RTC\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{rtc\+Handle}{}\end{DoxyParamCaption})}
+
+Initializes the peripherals clocksHere is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{rtc_8c_a453bd7b485bdb49c54872947f546655c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{rtc_8c_abf4accd1ce479030808e546f3d4642c9}\index{rtc.c@{rtc.c}!MX\_RTC\_Init@{MX\_RTC\_Init}}
+\index{MX\_RTC\_Init@{MX\_RTC\_Init}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{MX\_RTC\_Init()}{MX\_RTC\_Init()}}
+{\footnotesize\ttfamily \label{rtc_8c_abf4accd1ce479030808e546f3d4642c9} 
+void MX\+\_\+\+RTC\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Initialize RTC Only
+
+Enable the Wake\+UpHere is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{rtc_8c_abf4accd1ce479030808e546f3d4642c9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{rtc_8c_abf4accd1ce479030808e546f3d4642c9_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{rtc_8c_doc-var-members}
+\Hypertarget{rtc_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{rtc_8c_aa0c7fca836406ade332e1e3f1039d8ab}\index{rtc.c@{rtc.c}!hrtc@{hrtc}}
+\index{hrtc@{hrtc}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{hrtc}{hrtc}}
+{\footnotesize\ttfamily \label{rtc_8c_aa0c7fca836406ade332e1e3f1039d8ab} 
+RTC\+\_\+\+Handle\+Type\+Def hrtc}
+

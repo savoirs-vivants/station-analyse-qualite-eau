@@ -1,0 +1,56 @@
+\doxysection{C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Inc/\+test\+\_\+datalog.h File Reference}
+\hypertarget{test__datalog_8h}{}\label{test__datalog_8h}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/test\_datalog.h@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Inc/test\_datalog.h}}
+{\ttfamily \+\#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \+\#include "{}driver\+FRAM.\+h"{}}\newline
+Include dependency graph for test\+\_\+datalog.\+h:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__datalog_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{test__datalog_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{test__datalog_8h_ac14ad0bc0b21b39d85d3286f59631e72}{Test\+Data\+Log\+\_\+\+Run\+All}} (\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*}hfram)
+\begin{DoxyCompactList}\small\item\em Lance la batterie de tests Data\+Log. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{test__datalog_8h_doc-func-members}
+\Hypertarget{test__datalog_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{test__datalog_8h_ac14ad0bc0b21b39d85d3286f59631e72}\index{test\_datalog.h@{test\_datalog.h}!TestDataLog\_RunAll@{TestDataLog\_RunAll}}
+\index{TestDataLog\_RunAll@{TestDataLog\_RunAll}!test\_datalog.h@{test\_datalog.h}}
+\doxysubsubsection{\texorpdfstring{TestDataLog\_RunAll()}{TestDataLog\_RunAll()}}
+{\footnotesize\ttfamily \label{test__datalog_8h_ac14ad0bc0b21b39d85d3286f59631e72} 
+bool Test\+Data\+Log\+\_\+\+Run\+All (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_f_r_a_m__t}{FRAM\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{hfram}{}\end{DoxyParamCaption})}
+
+
+
+Lance la batterie de tests Data\+Log. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hfram} & Handle FRAM DEJA INITIALISE par l\textquotesingle{}application. Les callbacks HAL SPI doivent router vers ce handle. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si tous les tests passent. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{test__datalog_8h_ac14ad0bc0b21b39d85d3286f59631e72_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,115 @@
+\doxysection{Analog\+\_\+t Struct Reference}
+\hypertarget{struct_analog__t}{}\label{struct_analog__t}\index{Analog\_t@{Analog\_t}}
+
+
+Contexte d\textquotesingle{}exécution global du driver analogique.  
+
+
+
+
+{\ttfamily \+\#include $<$driver\+Analog.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+ADC\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{struct_analog__t_af982c0fe5d77061049c468b599100134}{hadc}}
+\item 
+volatile \doxymbox{\hyperlink{driver_analog_8h_a265ba346976a3893bb384d3e9f56bb78}{Analog\+\_\+\+State\+\_\+t}} \doxymbox{\hyperlink{struct_analog__t_a9168897c62c6ad20dad6de05ff1bfad3}{state}}
+\item 
+\doxymbox{\hyperlink{driver_analog_8h_a67e4ace606a4946983ae18c7f7970cbf}{Analog\+\_\+\+Status\+\_\+t}} \doxymbox{\hyperlink{struct_analog__t_adb95f0fc178870b162fde817e7eb0947}{status}}
+\item 
+uint16\+\_\+t \doxymbox{\hyperlink{struct_analog__t_a550fc51b115c81c3c36d0714c17bad93}{ADC\+\_\+values}} \+[\doxymbox{\hyperlink{driver_analog_8h_a2b253ff8dc858bafc4bb77978b98b521}{NBR\+\_\+\+ANALOG\+\_\+\+SENSOR}}]\+
+\item 
+float \doxymbox{\hyperlink{struct_analog__t_a0815995cdc6e2308a51a5566fa8e5920}{VOLT\+\_\+values}} \+[2]\+
+\item 
+uint32\+\_\+t \doxymbox{\hyperlink{struct_analog__t_ae3d42f7c747889611d6f585bdbdd3b91}{true\+\_\+vdda\+\_\+mv}}
+\item 
+int32\+\_\+t \doxymbox{\hyperlink{struct_analog__t_ad23de665f0b15ab8c4b700129ea9a88f}{internal\+\_\+temp}}
+\item 
+uint32\+\_\+t \doxymbox{\hyperlink{struct_analog__t_a74548ddd872461c5b23d3bce7e83e741}{v\+\_\+battery}}
+\item 
+uint32\+\_\+t \doxymbox{\hyperlink{struct_analog__t_a42ff89d25c12a3302f87202d760ac1df}{start\+\_\+time}}
+\item 
+uint8\+\_\+t \doxymbox{\hyperlink{struct_analog__t_a45998c0b4dd5717ced32282d45d4ef9b}{error\+\_\+code}}
+\item 
+volatile bool \doxymbox{\hyperlink{struct_analog__t_a051321afacdc18291508475df3033467}{event\+\_\+adc\+\_\+complete}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contexte d\textquotesingle{}exécution global du driver analogique. 
+
+\label{struct_analog__t_doc-variable-members}
+\Hypertarget{struct_analog__t_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{struct_analog__t_a550fc51b115c81c3c36d0714c17bad93}\index{Analog\_t@{Analog\_t}!ADC\_values@{ADC\_values}}
+\index{ADC\_values@{ADC\_values}!Analog\_t@{Analog\_t}}
+\doxysubsubsection{\texorpdfstring{ADC\_values}{ADC\_values}}
+{\footnotesize\ttfamily \label{struct_analog__t_a550fc51b115c81c3c36d0714c17bad93} 
+uint16\+\_\+t ADC\+\_\+values\+[\doxymbox{\hyperlink{driver_analog_8h_a2b253ff8dc858bafc4bb77978b98b521}{NBR\+\_\+\+ANALOG\+\_\+\+SENSOR}}]\+}
+
+Buffer de réception DMA pour les données brutes (bits) \Hypertarget{struct_analog__t_a45998c0b4dd5717ced32282d45d4ef9b}\index{Analog\_t@{Analog\_t}!error\_code@{error\_code}}
+\index{error\_code@{error\_code}!Analog\_t@{Analog\_t}}
+\doxysubsubsection{\texorpdfstring{error\_code}{error\_code}}
+{\footnotesize\ttfamily \label{struct_analog__t_a45998c0b4dd5717ced32282d45d4ef9b} 
+uint8\+\_\+t error\+\_\+code}
+
+Code d\textquotesingle{}erreur interne (0=Aucune, 1=Erreur Start DMA, 2=Timeout) \Hypertarget{struct_analog__t_a051321afacdc18291508475df3033467}\index{Analog\_t@{Analog\_t}!event\_adc\_complete@{event\_adc\_complete}}
+\index{event\_adc\_complete@{event\_adc\_complete}!Analog\_t@{Analog\_t}}
+\doxysubsubsection{\texorpdfstring{event\_adc\_complete}{event\_adc\_complete}}
+{\footnotesize\ttfamily \label{struct_analog__t_a051321afacdc18291508475df3033467} 
+volatile bool event\+\_\+adc\+\_\+complete}
+
+Flag levé par l\textquotesingle{}interruption DMA lorsque le buffer est plein \Hypertarget{struct_analog__t_af982c0fe5d77061049c468b599100134}\index{Analog\_t@{Analog\_t}!hadc@{hadc}}
+\index{hadc@{hadc}!Analog\_t@{Analog\_t}}
+\doxysubsubsection{\texorpdfstring{hadc}{hadc}}
+{\footnotesize\ttfamily \label{struct_analog__t_af982c0fe5d77061049c468b599100134} 
+ADC\+\_\+\+Handle\+Type\+Def\texorpdfstring{$\ast$}{*} hadc}
+
+Handle du périphérique ADC utilisé \Hypertarget{struct_analog__t_ad23de665f0b15ab8c4b700129ea9a88f}\index{Analog\_t@{Analog\_t}!internal\_temp@{internal\_temp}}
+\index{internal\_temp@{internal\_temp}!Analog\_t@{Analog\_t}}
+\doxysubsubsection{\texorpdfstring{internal\_temp}{internal\_temp}}
+{\footnotesize\ttfamily \label{struct_analog__t_ad23de665f0b15ab8c4b700129ea9a88f} 
+int32\+\_\+t internal\+\_\+temp}
+
+Température interne du silicium (en degrés Celsius) \Hypertarget{struct_analog__t_a42ff89d25c12a3302f87202d760ac1df}\index{Analog\_t@{Analog\_t}!start\_time@{start\_time}}
+\index{start\_time@{start\_time}!Analog\_t@{Analog\_t}}
+\doxysubsubsection{\texorpdfstring{start\_time}{start\_time}}
+{\footnotesize\ttfamily \label{struct_analog__t_a42ff89d25c12a3302f87202d760ac1df} 
+uint32\+\_\+t start\+\_\+time}
+
+Timestamp (ms) mémorisé au lancement pour la gestion du Timeout \Hypertarget{struct_analog__t_a9168897c62c6ad20dad6de05ff1bfad3}\index{Analog\_t@{Analog\_t}!state@{state}}
+\index{state@{state}!Analog\_t@{Analog\_t}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \label{struct_analog__t_a9168897c62c6ad20dad6de05ff1bfad3} 
+volatile \doxymbox{\hyperlink{driver_analog_8h_a265ba346976a3893bb384d3e9f56bb78}{Analog\+\_\+\+State\+\_\+t}} state}
+
+État actuel de la machine d\textquotesingle{}état interne \Hypertarget{struct_analog__t_adb95f0fc178870b162fde817e7eb0947}\index{Analog\_t@{Analog\_t}!status@{status}}
+\index{status@{status}!Analog\_t@{Analog\_t}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily \label{struct_analog__t_adb95f0fc178870b162fde817e7eb0947} 
+\doxymbox{\hyperlink{driver_analog_8h_a67e4ace606a4946983ae18c7f7970cbf}{Analog\+\_\+\+Status\+\_\+t}} status}
+
+Statut public du driver (READY/\+\+BUSY/\+\+ERROR) \Hypertarget{struct_analog__t_ae3d42f7c747889611d6f585bdbdd3b91}\index{Analog\_t@{Analog\_t}!true\_vdda\_mv@{true\_vdda\_mv}}
+\index{true\_vdda\_mv@{true\_vdda\_mv}!Analog\_t@{Analog\_t}}
+\doxysubsubsection{\texorpdfstring{true\_vdda\_mv}{true\_vdda\_mv}}
+{\footnotesize\ttfamily \label{struct_analog__t_ae3d42f7c747889611d6f585bdbdd3b91} 
+uint32\+\_\+t true\+\_\+vdda\+\_\+mv}
+
+Tension d\textquotesingle{}alimentation réelle du MCU (en millivolts) estimée via VREFINT \Hypertarget{struct_analog__t_a74548ddd872461c5b23d3bce7e83e741}\index{Analog\_t@{Analog\_t}!v\_battery@{v\_battery}}
+\index{v\_battery@{v\_battery}!Analog\_t@{Analog\_t}}
+\doxysubsubsection{\texorpdfstring{v\_battery}{v\_battery}}
+{\footnotesize\ttfamily \label{struct_analog__t_a74548ddd872461c5b23d3bce7e83e741} 
+uint32\+\_\+t v\+\_\+battery}
+
+Tension de la batterie de l\textquotesingle{}IOT (en mV) \Hypertarget{struct_analog__t_a0815995cdc6e2308a51a5566fa8e5920}\index{Analog\_t@{Analog\_t}!VOLT\_values@{VOLT\_values}}
+\index{VOLT\_values@{VOLT\_values}!Analog\_t@{Analog\_t}}
+\doxysubsubsection{\texorpdfstring{VOLT\_values}{VOLT\_values}}
+{\footnotesize\ttfamily \label{struct_analog__t_a0815995cdc6e2308a51a5566fa8e5920} 
+float VOLT\+\_\+values\+[2]\+}
+
+Tensions calculées (en Volts) pour les capteurs externes (C1, C2) 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Inc/\+\doxymbox{\hyperlink{driver_analog_8h}{driver\+Analog.\+h}}\end{DoxyCompactItemize}

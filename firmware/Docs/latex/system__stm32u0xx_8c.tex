@@ -1,0 +1,88 @@
+\doxysection{C:\+/\+\+Users/\+valen/\+\+Documents/\+\+BUT GEII/\+\+SAE601/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+firmware/\+station\+\_\+analyse\+\_\+qualite\+\_\+eau/\+\+Core/\+\+Src/\+system\+\_\+stm32u0xx.c File Reference}
+\hypertarget{system__stm32u0xx_8c}{}\label{system__stm32u0xx_8c}\index{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/system\_stm32u0xx.c@{C:/Users/valen/Documents/BUT GEII/SAE601/station\_analyse\_qualite\_eau/firmware/station\_analyse\_qualite\_eau/Core/Src/system\_stm32u0xx.c}}
+
+
+CMSIS Cortex-\/\+M0+ Device Peripheral Access Layer System Source File.  
+
+
+{\ttfamily \+\#include "{}stm32u0xx.\+h"{}}\newline
+Include dependency graph for system\+\_\+stm32u0xx.\+c:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{system__stm32u0xx_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{group___s_t_m32_u0xx___system___private___includes_gaeafcff4f57440c60e64812dddd13e7cb}{HSE\+\_\+\+VALUE}}~(32000000U)
+\item 
+\+\#define \doxymbox{\hyperlink{group___s_t_m32_u0xx___system___private___includes_gaaa8c76e274d0f6dd2cefb5d0b17fbc37}{HSI\+\_\+\+VALUE}}~(16000000\+UL)
+\item 
+\+\#define \doxymbox{\hyperlink{group___s_t_m32_u0xx___system___private___includes_ga90e2a73d7fe4a7425c6e31fef5ce7263}{MSI\+\_\+\+VALUE}}~(4000000\+UL)
+\item 
+\+\#define \doxymbox{\hyperlink{group___s_t_m32_u0xx___system___private___includes_ga4872023e65449c0506aac3ea6bec99e9}{LSI\+\_\+\+VALUE}}~(32000\+UL)
+\item 
+\+\#define \doxymbox{\hyperlink{group___s_t_m32_u0xx___system___private___includes_ga7bbb9d19e5189a6ccd0fb6fa6177d20d}{LSE\+\_\+\+VALUE}}~(32768UL)
+\item 
+\+\#define \doxymbox{\hyperlink{group___s_t_m32_u0xx___system___private___defines_ga40e1495541cbb4acbe3f1819bd87a9fe}{VECT\+\_\+\+TAB\+\_\+\+OFFSET}}~0x0U
+\item 
+\+\#define \doxymbox{\hyperlink{group___s_t_m32_u0xx___system___private___defines_ga5930c503ee50ba3b3e33a042bc6159d9}{ENABLE\+\_\+\+DBG\+\_\+\+SWEN}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{group___s_t_m32_u0xx___system___private___functions_ga93f514700ccf00d08dbdcff7f1224eb2}{System\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Setup the microcontroller system. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{group___s_t_m32_u0xx___system___private___functions_gae0c36a9591fe6e9c45ecb21a794f0f0f}{System\+Core\+Clock\+Update}} (void)
+\begin{DoxyCompactList}\small\item\em Update System\+Core\+Clock variable according to Clock Register Values. The System\+Core\+Clock variable contains the core clock (HCLK), it can be used by the user application to setup the Sys\+Tick timer or configure other parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \doxymbox{\hyperlink{group___s_t_m32_u0xx___system___private___variables_gaa3cd3e43291e81e795d642b79b6088e6}{System\+Core\+Clock}} = 4000000U
+\item 
+const uint8\+\_\+t \doxymbox{\hyperlink{group___s_t_m32_u0xx___system___private___variables_ga6e1d9cd666f0eacbfde31e9932a93466}{AHBPresc\+Table}} \+[16]\+ = \{0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9\}
+\item 
+const uint8\+\_\+t \doxymbox{\hyperlink{group___s_t_m32_u0xx___system___private___variables_ga5b4f8b768465842cf854a8f993b375e9}{APBPresc\+Table}} \+[8]\+ = \{0, 0, 0, 0, 1, 2, 3, 4\}
+\item 
+const uint32\+\_\+t \doxymbox{\hyperlink{group___s_t_m32_u0xx___system___private___variables_ga4d9e663c3c5bd4ca3361bf97d48158bf}{MSIRange\+Table}} \+[12]\+
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+CMSIS Cortex-\/\+M0+ Device Peripheral Access Layer System Source File. 
+
+\begin{DoxyAuthor}{Author}
+MCD Application Team 
+\end{DoxyAuthor}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+Copyright (c) 2023 STMicroelectronics. All rights reserved.
+
+This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-\/\+IS.
+
+This file provides two functions and one global variable to be called from user application:\+
+\begin{DoxyItemize}
+\item \doxylink{group___s_t_m32_u0xx___system___private___functions_ga93f514700ccf00d08dbdcff7f1224eb2}{System\+Init()}:\+ This function is called at startup just after reset and before branch to main program. This call is made inside the "{}startup\+\_\+stm32u0xx.\+s"{} file.
+\item System\+Core\+Clock variable:\+ Contains the core clock (HCLK), it can be used by the user application to setup the Sys\+Tick timer or configure other parameters.
+\item \doxylink{group___s_t_m32_u0xx___system___private___functions_gae0c36a9591fe6e9c45ecb21a794f0f0f}{System\+Core\+Clock\+Update()}:\+ Updates the variable System\+Core\+Clock and must be called whenever the core clock is changed during program execution.
+\end{DoxyItemize}
+
+After each device reset the MSI (4 MHz) is used as system clock source. Then \doxylink{group___s_t_m32_u0xx___system___private___functions_ga93f514700ccf00d08dbdcff7f1224eb2}{System\+Init()} function is called, in "{}startup\+\_\+stm32u0xx.\+s"{} file, to configure the system clock before to branch to main program.\hypertarget{system__stm32u0xx_8c_autotoc_md0}{}\doxysubsection{\texorpdfstring{This file configures the system clock as follows:\+}{This file configures the system clock as follows:\+}}\label{system__stm32u0xx_8c_autotoc_md0}
+\DoxyHorRuler{0}
+ \hypertarget{system__stm32u0xx_8c_autotoc_md1}{}\doxysubsubsection{\texorpdfstring{System Clock source \texorpdfstring{$\vert$}{|} MSI}{System Clock source \texorpdfstring{$\vert$}{|} MSI}}\label{system__stm32u0xx_8c_autotoc_md1}
+\hypertarget{system__stm32u0xx_8c_autotoc_md2}{}\doxysubsubsection{\texorpdfstring{SYSCLK(\+Hz) \texorpdfstring{$\vert$}{|} 4000000}{SYSCLK(\+Hz) \texorpdfstring{$\vert$}{|} 4000000}}\label{system__stm32u0xx_8c_autotoc_md2}
+\hypertarget{system__stm32u0xx_8c_autotoc_md3}{}\doxysubsubsection{\texorpdfstring{HCLK(\+Hz) \texorpdfstring{$\vert$}{|} 4000000}{HCLK(\+Hz) \texorpdfstring{$\vert$}{|} 4000000}}\label{system__stm32u0xx_8c_autotoc_md3}
+\hypertarget{system__stm32u0xx_8c_autotoc_md4}{}\doxysubsubsection{\texorpdfstring{AHB Prescaler \texorpdfstring{$\vert$}{|} 1}{AHB Prescaler \texorpdfstring{$\vert$}{|} 1}}\label{system__stm32u0xx_8c_autotoc_md4}
+\hypertarget{system__stm32u0xx_8c_autotoc_md5}{}\doxysubsubsection{\texorpdfstring{APB Prescaler \texorpdfstring{$\vert$}{|} 1}{APB Prescaler \texorpdfstring{$\vert$}{|} 1}}\label{system__stm32u0xx_8c_autotoc_md5}
+\hypertarget{system__stm32u0xx_8c_autotoc_md6}{}\doxysubsubsection{\texorpdfstring{HSI Division factor \texorpdfstring{$\vert$}{|} 1}{HSI Division factor \texorpdfstring{$\vert$}{|} 1}}\label{system__stm32u0xx_8c_autotoc_md6}
+\hypertarget{system__stm32u0xx_8c_autotoc_md7}{}\doxysubsubsection{\texorpdfstring{PLL\+\_\+M \texorpdfstring{$\vert$}{|} 1}{PLL\+\_\+M \texorpdfstring{$\vert$}{|} 1}}\label{system__stm32u0xx_8c_autotoc_md7}
+\hypertarget{system__stm32u0xx_8c_autotoc_md8}{}\doxysubsubsection{\texorpdfstring{PLL\+\_\+N \texorpdfstring{$\vert$}{|} 8}{PLL\+\_\+N \texorpdfstring{$\vert$}{|} 8}}\label{system__stm32u0xx_8c_autotoc_md8}
+\hypertarget{system__stm32u0xx_8c_autotoc_md9}{}\doxysubsubsection{\texorpdfstring{PLL\+\_\+P \texorpdfstring{$\vert$}{|} 7}{PLL\+\_\+P \texorpdfstring{$\vert$}{|} 7}}\label{system__stm32u0xx_8c_autotoc_md9}
+\hypertarget{system__stm32u0xx_8c_autotoc_md10}{}\doxysubsubsection{\texorpdfstring{PLL\+\_\+Q \texorpdfstring{$\vert$}{|} 2}{PLL\+\_\+Q \texorpdfstring{$\vert$}{|} 2}}\label{system__stm32u0xx_8c_autotoc_md10}
+\hypertarget{system__stm32u0xx_8c_autotoc_md11}{}\doxysubsubsection{\texorpdfstring{PLL\+\_\+R \texorpdfstring{$\vert$}{|} 2}{PLL\+\_\+R \texorpdfstring{$\vert$}{|} 2}}\label{system__stm32u0xx_8c_autotoc_md11}
+\hypertarget{system__stm32u0xx_8c_autotoc_md12}{}\doxysubsubsection{\texorpdfstring{Require 48MHz for RNG \texorpdfstring{$\vert$}{|} Disabled}{Require 48MHz for RNG \texorpdfstring{$\vert$}{|} Disabled}}\label{system__stm32u0xx_8c_autotoc_md12}
+============================================================================= 
